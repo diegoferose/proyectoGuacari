@@ -25,7 +25,7 @@
   <div class="subnavbar-inner">
     <div class="container">
       <ul class="mainnav">
-        <li class="active"><a href="index.html"><i class=" icon-home"></i><span>Inicio</span> </a> </li>
+        <li class="active"><a href="../usuario/usuarioStandartVista.php"><i class=" icon-home"></i><span>Inicio</span> </a> </li>
         <li><a href="reports.html"><i class="icon-group"></i><span>¿Quienes somos?</span> </a> </li>
         <li><a href="guidely.html"><i class="icon-book"></i><span></span>Politicas </a></li>
       </ul>
