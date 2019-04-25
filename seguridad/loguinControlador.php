@@ -20,6 +20,7 @@ while ($fila = mysqli_fetch_array($result)) {
 include "../util/util.php";
 $util1 = new util();
 $util1 -> validarRuta(4);
+echo "";
 
 
 ?>
