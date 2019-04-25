@@ -19,4 +19,5 @@ $util -> insertar($nombreDeTabla,$campos, $valores) ;
 
 $_SESSION['mensajeOk']='SOLICITUD REGISTRADA CON EXITO <p class="help-block">Al correo electronico proximamente llegara la respuesta.</p>';
 header('Location: ../util/okVista.php');
+exit();
 ?>

@@ -1,7 +1,11 @@
 <?php
-session_start();
-if (isset($_SESSION['usuarioLogueado'])) {
-  header('Location: ../informe/informeVista.php');
+//include "../util/util.php";
+//$util1 = new util();
+//$util1 -> validarRuta(4);
+if(isset($_SESSION['usuario'])){
+  include "../util/util.php";
+  $util1 = new util();
+  $util1 -> validarRuta(4);
 }
 ?>
 <!DOCTYPE html>
@@ -35,7 +39,7 @@ if (isset($_SESSION['usuarioLogueado'])) {
             <div class="row">
               <div class="col-lg-12">
                 <!-- ************INCIAR SESION******* INICIO ***** -->
-                <form id="login-form" action="" method="post" role="form" style="display: block;">
+                <form id="login-form" action="loguinControlador.php" method="post" role="form" style="display: block;">
                   <div class="form-group">
                     <input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Usuario" value="">
                   </div>

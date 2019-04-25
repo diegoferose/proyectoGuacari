@@ -20,11 +20,11 @@ class utilModelo
     $consulta = "INSERT INTO `$tabla` ($construccionDeCampos) VALUES ($construccionDeValores);";
     $query = mysqli_query($link, $consulta);
   }
-  function mostrarregistros($tabla,$nombreCampo,$valor) {
+  function mostrarregistros($tabla,$nombreCampo,$valores) {
     global $link;
     $condiciones =" WHERE ";
     for ($i=0; $i < count($nombreCampo); $i++) {
-      $condiciones = ($i == (count($nombreCampo)-1)) ? $condiciones."`".$nombreCampo[$i]."` = ".$valores[$i] : $condiciones."`".$nombreCampo[$i]."`= ".$valores[$i]." AND ";
+      $condiciones = ($i == (count($nombreCampo)-1)) ? $condiciones."`".$nombreCampo[$i]."` = '".$valores[$i]."'" : $condiciones."`".$nombreCampo[$i]."`= '".$valores[$i]."' AND ";
     }
     $consulta = "SELECT * FROM $tabla  $condiciones";
     $query = mysqli_query($link, $consulta);

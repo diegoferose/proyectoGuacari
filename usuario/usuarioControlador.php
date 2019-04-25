@@ -26,4 +26,5 @@ $util -> insertar($nombreDeTabla,$campos, $valores) ;
 
 $_SESSION['mensajeOk']="ok";
 header('Location: ../index.php');
+exit();
 ?>

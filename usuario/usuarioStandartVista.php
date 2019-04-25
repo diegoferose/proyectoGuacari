@@ -1,3 +1,8 @@
+<?php
+include "../util/util.php";
+$util = new util();
+$util -> validarRuta(2);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

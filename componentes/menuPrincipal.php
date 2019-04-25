@@ -9,7 +9,7 @@
             class="icon-user"></i> DIEGO FERNANDO ROSERO GIRALDO <b class="caret"></b></a>
             <ul class="dropdown-menu">
               <li><a href="javascript:;"><i class="icon-bell"></i> Solicitudes</a></li>
-              <li><a href="javascript:;"><i class="icon-signout"></i>Cerrar sesion</a></li>
+              <li><a href="../seguridad/cerrarSesion.php"><i class="icon-signout"></i>Cerrar sesion</a></li>
             </ul>
           </li>
         </ul>
