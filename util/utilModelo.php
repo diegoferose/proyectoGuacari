@@ -8,11 +8,16 @@ class utilModelo
 {
   function insertar($tabla,$campos, $valores) {
     global $link;
-    for ($i=0; $i <$campos.length() ; $i++) {
-      $construccionDeCampos = $construccionDeCampos."``";
-      //calle 18a # 16-69
+    $construccionDeCampos="";
+    for ($i=0; $i < count($campos); $i++) {
+      $construccionDeCampos = ($i == (count($campos)-1)) ? $construccionDeCampos."`".$campos[$i]."`":$construccionDeCampos."`".$campos[$i]."`,";
     }
-    $consulta = "INSERT INTO `$tabla` (`id`, `codigoUsuario`, `fechaSolicitud`, `valor`, `mensaje`, `estado`, `tipo`) VALUES (NULL, '$codigo', '$fecha', '$valor', '', '$estado', '$tipo');";
+    $construccionDeValores ="";
+    for ($i=0; $i < count($valores); $i++) {
+      $construccionDeValores = ($i == (count($valores)-1)) ? $construccionDeValores."'".$valores[$i]."'":$construccionDeValores."'".$valores[$i]."',";
+    }
+
+    $consulta = "INSERT INTO `$tabla` ($construccionDeCampos) VALUES ($construccionDeValores);";
     $query = mysqli_query($link, $consulta);
   }
 
