@@ -11,16 +11,13 @@ $tabla = "usuario";
 $result = $util -> mostrarregistros($tabla,$nombreCampo,$valor);
 $contador = 0;
 while ($fila = mysqli_fetch_array($result)) {
-  if ($fila != NULL) {
-    $_SESSION['usuario']=array($fila['codigo'],$fila['tipo']);
-    $contador++;
-  }
+    if ($fila != NULL) {
+        $_SESSION['usuario']=array($fila['codigo'],$fila['tipo']);
+        $contador++;
+    }
 }
 
 include "../util/util.php";
 $util1 = new util();
 $util1 -> validarRuta(4);
-echo "";
-
-
 ?>

@@ -1,3 +1,3 @@
 <?php
-header('Location: seguridad/loginVista.php');
+    header('Location: seguridad/loginVista.php');
 ?>

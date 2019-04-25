@@ -1,3 +1,17 @@
+<?php
+    $nombreCampo = array("codigo");
+    $valor = array($_SESSION['usuario'][0]);
+    $tabla = "usuario";
+
+    $result = $utilModelo -> mostrarregistros($tabla,$nombreCampo,$valor);
+    while ($fila = mysqli_fetch_array($result)) {
+        if ($fila != NULL) {
+            $nombre = $fila['nombre'];
+
+        }
+    }
+
+?>
 <div class="navbar navbar-fixed-top">
   <div class="navbar-inner">
     <div class="container"> <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span
@@ -6,7 +20,7 @@
         <ul class="nav pull-right">
 
           <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i
-            class="icon-user"></i> DIEGO FERNANDO ROSERO GIRALDO <b class="caret"></b></a>
+            class="icon-user"></i> <?php echo $nombre; ?> <b class="caret"></b></a>
             <ul class="dropdown-menu">
               <li><a href="javascript:;"><i class="icon-bell"></i> Solicitudes</a></li>
               <li><a href="../seguridad/cerrarSesion.php"><i class="icon-signout"></i>Cerrar sesion</a></li>
