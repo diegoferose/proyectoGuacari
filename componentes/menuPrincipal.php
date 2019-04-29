@@ -1,9 +1,11 @@
 <?php
+    include "../util/utilModelo.php";
+    $utilModelo1 = new utilModelo();
     $nombreCampo = array("codigo");
     $valor = array($_SESSION['usuario'][0]);
     $tabla = "usuario";
 
-    $result = $utilModelo -> mostrarregistros($tabla,$nombreCampo,$valor);
+    $result = $utilModelo1 -> mostrarregistros($tabla,$nombreCampo,$valor);
     while ($fila = mysqli_fetch_array($result)) {
         if ($fila != NULL) {
             $nombre = $fila['nombre'];

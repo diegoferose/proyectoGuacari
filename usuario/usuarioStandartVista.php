@@ -1,7 +1,7 @@
 <?php
     include "../util/util.php";
     include "../util/utilModelo.php";
-    $utilModelo = new utilModelo();
+    $utilModelo2 = new utilModelo();
     $util = new util();
     $util -> validarRuta(2);
 
@@ -9,7 +9,7 @@
     $valor = array($_SESSION['usuario'][0]);
     $tabla = "usuario";
 
-    $result = $utilModelo -> mostrarregistros($tabla,$nombreCampo,$valor);
+    $result = $utilModelo2 -> mostrarregistros($tabla,$nombreCampo,$valor);
     while ($fila = mysqli_fetch_array($result)) {
         if ($fila != NULL) {
             $saldo = $fila['saldo'];
