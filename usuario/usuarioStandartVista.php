@@ -1,21 +1,19 @@
 <?php
     include "../util/util.php";
-    include "../util/utilModelo.php";
+   include_once "../util/utilModelo.php";
     $utilModelo2 = new utilModelo();
     $util = new util();
     $util -> validarRuta(2);
-
     $nombreCampo = array("codigo");
     $valor = array($_SESSION['usuario'][0]);
     $tabla = "usuario";
-
     $result = $utilModelo2 -> mostrarregistros($tabla,$nombreCampo,$valor);
     while ($fila = mysqli_fetch_array($result)) {
         if ($fila != NULL) {
             $saldo = $fila['saldo'];
-
         }
     }
+    
 ?>
 <!DOCTYPE html>
 <html lang="en">
