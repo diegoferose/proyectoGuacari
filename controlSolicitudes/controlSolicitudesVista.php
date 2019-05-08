@@ -46,7 +46,7 @@ $util -> validarRuta(2);
                       <th> NOMBRE ASOCIADO </th>
                       <th> VALOR SOLICITUD</th>
                       <th> FECHA SOLICITUD</th>
-                      <th class="td-actions"> </th>
+                      <th class="td-actions"> Aceptar/Denegar</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -94,12 +94,12 @@ $util -> validarRuta(2);
   <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-header">
       <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-      <h3 id="myModalLabel">Negar solicitud</h3>
+      <h3 id="myModalLabel">Cancelar solicitud</h3>
     </div>
     <div class="modal-body">
       <div class="form-group shadow-textarea col-xs-12">
         <label for="exampleFormControlTextarea6">Razon para negar el retiro</label>
-        <textarea class="form-control z-depth-1" id="exampleFormControlTextarea6" rows="6" placeholder="Maximo 50 caracteres"></textarea>
+        <textarea class="form-control z-depth-1"maxlength="500" style="min-width: 100%" id="exampleFormControlTextarea6" rows="6" placeholder="Maximo 500 caracteres"></textarea>
       </div>
     </div>
     <div class="modal-footer">
