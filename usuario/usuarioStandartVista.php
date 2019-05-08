@@ -82,15 +82,28 @@
                         <!-- /widget-header -->
                         <div class="widget-content">
                             <div class="shortcuts">
-                                <a href="javascript:;" class="shortcut"><i class="shortcut-icon  icon-user"></i><span class="shortcut-label">LINA MARCELA ROSERO GIRALDO <br> <b>CODIGO: 3jd930</b></span> </a>
-                                <a href="javascript:;" class="shortcut"><i class="shortcut-icon  icon-user"></i><span class="shortcut-label">LINA MARCELA ROSERO GIRALDO <br> <b>CODIGO: 3jd930</b></span> </a>
-                                <a href="javascript:;" class="shortcut"><i class="shortcut-icon  icon-user"></i><span class="shortcut-label">LINA MARCELA ROSERO GIRALDO <br> <b>CODIGO: 3jd930</b></span> </a>
-                                <a href="javascript:;" class="shortcut"><i class="shortcut-icon  icon-user"></i><span class="shortcut-label">LINA MARCELA ROSERO GIRALDO <br> <b>CODIGO: 3jd930</b></span> </a>
-                                <a href="javascript:;" class="shortcut"><i class="shortcut-icon  icon-user"></i><span class="shortcut-label">LINA MARCELA ROSERO GIRALDO <br> <b>CODIGO: 3jd930</b></span> </a>
-                                <a href="javascript:;" class="shortcut"><i class="shortcut-icon  icon-user"></i><span class="shortcut-label">LINA MARCELA ROSERO GIRALDO <br> <b>CODIGO: 3jd930</b></span> </a>
-                                <a href="javascript:;" class="shortcut"><i class="shortcut-icon  icon-user"></i><span class="shortcut-label">LINA MARCELA ROSERO GIRALDO <br> <b>CODIGO: 3jd930</b></span> </a>
-                                <a href="javascript:;" class="shortcut"><i class="shortcut-icon  icon-user"></i><span class="shortcut-label">LINA MARCELA ROSERO GIRALDO <br> <b>CODIGO: 3jd930</b></span> </a>
-                                <a href="javascript:;" class="shortcut"><i class="shortcut-icon  icon-user"></i><span class="shortcut-label">LINA MARCELA ROSERO GIRALDO <br> <b>CODIGO: 3jd930</b></span> </a>
+                                <?php
+                                    $nombreCampo = array("codigoReferido");
+                                    $valor = array($_SESSION['usuario'][0]);
+                                    $tabla = "usuario";
+                                    $result = $utilModelo2 -> mostrarregistros($tabla,$nombreCampo,$valor);
+                                    while ($fila = mysqli_fetch_array($result)) {
+                                        if ($fila != NULL) {
+                                            $saldo = $fila['saldo'];
+                                            echo ' <a href="javascript:;" class="shortcut"><i class="shortcut-icon  icon-user"></i><span class="shortcut-label">'.$fila['nombre'].' <br> <b>CODIGO: '.$fila['codigo'].'</b></span> </a>';
+                                        }
+                                    }
+
+                                ?>
+<!--                                <a href="javascript:;" class="shortcut"><i class="shortcut-icon  icon-user"></i><span class="shortcut-label">LINA MARCELA ROSERO GIRALDO <br> <b>CODIGO: 3jd930</b></span> </a>-->
+<!--                                <a href="javascript:;" class="shortcut"><i class="shortcut-icon  icon-user"></i><span class="shortcut-label">LINA MARCELA ROSERO GIRALDO <br> <b>CODIGO: 3jd930</b></span> </a>-->
+<!--                                <a href="javascript:;" class="shortcut"><i class="shortcut-icon  icon-user"></i><span class="shortcut-label">LINA MARCELA ROSERO GIRALDO <br> <b>CODIGO: 3jd930</b></span> </a>-->
+<!--                                <a href="javascript:;" class="shortcut"><i class="shortcut-icon  icon-user"></i><span class="shortcut-label">LINA MARCELA ROSERO GIRALDO <br> <b>CODIGO: 3jd930</b></span> </a>-->
+<!--                                <a href="javascript:;" class="shortcut"><i class="shortcut-icon  icon-user"></i><span class="shortcut-label">LINA MARCELA ROSERO GIRALDO <br> <b>CODIGO: 3jd930</b></span> </a>-->
+<!--                                <a href="javascript:;" class="shortcut"><i class="shortcut-icon  icon-user"></i><span class="shortcut-label">LINA MARCELA ROSERO GIRALDO <br> <b>CODIGO: 3jd930</b></span> </a>-->
+<!--                                <a href="javascript:;" class="shortcut"><i class="shortcut-icon  icon-user"></i><span class="shortcut-label">LINA MARCELA ROSERO GIRALDO <br> <b>CODIGO: 3jd930</b></span> </a>-->
+<!--                                <a href="javascript:;" class="shortcut"><i class="shortcut-icon  icon-user"></i><span class="shortcut-label">LINA MARCELA ROSERO GIRALDO <br> <b>CODIGO: 3jd930</b></span> </a>-->
+<!--                                <a href="javascript:;" class="shortcut"><i class="shortcut-icon  icon-user"></i><span class="shortcut-label">LINA MARCELA ROSERO GIRALDO <br> <b>CODIGO: 3jd930</b></span> </a>-->
                             </div>
                             <!-- /shortcuts -->
                         </div>
