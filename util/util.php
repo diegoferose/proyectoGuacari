@@ -4,13 +4,15 @@
      */
     include '../conexion.php';
     @session_start();
+
     class util
     {
-        function validarRuta($tipoUsarioPermitido) {
-            if(isset($_SESSION['usuario'])){
-                if ($_SESSION['usuario'][1]==$tipoUsarioPermitido) {
+        function validarRuta($tipoUsarioPermitido)
+        {
+            if (isset($_SESSION['usuario'])) {
+                if ($_SESSION['usuario'][1] == $tipoUsarioPermitido) {
 
-                }else{
+                } else {
                     switch ($_SESSION['usuario'][1]) {
                         case 0:// usuario administrador
                             // code...
@@ -30,9 +32,16 @@
 
                 }
 
-            }else{
+            } else {
                 header('Location: ../index.php');
                 exit();
+            }
+        }
+
+        function validarElemento($tipoUsarioPermitido, $html)
+        {
+            if ($_SESSION['usuario'][1] == $tipoUsarioPermitido) {
+                echo $html;
             }
         }
 
