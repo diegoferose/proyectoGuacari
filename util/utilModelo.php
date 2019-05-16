@@ -30,6 +30,16 @@ class utilModelo
     $query = mysqli_query($link, $consulta);
     return $query;
   }
+  function modificar($tabla,$campos, $valores,$campoCondicion,$condicion) {
+    global $link;
+    $construccionDeValores ="";
+    for ($i=0; $i < count($valores); $i++) {
+      $construccionDeValores = ($i == (count($valores)-1)) ? $construccionDeValores."`".$campos[$i]."` = '".$valores[$i]."'":$construccionDeValores."`".$campos[$i]."` = '".$valores[$i]."',";
+    }
+
+    $consulta = "UPDATE `$tabla` SET $construccionDeValores WHERE `$campoCondicion` = $condicion ;";
+    $query = mysqli_query($link, $consulta);
+  }
 
 }
 

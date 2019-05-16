@@ -1,13 +1,13 @@
 <?php
     include "../util/util.php";
-   include_once "../util/utilModelo.php";
+    include_once "../util/utilModelo.php";
     $utilModelo2 = new utilModelo();
     $util = new util();
-    $util -> validarRuta(2);
+    $util->validarRuta(2);
     $nombreCampo = array("codigo");
     $valor = array($_SESSION['usuario'][0]);
     $tabla = "usuario";
-    $result = $utilModelo2 -> mostrarregistros($tabla,$nombreCampo,$valor);
+    $result = $utilModelo2->mostrarregistros($tabla, $nombreCampo, $valor);
     while ($fila = mysqli_fetch_array($result)) {
         if ($fila != NULL) {
             $saldo = $fila['saldo'];
@@ -58,52 +58,57 @@
                                 </div> <!-- /plan-title -->
 
                                 <div class="plan-price">
-                                    $<?php echo number_format($saldo);?>
-                                    <span class="term"><a style="color: white;" href="../solicitudRetiro/solicitudRetiroVista.php">REALIZAR SOLICITUD DE RETIRO</a></span>
+                                    $<?php echo number_format($saldo); ?>
+                                    <span class="term"><a style="color: white;"
+                                                          href="../solicitudRetiro/solicitudRetiroVista.php">REALIZAR SOLICITUD DE RETIRO</a></span>
                                 </div> <!-- /plan-price -->
 
                             </div> <!-- /plan-header -->
                         </div> <!-- /plan -->
                         <!-- /widget-content -->
                     </div>
+                    <?php
+                        $nombreCampo = array("codigoReferido");
+                        $valor = array($_SESSION['usuario'][0]);
+                        $tabla = "usuario";
+                        $result = $utilModelo2->mostrarregistros($tabla, $nombreCampo, $valor);
+                        $referidos = "";
+                        $contadorReferidos =0;
+                        while ($fila = mysqli_fetch_array($result)) {
+                            if ($fila != NULL) {
+                                $contadorReferidos++;
+                                $saldo = $fila['saldo'];
+                                $referidos = $referidos . ' <a href="javascript:;" class="shortcut"><i class="shortcut-icon  icon-user"></i><span class="shortcut-label">' . $fila['nombre'] . ' <br> <b>CODIGO: ' . $fila['codigo'] . '</b></span> </a>';
+                            }
+                        }
+                        $meta = 5;
+                        $porcentaje = ((int)$contadorReferidos/$meta)*100;
+
+                    ?>
                     <div class="widget">
                         <label>
                             <b>META: 5 REFERIDOS</b>
                         </label>
                         <div class="progress progress-striped active">
-                            <div class="bar" style="width: 80%;">80%</div>
+                            <div class="bar" <?php echo 'style="width: '.$porcentaje.'%;"';?>>
+                                <?php
+                                    echo $porcentaje."%";
+                                ?>
+                            </div>
                         </div>
                     </div>
 
                     <div class="widget">
-                        <div class="widget-header"> <i class="icon-group"></i>
-                            <h3>Referidos <span class="badge badge-pill badge-success">9</span></h3>
+                        <div class="widget-header"><i class="icon-group"></i>
+                            <h3>Referidos <span class="badge badge-pill badge-success"><?php echo $contadorReferidos;?></span></h3>
                         </div>
                         <!-- /widget-header -->
                         <div class="widget-content">
                             <div class="shortcuts">
-                                <?php
-                                    $nombreCampo = array("codigoReferido");
-                                    $valor = array($_SESSION['usuario'][0]);
-                                    $tabla = "usuario";
-                                    $result = $utilModelo2 -> mostrarregistros($tabla,$nombreCampo,$valor);
-                                    while ($fila = mysqli_fetch_array($result)) {
-                                        if ($fila != NULL) {
-                                            $saldo = $fila['saldo'];
-                                            echo ' <a href="javascript:;" class="shortcut"><i class="shortcut-icon  icon-user"></i><span class="shortcut-label">'.$fila['nombre'].' <br> <b>CODIGO: '.$fila['codigo'].'</b></span> </a>';
-                                        }
-                                    }
 
+                                <?php
+                                echo $referidos;
                                 ?>
-<!--                                <a href="javascript:;" class="shortcut"><i class="shortcut-icon  icon-user"></i><span class="shortcut-label">LINA MARCELA ROSERO GIRALDO <br> <b>CODIGO: 3jd930</b></span> </a>-->
-<!--                                <a href="javascript:;" class="shortcut"><i class="shortcut-icon  icon-user"></i><span class="shortcut-label">LINA MARCELA ROSERO GIRALDO <br> <b>CODIGO: 3jd930</b></span> </a>-->
-<!--                                <a href="javascript:;" class="shortcut"><i class="shortcut-icon  icon-user"></i><span class="shortcut-label">LINA MARCELA ROSERO GIRALDO <br> <b>CODIGO: 3jd930</b></span> </a>-->
-<!--                                <a href="javascript:;" class="shortcut"><i class="shortcut-icon  icon-user"></i><span class="shortcut-label">LINA MARCELA ROSERO GIRALDO <br> <b>CODIGO: 3jd930</b></span> </a>-->
-<!--                                <a href="javascript:;" class="shortcut"><i class="shortcut-icon  icon-user"></i><span class="shortcut-label">LINA MARCELA ROSERO GIRALDO <br> <b>CODIGO: 3jd930</b></span> </a>-->
-<!--                                <a href="javascript:;" class="shortcut"><i class="shortcut-icon  icon-user"></i><span class="shortcut-label">LINA MARCELA ROSERO GIRALDO <br> <b>CODIGO: 3jd930</b></span> </a>-->
-<!--                                <a href="javascript:;" class="shortcut"><i class="shortcut-icon  icon-user"></i><span class="shortcut-label">LINA MARCELA ROSERO GIRALDO <br> <b>CODIGO: 3jd930</b></span> </a>-->
-<!--                                <a href="javascript:;" class="shortcut"><i class="shortcut-icon  icon-user"></i><span class="shortcut-label">LINA MARCELA ROSERO GIRALDO <br> <b>CODIGO: 3jd930</b></span> </a>-->
-<!--                                <a href="javascript:;" class="shortcut"><i class="shortcut-icon  icon-user"></i><span class="shortcut-label">LINA MARCELA ROSERO GIRALDO <br> <b>CODIGO: 3jd930</b></span> </a>-->
                             </div>
                             <!-- /shortcuts -->
                         </div>
@@ -124,7 +129,7 @@
                             </div> <!-- /plan-title -->
 
                             <div class="plan-price">
-                                $<?php echo number_format(1000000);?>
+                                $<?php echo number_format(1000000); ?>
                                 <span class="term"></span>
                             </div> <!-- /plan-price -->
 
@@ -138,7 +143,8 @@
                     </div>
                     <div class="widget">
                         <div class="embed-responsive embed-responsive-21by9">
-                            <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0"></iframe>
+                            <iframe class="embed-responsive-item"
+                                    src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0"></iframe>
                         </div>
                     </div>
                     <div class="widget">
