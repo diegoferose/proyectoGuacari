@@ -14,6 +14,10 @@
         }
     }
 
+    $valoresSuscripcionActiva = $util->validarUsuarioActivo($_SESSION['usuario'][0]);
+//    var_dump($valoresSuscripcionActiva);
+//    die();
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -39,10 +43,20 @@
 <?php
     include "../componentes/menuPrincipal.php";
 ?>
+
 <div class="main">
+
     <div class="main-inner">
         <div class="container">
+            <?php
+                if ($valoresSuscripcionActiva[1] == "activo") {
+                    echo '<h6><i class="icon-large icon-ok"></i>Su suscripcion se encuentra activa hasta el <a href="#" target="_blank">' . $valoresSuscripcionActiva[0] . '</a></h6>';
+                } else {
+                    echo '<h6><i class="icon-large icon-remove"></i>Su suscripcion se encuentra vencida </h6>';
+                }
+            ?>
             <div class="row">
+
 
                 <!-- /span6 -->
                 <div class="span6">
@@ -73,7 +87,7 @@
                         $tabla = "usuario";
                         $result = $utilModelo2->mostrarregistros($tabla, $nombreCampo, $valor);
                         $referidos = "";
-                        $contadorReferidos =0;
+                        $contadorReferidos = 0;
                         while ($fila = mysqli_fetch_array($result)) {
                             if ($fila != NULL) {
                                 $contadorReferidos++;
@@ -82,7 +96,7 @@
                             }
                         }
                         $meta = 5;
-                        $porcentaje = ((int)$contadorReferidos/$meta)*100;
+                        $porcentaje = ((int)$contadorReferidos / $meta) * 100;
 
                     ?>
                     <div class="widget">
@@ -90,9 +104,9 @@
                             <b>META: 5 REFERIDOS</b>
                         </label>
                         <div class="progress progress-striped active">
-                            <div class="bar" <?php echo 'style="width: '.$porcentaje.'%;"';?>>
+                            <div class="bar" <?php echo 'style="width: ' . $porcentaje . '%;"'; ?>>
                                 <?php
-                                    echo $porcentaje."%";
+                                    echo $porcentaje . "%";
                                 ?>
                             </div>
                         </div>
@@ -100,14 +114,16 @@
 
                     <div class="widget">
                         <div class="widget-header"><i class="icon-group"></i>
-                            <h3>Referidos <span class="badge badge-pill badge-success"><?php echo $contadorReferidos;?></span></h3>
+                            <h3>Referidos <span
+                                        class="badge badge-pill badge-success"><?php echo $contadorReferidos; ?></span>
+                            </h3>
                         </div>
                         <!-- /widget-header -->
                         <div class="widget-content">
                             <div class="shortcuts">
 
                                 <?php
-                                echo $referidos;
+                                    echo $referidos;
                                 ?>
                             </div>
                             <!-- /shortcuts -->

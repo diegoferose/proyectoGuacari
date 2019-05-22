@@ -40,6 +40,12 @@ class utilModelo
     $consulta = "UPDATE `$tabla` SET $construccionDeValores WHERE `$campoCondicion` = $condicion ;";
     $query = mysqli_query($link, $consulta);
   }
+  function ultimaFechaPago($codigoUsuario){
+    global $link;
+    $consulta = "SELECT `fechaMovimiento` FROM `movimientos` WHERE `codigoUsuario` LIKE '$codigoUsuario' ORDER BY `fechaMovimiento` DESC LIMIT 1";
+    $query = mysqli_query($link, $consulta);
+    return $query;
+  }
 
 }
 
