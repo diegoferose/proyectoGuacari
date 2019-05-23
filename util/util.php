@@ -59,17 +59,46 @@
             }
             $fechaVencimiento = date("d-m-Y", strtotime($fecha . "+ 1 month"));;
             $fechaActual = date("d-m-Y");
-//            echo $fecha . "<br>";
-//            echo $fechaVencimiento."<br>";
-//            echo $fecha_actual;
-            if($fechaActual > $fechaVencimiento){
+            if ($fechaActual > $fechaVencimiento) {
                 $estado = "vencido";
-            }else{
+            } else {
                 $estado = "activo";
             }
-            $valores = array($fechaVencimiento,$estado);
-          return $valores;
+            $valores = array($fechaVencimiento, $estado);
+            return $valores;
 
+
+        }
+
+        function validarRangoUsuario($cantidadReferidos)
+        {
+//            $cantidadReferidos = $cantidadReferidos + 5;
+            $utilModelo = new utilModelo();
+            $tabla = "rangoUsuario";
+            $meta = 0;
+            $rango = "";
+            $bandera = false;
+            $c =0;
+            $result = $utilModelo->mostrarTodosRegistros($tabla);
+            while ($fila = mysqli_fetch_array($result)) {
+                if ($fila != NULL) {
+                    $c++;
+                    if ($bandera) {
+                        $meta = $fila['vp'];
+                        $bandera = false;
+                    }
+                    if ($cantidadReferidos >= $fila['vp']) {
+//                        echo "ingreso";
+                        $rango = $fila['rango'];
+                        $bandera = true;
+                    }
+
+                }
+            }
+//            echo $c;
+//            echo $cantidadReferidos;
+//            die();
+            return array($meta, $rango);
 
         }
 
