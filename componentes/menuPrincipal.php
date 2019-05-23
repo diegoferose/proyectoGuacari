@@ -19,7 +19,7 @@
     <div class="navbar-inner">
         <div class="container"><a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span
                         class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span> </a><a
-                    class="brand" href="index.html">NOMBRE S.A. </a>
+                    class="brand" href="index.html">GROW </a>
             <div class="nav-collapse">
                 <ul class="nav pull-right">
 
@@ -27,7 +27,7 @@
                                     class="icon-user"></i> <?php echo $nombre; ?> <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <?php
-                                $util->validarElemento(2, '<li><a href="../controlSolicitudes/controlSolicitudesVista.php"><i class="icon-bell"></i> Solicitudes</a></li>');
+                                $util->validarElemento(0, '<li><a href="../controlSolicitudes/controlSolicitudesVista.php"><i class="icon-bell"></i> Solicitudes</a></li>');
                             ?>
                             <li><a href="../seguridad/cerrarSesion.php"><i class="icon-signout"></i>Cerrar sesion</a>
                             </li>

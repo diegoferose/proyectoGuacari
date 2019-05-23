@@ -22,11 +22,20 @@ class utilModelo
   }
   function mostrarregistros($tabla,$nombreCampo,$valores) {
     global $link;
-    $condiciones =" WHERE ";
+    $condiciones = "WHERE";
     for ($i=0; $i < count($nombreCampo); $i++) {
       $condiciones = ($i == (count($nombreCampo)-1)) ? $condiciones."`".$nombreCampo[$i]."` = '".$valores[$i]."'" : $condiciones."`".$nombreCampo[$i]."`= '".$valores[$i]."' AND ";
     }
     $consulta = "SELECT * FROM $tabla  $condiciones";
+
+    $query = mysqli_query($link, $consulta);
+    return $query;
+  }
+  function mostrarTodosRegistros($tabla) { //funcion para mostrar todos los registros sin condiciones
+    global $link;
+
+    $consulta = "SELECT * FROM $tabla";
+
     $query = mysqli_query($link, $consulta);
     return $query;
   }
@@ -39,6 +48,12 @@ class utilModelo
 
     $consulta = "UPDATE `$tabla` SET $construccionDeValores WHERE `$campoCondicion` = $condicion ;";
     $query = mysqli_query($link, $consulta);
+  }
+  function ultimaFechaPago($codigoUsuario){
+    global $link;
+    $consulta = "SELECT `fechaMovimiento` FROM `movimientos` WHERE `codigoUsuario` LIKE '$codigoUsuario' ORDER BY `fechaMovimiento` DESC LIMIT 1";
+    $query = mysqli_query($link, $consulta);
+    return $query;
   }
 
 }
