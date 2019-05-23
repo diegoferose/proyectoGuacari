@@ -43,9 +43,9 @@ $util -> validarRuta(2);
                 <table class="table table-striped table-bordered">
                   <thead>
                     <tr>
-                      <th> NOMBRE ASOCIADO </th>
-                      <th> VALOR SOLICITUD</th>
-                      <th> FECHA SOLICITUD</th>
+                      <th> NOMBRE ASOCIADO sdokjsdh </th>
+                      <th> VALOR SOLICITUD odfkdj</th>
+                      <th> FECHA SOLICITUD hgjdsfj</th>
                       <th class="td-actions"> Aceptar/Denegar</th>
                     </tr>
                   </thead>
