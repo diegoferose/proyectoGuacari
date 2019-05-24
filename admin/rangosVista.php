@@ -55,7 +55,7 @@ $util -> validarRuta(2);
                       <th class="td-actions">EDITAR/ELIMINAR</th>
                     </tr>
                   </thead>
-                  <tbody>                   
+                  <tbody>
                     <tr>
                       <td> Oscar javier dorado</td>
                       <td> 500.000 </td>
@@ -70,14 +70,14 @@ $util -> validarRuta(2);
               </div>
               <h6 class="bigstats"></h6>
               <a href="#modalGuardar"  data-toggle="modal" class="form-control btn btn-register">Crear Rango</a>
-              
+
               <!-- /widget-content -->
             </div>
           </div>
-            
+
           </div>
           <!-- /FIN TABLA rangos -->
-         
+
         </div>
         <!-- /row -->
       </div>
@@ -93,38 +93,40 @@ $util -> validarRuta(2);
     </div>
     <div class="modal-body">
 
-      <form>
-        
-      </form>
-      <div class="control-group">                     
+      <form action="rangosControlador.php" method="post">
+
+
+      <div class="control-group">
         <label class="control-label" for="lastname">Rango</label>
            <div class="controls">
             <input type="text" class="span5" name="nombreRango" id="nombreRango">
-          </div> <!-- /controls -->       
+          </div> <!-- /controls -->
       </div> <!-- /control-group -->
-      <div class="control-group">                     
+      <div class="control-group">
         <label class="control-label" for="lastname">Venta Personal</label>
            <div class="controls">
             <input type="text" class="span5" name="ventaPersonal" id="ventaPersonal">
-          </div> <!-- /controls -->       
+          </div> <!-- /controls -->
       </div> <!-- /control-group -->
-      <div class="control-group">                     
+      <div class="control-group">
         <label class="control-label" for="lastname">Ip Maximo</label>
            <div class="controls">
             <input type="text" class="span5" name="ipMaximo" id="ipMaximo">
-          </div> <!-- /controls -->       
+          </div> <!-- /controls -->
       </div> <!-- /control-group -->
-      <div class="control-group">                     
+      <div class="control-group">
         <label class="control-label" for="lastname">Ig Maximo</label>
            <div class="controls">
             <input type="text" class="span5" name="igMaximo" id="igMaximo">
-          </div> <!-- /controls -->       
+          </div> <!-- /controls -->
       </div> <!-- /control-group -->
     </div>
     <div class="modal-footer">
       <button class="btn" data-dismiss="modal" aria-hidden="true">Cerrar</button>
-      <button class="btn btn-primary">Guardar</button>
+      <button type="submit" name="guardarRango" id="guardarRango"class="btn btn-primary">Guardar</button>
     </div>
+
+    </form>
   </div>
 
   <!-- Fin modal -->
