@@ -1,6 +1,8 @@
 <?php
 include "../util/util.php";
+include_once "../util/utilModelo.php";
 $util = new util();
+
 $util -> validarRuta(2);
 ?>
 <!DOCTYPE html>
@@ -56,15 +58,25 @@ $util -> validarRuta(2);
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td> Oscar javier dorado</td>
-                      <td> 500.000 </td>
-                      <td>20 February</td>
-                       <td><a href="#">12</a></td>
-                      <td class="td-actions"><a href="https://www.paypal.com/co/home" target="_blank"  class="btn btn-small btn-info"><i class="btn-icon-only icon-pencil"></i></a><a href="#myModal"  data-toggle="modal" class="btn btn-danger btn-small"><i class="btn-icon-only icon-remove"> </i></a></td>
-                    </tr>
 
+                  <?php
+                  $utilModelo = new utilModelo();
+                  $tabla = "rangoUsuario";
+                  $result = $utilModelo->mostrarTodosRegistros($tabla);
+                  while ($fila = mysqli_fetch_array($result)) {
+                      if ($fila != NULL) {
 
+                          echo "
+                            <tr>
+                              <td>$fila[1] </td>
+                              <td> $fila[2] </td>
+                              <td> $fila[3]</td>
+                               <td><a href='#'>$fila[4]</a></td>
+                              <td class='td-actions'><a href='https://www.paypal.com/co/home' target='_blank'  class='btn btn-small btn-info'><i class='btn-icon-only icon-pencil'></i></a><a href='#myModal'  data-toggle='modal' class='btn btn-danger btn-small'><i class='btn-icon-only icon-remove'> </i></a></td>
+                            </tr>";
+                          }
+                        }
+                         ?>
                   </tbody>
                 </table>
               </div>
@@ -99,25 +111,25 @@ $util -> validarRuta(2);
       <div class="control-group">
         <label class="control-label" for="lastname">Rango</label>
            <div class="controls">
-            <input type="text" class="span5" name="nombreRango" id="nombreRango">
+            <input type="text" class="span5" required name="nombreRango" id="nombreRango">
           </div> <!-- /controls -->
       </div> <!-- /control-group -->
       <div class="control-group">
         <label class="control-label" for="lastname">Venta Personal</label>
            <div class="controls">
-            <input type="text" class="span5" name="ventaPersonal" id="ventaPersonal">
+            <input type="text" class="span5" required name="ventaPersonal" id="ventaPersonal">
           </div> <!-- /controls -->
       </div> <!-- /control-group -->
       <div class="control-group">
         <label class="control-label" for="lastname">Ip Maximo</label>
            <div class="controls">
-            <input type="text" class="span5" name="ipMaximo" id="ipMaximo">
+            <input type="text" class="span5" required name="ipMaximo" id="ipMaximo">
           </div> <!-- /controls -->
       </div> <!-- /control-group -->
       <div class="control-group">
         <label class="control-label" for="lastname">Ig Maximo</label>
            <div class="controls">
-            <input type="text" class="span5" name="igMaximo" id="igMaximo">
+            <input type="text" class="span5" required name="igMaximo" id="igMaximo">
           </div> <!-- /controls -->
       </div> <!-- /control-group -->
     </div>
