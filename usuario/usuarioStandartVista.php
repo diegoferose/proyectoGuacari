@@ -25,7 +25,7 @@
     while ($fila = mysqli_fetch_array($result)) {
         if ($fila != NULL) {
             $contadorReferidos++;
-            $saldo = $fila['saldo'];
+//            $saldo = $fila['saldo'];
             $referidos = $referidos . ' <a href="javascript:;" class="shortcut"><i class="shortcut-icon  icon-user"></i><span class="shortcut-label">' . $fila['nombre'] . ' <br> <b>CODIGO: ' . $fila['codigo'] . '</b></span> </a>';
         }
     }
@@ -69,8 +69,10 @@
     <div class="main-inner">
         <div class="container">
             <?php
+
+
                 if ($valoresSuscripcionActiva[1] == "activo") {
-                    echo '<h6><i class="icon-large icon-ok"></i>Su suscripcion se encuentra activa hasta el <a href="#" target="_blank">' . $valoresSuscripcionActiva[0] . '</a></h6> <span class="label label-default"> Rango: ' . $rangoUsuario[1].'</span>';
+                    echo '<h6><i class="icon-large icon-ok"></i>Su suscripcion se encuentra activa hasta el <a href="#" target="_blank">' . $valoresSuscripcionActiva[0]->format('Y-m-d') . '</a></h6> <span class="label label-default"> Rango: ' . $rangoUsuario[1].'</span>';
                 } else {
                     echo '<h6><i class="icon-large icon-remove"></i>Su suscripcion se encuentra vencida </h6> <span class="label label-default"> Rango: ' . $rangoUsuario[1].'</span>';
                 }

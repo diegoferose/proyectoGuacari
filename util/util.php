@@ -57,14 +57,27 @@
                     $fecha = date("d-m-Y", strtotime($fila['fechaMovimiento']));
                 }
             }
-            $fechaVencimiento = date("d-m-Y", strtotime($fecha . "+ 1 month"));;
-            $fechaActual = date("d-m-Y");
+            $fechaVencimiento = new DateTime($fecha);
+            $intervalo = new DateInterval('P1M');
+            $fechaVencimiento->add($intervalo);
+//            echo $fechaVencimiento->format('Y-m-d') . "\n";
+            $fechaActual = new DateTime("now");
+//            echo $fechaActual->format('Y-m-d') . "\n";
+//            echo $fechaActual;
+//            echo $fechaVencimiento.'<br>';
+
+//            die();
+//            echo ($fechaActual < $fechaVencimiento);
+//            die();
             if ($fechaActual > $fechaVencimiento) {
                 $estado = "vencido";
+//                echo $estado;
+
             } else {
                 $estado = "activo";
             }
             $valores = array($fechaVencimiento, $estado);
+//            die();
             return $valores;
 
 
@@ -78,7 +91,7 @@
             $meta = 0;
             $rango = "";
             $bandera = false;
-            $c =0;
+            $c = 0;
             $result = $utilModelo->mostrarTodosRegistros($tabla);
             while ($fila = mysqli_fetch_array($result)) {
                 if ($fila != NULL) {
