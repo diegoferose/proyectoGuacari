@@ -10,7 +10,14 @@ $igMaximo = filter_input(INPUT_POST, 'igMaximo');
 $ventaPersonal = filter_input(INPUT_POST, 'ventaPersonal');
 echo $idRango;
 if ($idRango != null) {
-  echo "actualizar";echo $idRango;
+  echo $idRango;
+  var_dump($campos = array("rango","vp","ipMaxMensual","igMax"));
+  echo"<br>";
+  var_dump($valores = array("$nombreRango","$ventaPersonal","$ipMaximo","$igMaximo")) ;
+  echo"<br>";
+
+var_dump($util->modificar('rangos',$campos,$valores,'id',$idRango));
+
 }else{
 //$campos es el nombre de los campos tal cual aparece en la base de datos
 $campos = array("id", "rango", "vp", "ipMaxMensual", "igMax");

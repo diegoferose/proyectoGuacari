@@ -48,6 +48,7 @@ class utilModelo
 
     $consulta = "UPDATE `$tabla` SET $construccionDeValores WHERE `$campoCondicion` = $condicion ;";
     $query = mysqli_query($link, $consulta);
+    return $query;
   }
   function ultimaFechaPago($codigoUsuario){
     global $link;

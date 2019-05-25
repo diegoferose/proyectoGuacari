@@ -164,31 +164,31 @@ $util -> validarRuta(2);
       <label class="control-label" for="lastname">Rango</label>
          <div class="controls">
            <input id="idRangoUsuario" name="idRangoUsuario" type="hidden">
-          <input type="text" class="span5" required name="nombreRangoE" id="nombreRangoE">
+          <input type="text" class="span5" required name="nombreRango" id="nombreRangoE">
         </div> <!-- /controls -->
     </div> <!-- /control-group -->
     <div class="control-group">
       <label class="control-label" for="ventaPersonalE">Venta Personal</label>
          <div class="controls">
-          <input type="text" class="span5" required name="ventaPersonalE" id="ventaPersonalE">
+          <input type="text" class="span5" required name="ventaPersonal" id="ventaPersonalE">
         </div> <!-- /controls -->
     </div> <!-- /control-group -->
     <div class="control-group">
       <label class="control-label" for="lastname">Ip Maximo</label>
          <div class="controls">
-          <input type="text" class="span5" required name="ipMaximoE" id="ipMaximoE">
+          <input type="text" class="span5" required name="ipMaximo" id="ipMaximoE">
         </div> <!-- /controls -->
     </div> <!-- /control-group -->
     <div class="control-group">
       <label class="control-label" for="lastname">Ig Maximo</label>
          <div class="controls">
-          <input type="text" class="span5" required name="igMaximoE" id="igMaximoE">
+          <input type="text" class="span5" required name="igMaximo" id="igMaximoE">
         </div> <!-- /controls -->
     </div> <!-- /control-group -->
   </div>
   <div class="modal-footer">
     <button class="btn" data-dismiss="modal" aria-hidden="true">Cerrar</button>
-    <button type="submit" name="guardarRangoE" id="guardarRangoE"class="btn btn-primary">Guardar</button>
+    <button type="submit" name="guardarRangoE" id="guardarRangoE"class="btn btn-primary">Modificar</button>
   </div>
 
   </form>
