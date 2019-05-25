@@ -16,7 +16,7 @@ if ($idRango != null) {
   var_dump($valores = array("$nombreRango","$ventaPersonal","$ipMaximo","$igMaximo")) ;
   echo"<br>";
 
-var_dump($util->modificar('rangos',$campos,$valores,'id',$idRango));
+var_dump($util->modificar('rangoUsuario',$campos,$valores,'id',$idRango));
 
 }else{
 //$campos es el nombre de los campos tal cual aparece en la base de datos
@@ -28,6 +28,6 @@ $nombreDeTabla = "rangoUsuario";
 $util -> insertar($nombreDeTabla,$campos, $valores) ;
 }
 //$_SESSION['mensajeOk']="ok";
-//header('Location: ../admin/rangosVista.php');
+header('Location: ../admin/rangosVista.php');
 exit();
 ?>
