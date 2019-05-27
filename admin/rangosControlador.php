@@ -1,23 +1,33 @@
 <?php
 @session_start();
-include 'usuarioModelo.php';
+
 include '../util/utilModelo.php';
 $util = new utilModelo();
+$idRango=filter_input(INPUT_POST,'idRangoUsuario');
 $nombreRango = filter_input(INPUT_POST, 'nombreRango');
 $ipMaximo = filter_input(INPUT_POST, 'ipMaximo');
 $igMaximo = filter_input(INPUT_POST, 'igMaximo');
 $ventaPersonal = filter_input(INPUT_POST, 'ventaPersonal');
+echo $idRango;
+if ($idRango != null) {
+  echo $idRango;
+  var_dump($campos = array("rango","vp","ipMaxMensual","igMax"));
+  echo"<br>";
+  var_dump($valores = array("$nombreRango","$ventaPersonal","$ipMaximo","$igMaximo")) ;
+  echo"<br>";
 
+var_dump($util->modificar('rangoUsuario',$campos,$valores,'id',$idRango));
 
+}else{
 //$campos es el nombre de los campos tal cual aparece en la base de datos
-$campos = array("codigo", "nombre", "cedula", "fechaNacimiento", "direccion", "telefono", "codigoReferido", "usuario", "correo", "password", "activo", "tipo");
+$campos = array("id", "rango", "vp", "ipMaxMensual", "igMax");
 //$valores son los valores a almacenar
-$valores = array("$codigo","$nombre","$cedula","$fechaNacimiento","$direccion","$celular","$codigoReferido","$usuario","$correo","$password","$activo","$tipo");
+$valores = array("default","$nombreRango","$ventaPersonal","$ipMaximo","$igMaximo");
 //la funcion insertar recive el nombre de la tabla y los dos arrays de campos y valores
-$nombreDeTabla = "usuario";
+$nombreDeTabla = "rangoUsuario";
 $util -> insertar($nombreDeTabla,$campos, $valores) ;
-
-$_SESSION['mensajeOk']="ok";
-header('Location: ../index.php');
+}
+//$_SESSION['mensajeOk']="ok";
+header('Location: ../admin/rangosVista.php');
 exit();
 ?>
