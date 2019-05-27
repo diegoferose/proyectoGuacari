@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
@@ -14,7 +14,7 @@ try {
     //Server settings
     $mail->SMTPDebug = 2;                                       // Enable verbose debug output
     $mail->isSMTP();                                            // Set mailer to use SMTP
-    $mail->Host       = 'goliat.com';  // Specify main and backup SMTP servers
+    $mail->Host       = 'goliat.colombiahosting.com.co';  // Specify main and backup SMTP servers
     $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
     $mail->Username   = 'info@todosconurdinola.com';                     // SMTP username
     $mail->Password   = 'Osjado1987';                               // SMTP password
@@ -23,10 +23,10 @@ try {
 
     //Recipients
     $mail->setFrom('info@todosconurdinola.com', 'OSCAR DORADO');
-    $mail->addAddress('oscar871220@hotmail.com', 'Diego');     // Add a recipient
-   
+    $mail->addAddress('diegoferose@hotmail.com', 'Diego');     // Add a recipient
 
-    
+
+
     // Content
     $mail->isHTML(true);                                  // Set email format to HTML
     $mail->Subject = 'Preuba numero 54';
