@@ -32,6 +32,9 @@
     $rangoUsuario = $util->validarRangoUsuario($contadorReferidos);
     $meta = $rangoUsuario[0];
     $porcentaje = ((int)$contadorReferidos / $meta) * 100;
+    $fechaVencimiento = new DateTime($valoresSuscripcionActiva[0]);
+    $intervalo = new DateInterval('P1M');
+    $fechaVencimiento->add($intervalo);
 
 
 
@@ -72,7 +75,7 @@
 
 
                 if ($valoresSuscripcionActiva[1] == "activo") {
-                    echo '<h6><i class="icon-large icon-ok"></i>Su suscripcion se encuentra activa hasta el <a href="#" target="_blank">' . $valoresSuscripcionActiva[0]->format('Y-m-d') . '</a></h6> <span class="label label-default"> Rango: ' . $rangoUsuario[1].'</span>';
+                    echo '<h6><i class="icon-large icon-ok"></i>Su suscripcion se encuentra activa hasta el <a href="#" target="_blank">' . $fechaVencimiento->format('Y-m-d') . '</a></h6> <span class="label label-default"> Rango: ' . $rangoUsuario[1].'</span>';
                 } else {
                     echo '<h6><i class="icon-large icon-remove"></i>Su suscripcion se encuentra vencida </h6> <span class="label label-default"> Rango: ' . $rangoUsuario[1].'</span>';
                 }

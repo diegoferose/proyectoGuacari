@@ -60,23 +60,23 @@
             $fechaVencimiento = new DateTime($fecha);
             $intervalo = new DateInterval('P1M');
             $fechaVencimiento->add($intervalo);
-//            echo $fechaVencimiento->format('Y-m-d') . "\n";
-            $fechaActual = new DateTime("now");
-//            echo $fechaActual->format('Y-m-d') . "\n";
-//            echo $fechaActual;
-//            echo $fechaVencimiento.'<br>';
+            date_add($fechaVencimiento, date_interval_create_from_date_string('1 days'));
 
+            $fechaActual = new DateTime("now");
+//            echo $fechaVencimiento->format('Y-m-d') . "\n";
+//            echo $fechaActual->format('Y-m-d') . "\n";
+//            var_dump($fechaActual == $fechaVencimiento);
+//            var_dump($fechaActual <= $fechaVencimiento);
 //            die();
-//            echo ($fechaActual < $fechaVencimiento);
-//            die();
-            if ($fechaActual > $fechaVencimiento) {
-                $estado = "vencido";
+            if ($fechaActual <= $fechaVencimiento || $fechaActual == $fechaVencimiento ) {
+                $estado = "activo";
 //                echo $estado;
 
             } else {
-                $estado = "activo";
+                $estado = "vencido";
+
             }
-            $valores = array($fechaVencimiento, $estado);
+            $valores = array($fecha, $estado);
 //            die();
             return $valores;
 
