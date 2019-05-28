@@ -54,7 +54,7 @@ $util -> validarRuta(2);
                     </tr>
                   </thead>
                   <tbody>
-                   
+
                     <tr>
                       <td> Oscar javier dorado</td>
                       <td> 500.000 </td>
@@ -88,11 +88,11 @@ $util -> validarRuta(2);
                   </tbody>
                 </table>
               </div>
-              <h6 class="bigstats">Recuerde que tiene 10 (diez) habiles para diligenciar las solicitudes.</h6>
+              <h6 class="bigstats">sms</h6>
               <!-- /widget-content -->
             </div>
           </div>
-            
+
           </div>
           <!-- /FIN TABLA ACTIVOS -->
           <!-- /INICIO TABLA INACTIVOS -->
@@ -144,23 +144,23 @@ $util -> validarRuta(2);
                       <td><a href="#">12</a></td>
                       <td class="td-actions"><a href="#myModal"  data-toggle="modal" class="btn btn-success btn-small"><i class="btn-icon-only icon-ok"> </i></a></td>
                     </tr>
-                    
-                   
-                    
-                   
+
+
+
+
 
                   </tbody>
                 </table>
               </div>
-              <h6 class="bigstats">Recuerde que tiene 10 (diez) habiles para diligenciar las solicitudes.</h6>
+              <h6 class="bigstats">sms</h6>
               <!-- /widget-content -->
             </div>
           </div>
-            
+
           </div>
-         
-          <!-- /fin tabla INACTIVOS --> 
-        
+
+          <!-- /fin tabla INACTIVOS -->
+
 
         </div>
         <!-- /row -->
