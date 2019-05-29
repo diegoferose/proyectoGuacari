@@ -50,56 +50,47 @@ $util = new util();
          <!-- /INICIO TABLA Rangos-->
 
           <div class="span9">
-
-            <div class="form-group" id="pass">
-                    <input type="text" name="password" id="password" tabindex="2" class="form-control" placeholder="Numero identificación">
+<form action="restaurarPasswordControlador.php" method="POST">
+            <div class="form-group" id="pass"><br>
+              <label>Por favor digite nombre de usuario.</label><br>
+                    <input type="text" name="usuarioRestablecer" id="usuarioRestablecer" tabindex="2" class="form-control" required placeholder="nombre usuario">
                   </div>
 
               <div class="widget widget-nopad">
             <div class="widget widget-table action-table">
-              <div class="widget-header"> <i class="icon-th-list"></i>
-                <h3>Restablecer contraseña</h3>
-              </div>
+             
 
               <!-- /widget-header -->
               <div class="widget-content">
-                 <div class="control-group">  
-                <table class="table table-striped table-bordered">
-                  <thead>
-                    <tr>
-                      <td> Enviar Correo  a: oscar871220@hotmail.com</th>  
-                      <td> <div class="controls">
-                                            <label class="radio">
-                                              <input type="radio"  name="radiobtns"> Option 01
-                                            </label></th>                   
-                    </tr>
-                    <tr>
-                       <td> No tengo Correo Comunicarme con administrador</th>
-                       <td>
-                         <label class="radio inline">
-                                              <input type="radio" name="radiobtns"> Option 02
-                                            </label>
-                       </th>
-                    </tr>
-                     
-                  </thead>
-                  <tbody>
-
-               
-                  </tbody>
-                </table>
-              </div>  <!-- /controls --> 
+                <!-- /controls --> 
               </div>
               <h6 class="bigstats"></h6>
-              <a href="#modalGuardar"  data-toggle="modal" class="form-control btn btn-register">Restablecer</a>
+              <button type="submit" class="form-control btn btn-register">Restablecer</button>
 
               <!-- /widget-content -->
             </div>
           </div >
-
+</form>
           </div>
           <!-- /FIN TABLA rangos -->
+<pre>
+     
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+     
+   </pre>
         </div>
         <!-- /row -->
       </div>
@@ -107,7 +98,7 @@ $util = new util();
     </div>
     <!-- /main-inner -->
   </div>
-   
+
 
 
   <?php
