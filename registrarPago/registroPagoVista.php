@@ -87,7 +87,7 @@
                     <div class="control-group">
                         <label class="control-label" for="firstname">Valor</label>
                         <div class="controls">
-                            <input type="text" class="span6" id="valor" name="valor">
+                            <input type="number" class="span6" id="valor" name="valor">
                         </div> <!-- /controls -->
                     </div>
 
