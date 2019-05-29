@@ -3,7 +3,7 @@
     include_once "../util/utilModelo.php";
     $utilModelo2 = new utilModelo();
     $util = new util();
-    //    $util->validarRuta(2);
+        $util->validarRuta(2);
     $nombreCampo = array("tipo");
     $valor = array("2");
     $tabla = "usuario";
@@ -40,11 +40,33 @@
 
     <div class="main-inner">
         <div class="container">
+            <?php
+                if (isset($_SESSION['mensajeOk'])) {
+                    ?>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="text-center">
+                                    <div class="alert alert-success" role="alert">
+                                        <img src="../img/ok.png" width="15" height="15" alt="">
+                                        <?php echo $_SESSION['mensajeOk'] ?>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <?php
+                    unset($_SESSION['mensajeOk']);
+                }
+
+            ?>
 
             <div class="widget">
                 <div class="widget-header"><i class="icon-money"></i>
                     <h3>Registrar pagos.</h3>
                 </div>
+
+                <form action="registroPagoControlador.php" method="post">
                 <!-- /widget-header -->
                 <div class="widget-content">
                     <div class="form-group">
@@ -65,15 +87,31 @@
                     <div class="control-group">
                         <label class="control-label" for="firstname">Valor</label>
                         <div class="controls">
-                            <input type="text" class="span6" id="firstname">
+                            <input type="text" class="span6" id="valor" name="valor">
                         </div> <!-- /controls -->
                     </div>
+
+
+                    <div class="form-group">
+                        <label class="control-label" for="firstname">Fecha</label>
+                        <div id="filterDate2">
+
+                            <!-- Datepicker as text field -->
+                            <div class="input-group date" data-date-format="dd.mm.yyyy">
+                                <input  type="date" class="form-control" name="fecha">
+
+                            </div>
+
+                        </div>
+                    </div>
+
                     <div class="form-actions">
                         <button type="submit" id="guardar" class="btn btn-primary" >Guaradar</button>
                         <button class="btn">Cancelar</button>
                     </div>
                 </div>
                 <!-- /widget-content -->
+                </form>
             </div>
 
         </div>
