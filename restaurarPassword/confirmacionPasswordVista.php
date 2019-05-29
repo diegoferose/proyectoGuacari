@@ -30,7 +30,7 @@ if(isset($_SESSION['usuario'])){
                 <a href="#" class="active" id="login-form-link">Iniciar sesión</a>
               </div>
               <div class="col-xs-6">
-                <a href="#" id="register-form-link">Regístrate ahora</a>
+                <a href="#" id="register-form-link">Restaurar Contraseña</a>
               </div>
             </div>
             <hr>
@@ -57,7 +57,7 @@ if(isset($_SESSION['usuario'])){
                     <div class="row">
                       <div class="col-lg-12">
                         <div class="text-center">
-                          <a href="../restaurarPassword/restaurarPasswordVista.php" tabindex="5" class="forgot-password">¿Has olvidado tu contraseña?</a>
+                          <a href="" tabindex="5" class="forgot-password">¿Has olvidado tu contraseña?</a>
                         </div>
                       </div>
                     </div>
@@ -85,42 +85,7 @@ if(isset($_SESSION['usuario'])){
                 <!-- ************INCIAR SESION******* FIN ***** -->
 
                 <!-- ************REGISTRAR******* INICIO ***** -->
-                <form id="register-form" action="../usuario/usuarioControlador.php" method="post" role="form" style="display: none;">
-                  <?php
-                  $longitud = 6;
-                  $key = '';
-                  $pattern = '1234567890abcdefghijklmnopqrstuvwxyz';
-                  $max = strlen($pattern)-1;
-                  for($i=0;$i < $longitud;$i++) $key .= $pattern{mt_rand(0,$max)};
-                  ?>
-                  <div class="form-group">
-                    <input type="text" name="codigo" id="codigo" tabindex="1" class="form-control"  value="<?php echo $key; ?>" readonly>
-                  </div>
-                  <div class="form-group">
-                    <input type="text" name="nombre" id="nombre" tabindex="1" class="form-control" placeholder="Nombre Completo" value="">
-                  </div>
-                  <div class="form-group">
-                    <input type="text" name="documento" id="documento" tabindex="1" class="form-control" placeholder="Numero de Cedula" value="">
-                  </div>
-                  <div class="form-group">
-                    Fecha de nacimiento: <input type="date" name="edad" id="edad" tabindex="1" class="form-control" placeholder="Fecha de nacimiento" value="">
-                  </div>
-                  <div class="form-group">
-                    <input type="text" name="direccion" id="direccion" tabindex="1" class="form-control" placeholder="Direccion" value="">
-                  </div>
-                  <div class="form-group">
-                    <input type="text" name="telefono" id="telefono" tabindex="1" class="form-control" placeholder="Telefono" value="">
-                  </div>
-                  <div class="form-group">
-                    <input type="text" name="referido" id="referido" tabindex="1" class="form-control" placeholder="Codigo referido" value="">
-                  </div>
-                  <div class="form-group">
-                    <input type="email" name="email" id="email" tabindex="1" class="form-control" placeholder="Correo electronico" value="">
-                  </div>
-
-                  <div class="form-group">
-                    <input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Usuario" value="">
-                  </div>
+                <form id="register-form" action="../usuario/usuarioControlador.php" method="post" role="form" style="display: none;">               
 
                   <div class="form-group" id="pass">
                     <input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Contraseña">
@@ -135,7 +100,7 @@ if(isset($_SESSION['usuario'])){
                   <div class="form-group">
                     <div class="row">
                       <div class="col-sm-6 col-sm-offset-3">
-                        <input type="submit" name="guardar" id="guardar" tabindex="4" class="form-control btn btn-register" value="Crear cuenta">
+                        <input type="submit" name="guardar" id="guardar" tabindex="4" class="form-control btn btn-register" value="Cambiar Contraseña">
                       </div>
                     </div>
                   </div>
