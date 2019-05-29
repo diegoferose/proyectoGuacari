@@ -3,13 +3,13 @@
     include_once "../util/utilModelo.php";
     $utilModelo2 = new utilModelo();
     $util = new util();
-//    $util->validarRuta(2);
+    //    $util->validarRuta(2);
     $nombreCampo = array("tipo");
     $valor = array("2");
     $tabla = "usuario";
-//    echo "esta fue";
+    //    echo "esta fue";
     $result1 = $utilModelo2->mostrarregistros($tabla, $nombreCampo, $valor);
-   
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -42,24 +42,22 @@
         <div class="container">
 
             <div class="widget">
-                <div class="widget-header"> <i class="icon-money"></i>
+                <div class="widget-header"><i class="icon-money"></i>
                     <h3>Registrar pagos.</h3>
                 </div>
                 <!-- /widget-header -->
                 <div class="widget-content">
                     <div class="form-group">
                         <label for="exampleInputEmail1">Buscar persona:</label>
-                        <select class="selectpicker" name="lider" id="lider" data-show-subtext="true" data-live-search="true">
+                        <select class="selectpicker" onchange="persona()" name="lider" id="lider" data-show-subtext="true"
+                                data-live-search="true">
                             <option value="null" data-subtext=" - Sin codigo">Ninguno</option>
                             <?php
-                                
-
                                 while ($fila = mysqli_fetch_array($result1)) {
                                     if ($fila != NULL) {
                                         echo '<option value="' . $fila['codigo'] . '" data-subtext="' . $fila['codigo'] . '">' . $fila['nombre'] . '</option>';
                                     }
                                 }
-//
                             ?>
                         </select>
 
@@ -67,11 +65,11 @@
                     <div class="control-group">
                         <label class="control-label" for="firstname">Valor</label>
                         <div class="controls">
-                            <input type="text" class="span6" id="firstname" >
+                            <input type="text" class="span6" id="firstname">
                         </div> <!-- /controls -->
                     </div>
                     <div class="form-actions">
-                        <button type="submit" class="btn btn-primary">Guaradar</button>
+                        <button type="submit" id="guardar" class="btn btn-primary" >Guaradar</button>
                         <button class="btn">Cancelar</button>
                     </div>
                 </div>
@@ -98,13 +96,28 @@
 <!--select picker-->
 <!--<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.3/js/bootstrap-select.min.js"></script>-->
 <!--<link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>-->
-<link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.11.2/css/bootstrap-select.min.css'>
+<link rel='stylesheet prefetch'
+      href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.11.2/css/bootstrap-select.min.css'>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.3/js/bootstrap-select.min.js"></script>
 
 <script src="js/base.js"></script>
+<script type="text/javascript">
+
+    document.getElementById('guardar').disabled='disabled';
+    function persona() {
+        var botonGuardar = document.getElementById("guardar").value;
+        var codigo = document.getElementById("lider").value;
+        if (codigo == "Ninguno" || codigo == null || codigo == "null") {
+            botonGuardar.disabled='disabled';
+        } else {
+            // alert("entro");
+            document.getElementById('guardar').disabled='';
+        }
+    }
+</script>
 
 </body>
 </html>
