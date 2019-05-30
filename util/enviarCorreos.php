@@ -20,7 +20,7 @@ $mail = new PHPMailer(true);
 
 try {
     //Server settings
-    $mail->SMTPDebug = 2;                                       // Enable verbose debug output
+    $mail->SMTPDebug = 0;                                       // Enable verbose debug output
     $mail->isSMTP();                                            // Set mailer to use SMTP
     $mail->Host       = 'smtp.live.com';
     //$mail->Host       = 'goliat.colombiahosting.com.co';  // Specify main and backup SMTP servers
@@ -45,11 +45,12 @@ try {
     $mail->AltBody = 'No se para que sirve esta parte asi que probaré';
 
     $mail->send();
-    echo 'Mensaje enviado con exito muy buen trabajo ';
+   
 
 } catch (Exception $e) {
-    echo "Algo salio mal vaya duerma y rectifique: {$mail->ErrorInfo}";
-    echo $destinatario.$asunto.$mensaje;
+    echo "error de conexion"; 
+    return false;//{$mail->ErrorInfo}";
+  
 }
 }
 }
