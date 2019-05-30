@@ -74,7 +74,7 @@
                     <h3>Cambiar contraseña</h3>
                 </div>
                 <input type="hidden" id="passwordViejo" value="<?php echo $passwordViejo; ?>" >
-                <form action="registroPagoControlador.php" method="post">
+                <form action="cambiarPasswordControlador.php" method="post">
                     <!-- /widget-header -->
                     <div class="widget-content">
 

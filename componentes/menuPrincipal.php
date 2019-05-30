@@ -31,7 +31,7 @@
                             ?>
 
                             <?php
-                                $util->validarElemento(2, '<li><a href="../controlSolicitudes/controlSolicitudesVista.php"><i class="icon-key"></i> Cambiar contraseña</a></li>');
+                                $util->validarElemento(2, '<li><a href="../cambiarPassword/cambiarPasswordVista.php"><i class="icon-key"></i> Cambiar contraseña</a></li>');
                             ?>
                             <li><a href="../seguridad/cerrarSesion.php"><i class="icon-signout"></i>Cerrar sesion</a>
                             </li>
