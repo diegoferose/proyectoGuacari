@@ -48,8 +48,10 @@ class utilModelo
       $construccionDeValores = ($i == (count($valores)-1)) ? $construccionDeValores."`".$campos[$i]."` = '".$valores[$i]."'":$construccionDeValores."`".$campos[$i]."` = '".$valores[$i]."',";
     }
 
-    $consulta = "UPDATE `$tabla` SET $construccionDeValores WHERE `$campoCondicion` = $condicion ;";
+    $consulta = "UPDATE `$tabla` SET $construccionDeValores WHERE `$campoCondicion` = '$condicion' ;";
     $query = mysqli_query($link, $consulta);
+//    echo $consulta;
+//    die();
     return $query;
   }
   function ultimaFechaPago($codigoUsuario){
