@@ -11,12 +11,11 @@ $ventaPersonal = filter_input(INPUT_POST, 'ventaPersonal');
 echo $idRango;
 if ($idRango != null) {
   echo $idRango;
-  var_dump($campos = array("rango","vp","ipMaxMensual","igMax"));
+  $campos = array("rango","vp","ipMaxMensual","igMax");
   echo"<br>";
-  var_dump($valores = array("$nombreRango","$ventaPersonal","$ipMaximo","$igMaximo")) ;
+  $valores = array("$nombreRango","$ventaPersonal","$ipMaximo","$igMaximo");
   echo"<br>";
-
-var_dump($util->modificar('rangoUsuario',$campos,$valores,'id',$idRango));
+  $util->modificar('rangoUsuario',$campos,$valores,'id',$idRango);
 
 }else{
 //$campos es el nombre de los campos tal cual aparece en la base de datos
