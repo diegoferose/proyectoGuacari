@@ -122,6 +122,31 @@
             for($i=0;$i < $longitud;$i++) $key .= $pattern{mt_rand(0,$max)};
             return $key;
         }
+        function registrarComision($codigo,$valorPago,$nivel){
+            $utilModelo = new utilModelo();
+            $nombreCampo = array("codigo");
+            $valor = array("$codigo");
+            $tabla = "usuario";
+            $result = $utilModelo->mostrarregistros($tabla, $nombreCampo, $valor);
+            $fila = mysqli_fetch_array($result);
+            $codigoCabeza = $fila['codigoReferido'];
+
+            if($nivel<=4 && $codigoCabeza!=""){
+
+                $nombreCampo = array("nivel");
+                $valor = array("$nivel");
+                $tabla = "niveles";
+                $result = $utilModelo->mostrarregistros($tabla, $nombreCampo, $valor);
+                $fila = mysqli_fetch_array($result);
+                $porcentaje = $fila['porcentaje']/100;
+                $valorComision = $valorPago * $porcentaje;
+                $utilModelo->aumentarSaldo($codigoCabeza,$valorComision);
+                $nivel++;
+                $this->registrarComision($codigoCabeza,$valorPago,$nivel);
+
+
+            }
+        }
 
 
     }

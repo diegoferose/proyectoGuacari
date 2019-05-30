@@ -1,40 +1,40 @@
 <?php
-@session_start();
-include '../util/utilModelo.php';
-include '../util/util.php';
-include '../util/enviarCorreos.php';
+    @session_start();
+    include '../util/utilModelo.php';
+    include '../util/util.php';
+    include '../util/enviarCorreos.php';
 
 
-//$campos = array("codigoReferido","direccion");
-//$valores = array("sd33d2","calle 19 # 9-113");
-//$util->modificar('usuario',$campos,$valores,'id','1');
-				  $utilModelo = new utilModelo();
-                  $util =new util();
-                  $enviarMail = new correosSmtp(); 
+    //$campos = array("codigoReferido","direccion");
+    //$valores = array("sd33d2","calle 19 # 9-113");
+    //$util->modificar('usuario',$campos,$valores,'id','1');
+    $utilModelo = new utilModelo();
+    $util = new util();
+    $enviarMail = new correosSmtp();
 
 
-$usuario = filter_input(INPUT_POST, 'usuarioRestablecer');
+    $usuario = filter_input(INPUT_POST, 'usuarioRestablecer');
 
 
-                  //variable busqueda del usuario               
-                  $nombreCampo = array("usuario");
-				  $valor = array("$usuario");
-        		  $tabla = "usuario";
-                  $result = $utilModelo -> mostrarregistros($tabla,$nombreCampo,$valor);			            
-                  $fila = mysqli_fetch_array($result);
+    //variable busqueda del usuario
+    $nombreCampo = array("usuario");
+    $valor = array("$usuario");
+    $tabla = "usuario";
+    $result = $utilModelo->mostrarregistros($tabla, $nombreCampo, $valor);
+    $fila = mysqli_fetch_array($result);
 
-                  $id=$fila[0];
-                  $correoUsuario=$fila[10];
-                  echo"id usuario".$id."<br>";
+    $id = $fila[0];
+    $correoUsuario = $fila[10];
+    echo "id usuario" . $id . "<br>";
 
 
-                  //Generador de nueva contraseña
-                    $key=$util->generarCodigo(); 
+    //Generador de nueva contraseña
+    $key = $util->generarCodigo();
 
-                  //variables para el envio de correos
-                  $destinatario = $correoUsuario;
-                  $asunto = "Nueva Password GROW";
-                  $mensaje="
+    //variables para el envio de correos
+    $destinatario = $correoUsuario;
+    $asunto = "Nueva Password GROW";
+    $mensaje = "
 
                   <table>
                   <tr>
@@ -59,23 +59,17 @@ $usuario = filter_input(INPUT_POST, 'usuarioRestablecer');
                   Para ingresar nuevamente <a  href='localhost/proyectoGuacari/seguridad/loginVista.php' >aqui</a>
                   ";
 
-echo $mensaje;
+    echo $mensaje;
 
-                  //$enviarMail->enviarCorreos($destinatario,$asunto,$mensaje);
+    //$enviarMail->enviarCorreos($destinatario,$asunto,$mensaje);
 
-                  //Variables de actuaizar Contraseña
-                   $campos = array("password");
-				  echo"<br>";
-				  $valores = array($key);
-				  echo"<br>";
+    //Variables de actuaizar Contraseña
+    $campos = array("password");
+    echo "<br>";
+    $valores = array($key);
+    echo "<br>";
 
-				$utilModelo->modificar($tabla,$campos,$valores,'id',$id);
-
-
-                     
-
-
-                         
+    $utilModelo->modificar($tabla, $campos, $valores, 'id', $id);
 
 
 ?>
