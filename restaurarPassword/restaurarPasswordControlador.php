@@ -64,7 +64,7 @@ if ($fila != null) {
 
 
 
-                 $enviarMail->enviarCorreos($destinatario,$asunto,$mensaje);
+                 //$enviarMail->enviarCorreos($destinatario,$asunto,$mensaje);
 
                   //Variables de actuaizar Contraseña
                    $campos = array("password");
@@ -74,7 +74,7 @@ if ($fila != null) {
 
 				$utilModelo->modificar($tabla,$campos,$valores,'id',$id);
 
-				echo "Se ha enviado un mensaje a $destinatario Con su nueva contraseña";
+				include_once"mensajeConfirmacionVista.php";
 
 
 }elseif(var_dump($enviarMail)){
