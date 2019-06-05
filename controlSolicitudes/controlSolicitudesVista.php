@@ -1,5 +1,6 @@
 <?php
 include "../util/util.php";
+include '../conexion.php';
 $util = new util();
 $util -> validarRuta(2);
 ?>
@@ -43,38 +44,33 @@ $util -> validarRuta(2);
                 <table class="table table-striped table-bordered">
                   <thead>
                     <tr>
-                      <th> NOMBRE ASOCIADO sdokjsdh </th>
-                      <th> VALOR SOLICITUD odfkdj</th>
-                      <th> FECHA SOLICITUD hgjdsfj</th>
+                      <th> NOMBRE ASOCIADO</th>
+                      <th> VALOR SOLICITUD</th>
+                      <th> FECHA SOLICITUD</th>
                       <th class="td-actions"> Aceptar/Denegar</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td> Oscar javier dorado</td>
-                      <td> 500.000 </td>
-                      <td>20 February</td>
-                      <td class="td-actions"><a href="https://www.paypal.com/co/home" target="_blank"  class="btn btn-small btn-success"><i class="btn-icon-only icon-ok"> </i></a><a href="#myModal"  data-toggle="modal" class="btn btn-danger btn-small"><i class="btn-icon-only icon-remove"> </i></a></td>
-                    </tr>
-                    <tr>
-                      <td> Oscar javier dorado</td>
-                      <td> 500.000 </td>
-                      <td>20 February</td>
-                      <td class="td-actions"><a href="https://www.paypal.com/co/home" target="_blank"  class="btn btn-small btn-success"><i class="btn-icon-only icon-ok"> </i></a><a href="#myModal"  data-toggle="modal" class="btn btn-danger btn-small"><i class="btn-icon-only icon-remove"> </i></a></td>
-                    </tr>
-                    <tr>
-                      <td> Oscar javier dorado</td>
-                      <td> 500.000 </td>
-                      <td>20 February</td>
-                      <td class="td-actions"><a href="https://www.paypal.com/co/home" target="_blank"  class="btn btn-small btn-success"><i class="btn-icon-only icon-ok"> </i></a><a href="#myModal"  data-toggle="modal" class="btn btn-danger btn-small"><i class="btn-icon-only icon-remove"> </i></a></td>
-                    </tr>
-                    <tr>
-                      <td> Oscar javier dorado</td>
-                      <td> 500.000 </td>
-                      <td>20 February</td>
-                      <td class="td-actions"><a href="https://www.paypal.com/co/home" target="_blank"  class="btn btn-small btn-success"><i class="btn-icon-only icon-ok"> </i></a><a href="#myModal"  data-toggle="modal" class="btn btn-danger btn-small"><i class="btn-icon-only icon-remove"> </i></a></td>
-                    </tr>
+                    <?php
+                    //$utilModelo = new utilModelo();
+                    //$tabla = "solicitudes";
+                    //$result = $utilModelo->mostrarTodosRegistros($tabla);
 
+                    $sql="SELECT U.nombre,S.fechaSolicitud,S.valor FROM usuario U,solicitudes S WHERE S.codigoUsuario = U.codigo AND S.estado=0";
+                    global $link;
+                		$result=mysqli_query($link,$sql);
+                    while ($fila = mysqli_fetch_array($result)) {
+                        if ($fila != NULL) {
+                            echo "
+                              <tr>
+                                <td>$fila[0] </td>
+                                <td> $fila[1] </td>
+                                <td> $fila[2]</td>
+                                <td class=\"td-actions\"><a href=\"https://www.paypal.com/co/home\" target=\"_blank\"  class=\"btn btn-small btn-success\"><i class=\"btn-icon-only icon-ok\"> </i></a><a href=\"#myModal\"  data-toggle=\"modal\" class=\"btn btn-danger btn-small\"><i class=\"btn-icon-only icon-remove\"> </i></a></td>
+                              </tr>";
+                            }
+                          }
+                           ?>
                   </tbody>
                 </table>
               </div>
