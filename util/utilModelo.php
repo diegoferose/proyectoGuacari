@@ -60,6 +60,12 @@ class utilModelo
     $query = mysqli_query($link, $consulta);
     return $query;
   }
+  function aumentarSaldo($codigoUsuario,$valor){
+    global $link;
+    $consulta = "UPDATE `usuario` SET saldo = saldo +$valor   WHERE codigo='$codigoUsuario'";
+    $query = mysqli_query($link, $consulta);
+    return $query;
+  }
 
 }
 
