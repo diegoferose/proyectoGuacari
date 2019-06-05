@@ -48,7 +48,7 @@ $util -> validarRuta(2);
                           <div class="control-group">
                             <label class="control-label" for="username">Codigo</label>
                             <div class="controls">
-                              <input type="text" class="span6 disabled" id="codigo" name="codigo" value="4frw93" readonly>
+                              <input type="text" class="span6 disabled" id="codigo" name="codigo" value=<?php echo $codigoUsuario; ?> readonly>
                               <p class="help-block">El codigo de usuario no puede ser modificado.</p>
                             </div> <!-- /controls -->
                           </div> <!-- /control-group -->

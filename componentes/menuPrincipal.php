@@ -11,6 +11,7 @@
     while ($fila = mysqli_fetch_array($result)) {
         if ($fila != NULL) {
             $nombre = $fila['nombre'];
+            $codigoUsuario = $fila['codigo'];
 
         }
     }
