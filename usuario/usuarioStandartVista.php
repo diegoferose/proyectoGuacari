@@ -16,22 +16,23 @@
 
     $valoresSuscripcionActiva = $util->validarUsuarioActivo($_SESSION['usuario'][0]);
 
-    $nombreCampo = array("codigoReferido");
-    $valor = array($_SESSION['usuario'][0]);
-    $tabla = "usuario";
-    $result = $utilModelo2->mostrarregistros($tabla, $nombreCampo, $valor);
-    $referidos = "";
-    $contadorReferidos = 0;
-    while ($fila = mysqli_fetch_array($result)) {
-        if ($fila != NULL) {
-            $contadorReferidos++;
-//            $saldo = $fila['saldo'];
-            $referidos = $referidos . ' <a href="javascript:;" class="shortcut"><i class="shortcut-icon  icon-user"></i><span class="shortcut-label">' . $fila['nombre'] . ' <br> <b>CODIGO: ' . $fila['codigo'] . '</b></span> </a>';
-        }
-    }
-    $rangoUsuario = $util->validarRangoUsuario($contadorReferidos);
+//    $nombreCampo = array("codigoReferido");
+//    $valor = array($_SESSION['usuario'][0]);
+//    $tabla = "usuario";
+//    $result = $utilModelo2->mostrarregistros($tabla, $nombreCampo, $valor);
+//    $referidos = "";
+//    $contadorReferidos = 0;
+//    while ($fila = mysqli_fetch_array($result)) {
+//        if ($fila != NULL) {
+//            $contadorReferidos++;
+////            $saldo = $fila['saldo'];
+//            $referidos = $referidos . ' <a href="javascript:;" class="shortcut"><i class="shortcut-icon  icon-user"></i><span class="shortcut-label">' . $fila['nombre'] . ' <br> <b>CODIGO: ' . $fila['codigo'] . '</b></span> </a>';
+//        }
+//    }
+    $referidos = $util->mostrarCantidadReferidos($_SESSION['usuario'][0]);
+    $rangoUsuario = $util->validarRangoUsuario($referidos[1]);
     $meta = $rangoUsuario[0];
-    $porcentaje = ((int)$contadorReferidos / $meta) * 100;
+    $porcentaje = ((int)$referidos[1] / $meta) * 100;
     $fechaVencimiento = new DateTime($valoresSuscripcionActiva[0]);
     $intervalo = new DateInterval('P1M');
     $fechaVencimiento->add($intervalo);
@@ -148,7 +149,7 @@
                     <div class="widget">
                         <div class="widget-header"><i class="icon-group"></i>
                             <h3>Referidos <span
-                                        class="badge badge-pill badge-success"><?php echo $contadorReferidos; ?></span>
+                                        class="badge badge-pill badge-success"><?php echo $referidos[1]; ?></span>
                             </h3>
                         </div>
                         <!-- /widget-header -->
@@ -156,7 +157,7 @@
                             <div class="shortcuts">
 
                                 <?php
-                                    echo $referidos;
+                                    echo $referidos[0];
                                 ?>
                             </div>
                             <!-- /shortcuts -->
