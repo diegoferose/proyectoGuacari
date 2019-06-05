@@ -1,5 +1,6 @@
 <?php
     include_once "../util/utilModelo.php";
+    include_once "../util/util.php";
     $utilModelo1 = new utilModelo();
     $util = new util();
     $nombreCampo = array("codigo");
