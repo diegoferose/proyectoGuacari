@@ -1,42 +1,43 @@
 <?php
-    @session_start();
-    include '../util/utilModelo.php';
-    include '../util/util.php';
-    include '../util/enviarCorreos.php';
+@session_start();
+include '../util/utilModelo.php';
+include '../util/util.php';
+include '../util/enviarCorreos.php';
 
 
-    //$campos = array("codigoReferido","direccion");
-    //$valores = array("sd33d2","calle 19 # 9-113");
-    //$util->modificar('usuario',$campos,$valores,'id','1');
-    $utilModelo = new utilModelo();
-    $util = new util();
-    $enviarMail = new correosSmtp();
+//$campos = array("codigoReferido","direccion");
+//$valores = array("sd33d2","calle 19 # 9-113");
+//$util->modificar('usuario',$campos,$valores,'id','1');
+				  $utilModelo = new utilModelo();
+                  $util =new util();
+                  $enviarMail = new correosSmtp(); 
 
 
-    $usuario = filter_input(INPUT_POST, 'usuarioRestablecer');
+$usuario = filter_input(INPUT_POST, 'usuarioRestablecer');
 
 
-    //variable busqueda del usuario
-    $nombreCampo = array("usuario");
-    $valor = array("$usuario");
-    $tabla = "usuario";
-    $result = $utilModelo->mostrarregistros($tabla, $nombreCampo, $valor);
-    $fila = mysqli_fetch_array($result);
+                  //variable busqueda del usuario               
+                  $nombreCampo = array("usuario");
+				  $valor = array("$usuario");
+        		  $tabla = "usuario";
+                  $result = $utilModelo -> mostrarregistros($tabla,$nombreCampo,$valor);			            
+                  $fila = mysqli_fetch_array($result);
 
-    if ($fila != null) {
-
-
-        $id = $fila[0];
-        $correoUsuario = $fila[10];
+if ($fila != null) {
 
 
-        //Generador de nueva contraseña
-        $key = $util->generarCodigo();
+                  $id=$fila[0];
+                  $correoUsuario=$fila[10];
+                  
 
-        //variables para el envio de correos
-        $destinatario = $correoUsuario;
-        $asunto = "Nueva Password GROW";
-        $mensaje = "
+
+                  //Generador de nueva contraseña
+                    $key=$util->generarCodigo(); 
+
+                  //variables para el envio de correos
+                  $destinatario = $correoUsuario;
+                  $asunto = "Nueva Password GROW";
+                  $mensaje="
 
                   <table>
                   <tr>
@@ -62,36 +63,42 @@
                   ";
 
 
-        $enviarMail->enviarCorreos($destinatario, $asunto, $mensaje);
 
-        //Variables de actuaizar Contraseña
-        $campos = array("password");
-        echo "<br>";
-        $valores = array($key);
-        echo "<br>";
+                 $enviarMail->enviarCorreos($destinatario,$asunto,$mensaje);
 
-        $utilModelo->modificar($tabla, $campos, $valores, 'id', $id);
+                  //Variables de actuaizar Contraseña
+                   $campos = array("password");
+				  echo"<br>";
+				  $valores = array($key);
+				  echo"<br>";
 
-        echo "Se ha enviado un mensaje a $destinatario Con su nueva contraseña";
+				$utilModelo->modificar($tabla,$campos,$valores,'id',$id);
 
-
-    } elseif (var_dump($enviarMail)) {
-        //Variables de actuaizar Contraseña
-        $campos = array("password");
-        echo "<br>";
-        $valores = array($key);
-        echo "<br>";
-
-        $utilModelo->modificar($tabla, $campos, $valores, 'id', $id);
-
-        echo "Se ha enviado un mensaje a $destinatario Con su nueva contraseña";
+				echo "Se ha enviado un mensaje a $destinatario Con su nueva contraseña";
 
 
-    } else {
+}elseif(var_dump($enviarMail)){
+	//Variables de actuaizar Contraseña
+                   $campos = array("password");
+				  echo"<br>";
+				  $valores = array($key);
+				  echo"<br>";
 
-        echo "no se ha encontrado el usuario.Por favor verifique o comuniquese con el administrador";
+				$utilModelo->modificar($tabla,$campos,$valores,'id',$id);
 
-    }
+				echo "Se ha enviado un mensaje a $destinatario Con su nueva contraseña";
+
+
+	
+}else{
+
+	echo "no se ha encontrado el usuario.Por favor verifique o comuniquese con el administrador";
+
+}
+                     
+
+
+                         
 
 
 ?>
