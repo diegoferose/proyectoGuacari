@@ -142,6 +142,10 @@
             for ($i = 0; $i < $longitud; $i++) $key .= $pattern{mt_rand(0, $max)};
             return $key;
         }
+        function hoy(){
+
+             return date("Y")."-".date("m")."-".date("d") ;
+        }
 
         function registrarComision($codigo, $valorPago, $nivel)
         {

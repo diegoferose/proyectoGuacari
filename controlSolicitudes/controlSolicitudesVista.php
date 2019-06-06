@@ -54,7 +54,7 @@ $util -> validarRuta(2);
                     <?php
                     //$utilModelo = new utilModelo();
                     //$tabla = "solicitudes";
-                    //$result = $utilModelo->mostrarTodosRegistros($tabla);
+                    //$result = $utilModelo->mostraRegistros($tabla);
 
                     $sql="SELECT U.nombre,S.fechaSolicitud,S.valor FROM usuario U,solicitudes S WHERE S.codigoUsuario = U.codigo AND S.estado=0";
                     global $link;

@@ -60,6 +60,8 @@ $util -> validarRuta(2);
                   <tbody>
 
                   <?php
+
+
                   $utilModelo = new utilModelo();
                   $tabla = "rangoUsuario";
                   $result = $utilModelo->mostrarTodosRegistros($tabla);
@@ -95,6 +97,7 @@ $util -> validarRuta(2);
 
           </div>
           <!-- /FIN TABLA rangos -->
+
 
         </div>
         <!-- /row -->

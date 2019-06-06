@@ -57,13 +57,7 @@ $util -> validarRuta(2);
                             <div class="controls">
                               <input type="number" class="span6" id="valor" name="valor" value="">
                             </div> <!-- /controls -->
-                          </div> <!-- /control-group -->
-                          <div class="control-group">
-                            <label class="control-label" for="lastname">Fecha</label>
-                            <div class="controls">
-                              <input type="date" class="span6" id="fechaSolicitud" name="fechaSolicitud" value="">
-                            </div> <!-- /controls -->
-                          </div> <!-- /control-group -->
+                          </div> <!-- /control-group -->                          
                           <br>
                           <div class="form-actions">
                             <button type="submit" class="btn btn-primary">Guardar</button>
