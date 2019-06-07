@@ -21,7 +21,8 @@
                             // code...
                             break;
                         case 1://usuario venderor
-                            // code...
+                       
+                            header('Location: ../vendedor/vendedorVista.php');
                             break;
                         case 2://usuario stadart
                             header('Location: ../usuario/usuarioStandartVista.php');
@@ -35,7 +36,8 @@
 
                 }
 
-            } else {
+            } else {                
+              
                 header('Location: ../index.php');
                 exit();
             }
