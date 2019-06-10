@@ -3,7 +3,7 @@
     include_once "../util/utilModelo.php";
     $utilModelo2 = new utilModelo();
     $util = new util();
-    $util->validarRuta(2);
+    $util->validarRuta(1);
     $nombreCampo = array("codigo");
     $valor = array($_SESSION['usuario'][0]);
     $tabla = "usuario";
@@ -42,7 +42,15 @@
 <div class="main">
     <div class="main-inner">
         <div class="container">
-           
+            <div class="row">
+                <div class="span12">                        
+                <div class="widget widget-plain">                    
+                    <div class="widget-content">                        
+                        <a href="javascript:;" class="btn btn-large btn-success">      Rango Actual : PLATINO     </a>    
+                    </div> <!-- /widget-content -->                       
+                </div> <!-- /widget -->                
+            </div> <!-- /span12 -->
+            </div>
 
             <div class="row">
 
@@ -55,7 +63,9 @@
                         <div class="plan green">
                             <div class="plan-header">
 
-                                <div class="plan-title">                                    
+                                <div class="plan-title">
+                                    RANGO ACTUAL:<B>PLATINO</B>
+                                    <br>
                                     SALDO DISPONIBLE
                                 </div> <!-- /plan-title -->
 
@@ -91,7 +101,7 @@
 
                     <div class="widget">
                         <div class="widget-header"><i class="icon-group"></i>
-                            <h3>TOTAL AFILIADOS <span class="badge badge-pill badge-success"><?php echo $contadorReferidos;?></span></h3>
+                            <h3>Referidos <span class="badge badge-pill badge-success"><?php echo $contadorReferidos;?></span></h3>
                         </div>
                         <!-- /widget-header -->
                         <div class="widget-content">
@@ -108,7 +118,7 @@
                     <!-- /widget -->
                      <div class="widget">
                         <div class="widget-header"><i class="icon-group"></i>
-                            <h3>AFILIADOS ESTE MES<span class="badge badge-pill badge-success"><?php echo $contadorReferidos;?></span></h3>
+                            <h3>Referidos <span class="badge badge-pill badge-success"><?php echo $contadorReferidos;?></span></h3>
                         </div>
                         <!-- /widget-header -->
                         <div class="widget-content">
@@ -127,10 +137,9 @@
                 <!-- /span8 -->
                 <div class="span8">
                      <div class="widget widget-nopad">
-                     
                         <div class="widget widget-table action-table">
                           <div class="widget-header"> <i class="icon-th-list"></i>
-                            <h3>AFILIADOS</h3>
+                            <h3>CONSOLIDADO</h3>
                           </div>
 
                           <!-- /widget-header -->
@@ -138,36 +147,71 @@
                             <table class="table table-striped table-bordered">
                               <thead>
                                 <tr>
-                                  <th> NOMBRE</th>
-                                  <th> DIRECCION</th>
-                                  <th> TELEFONO</th>
-                                  <th> FECHA AFILIACION</th>
-                                  <th> ESTADO PAGO</th>
-                                  <th> OBSERVACION</th>
-                                  
+                                  <th> MES</th>
+                                  <th> RANGO</th>
+                                  <th> VP</th>
+                                  <th> IP</th>
+                                  <th> IG</th>
+                                  <th> TI</th>
+                                  <th class="td-actions"> DESACTIVAR</th>
                                 </tr>
                               </thead>
                               <tbody>
                                
                                 <tr>
-                                  <td>OSCAR DORADO</td>
-                                  <td>ALLA</td>
-                                  <td>321458923</td>
-                                  <td>HOY</td>
-                                   <td>AL DIA</td>
-                                   <td>PAGA CUMPLIDAMENTE BUEN CLIENTE HJSDKFHKSDJFHKSJHDFKSDHKFHSDKFHSDKHFKDSHF</td>
-                                  
+                                  <td> ENERO</td>
+                                  <td>ESTANDAR</td>
+                                  <td> <a href="#">8</a>  </td>
+                                  <td><a href="#">max 164.000</a></td>
+                                   <td><a href="#">2.430.000</a></td>
+                                   <td> 2.594.000</td>
+                                  <td class="td-actions"><a href="#myModal"  data-toggle="modal" class="btn btn-danger btn-small"><i class="btn-icon-only icon-remove"> </i></a></td>
                                 </tr>
-                                 <tr>
-                                  <td>URIEL ESTEBAN</td>
-                                  <td>ACA</td>
-                                  <td>874356323453</td>
-                                  <td>AYER</td>
-                                   <td>MOROSO</td>
-                                   <td>SE DEMORA EN PAGAR PERO PAGA</td>
-                                  
+                                <tr>
+                                  <td> FEBRERO</td>
+                                  <td>EJECUTIVO</td>
+                                  <td> <a href="#">8</a>  </td>
+                                  <td><a href="#">max 164.000</a></td>
+                                   <td><a href="#">2.430.000</a></td>
+                                   <td> 2.594.000</td>
+                                  <td class="td-actions"><a href="#myModal"  data-toggle="modal" class="btn btn-danger btn-small"><i class="btn-icon-only icon-remove"> </i></a></td>
                                 </tr>
-                                
+                                <tr>
+                                  <td> MARZO</td>
+                                  <td>PLATA</td>
+                                  <td> <a href="#">8</a>  </td>
+                                  <td><a href="#">max 164.000</a></td>
+                                   <td><a href="#">2.430.000</a></td>
+                                   <td> 2.594.000</td>
+                                  <td class="td-actions"><a href="#myModal"  data-toggle="modal" class="btn btn-danger btn-small"><i class="btn-icon-only icon-remove"> </i></a></td>
+                                </tr>
+                                <tr>
+                                  <td> ABRIL</td>
+                                  <td>ORO</td>
+                                  <td> <a href="#">8</a>  </td>
+                                  <td><a href="#">max 164.000</a></td>
+                                   <td><a href="#">2.430.000</a></td>
+                                   <td> 2.594.000</td>
+                                  <td class="td-actions"><a href="#myModal"  data-toggle="modal" class="btn btn-danger btn-small"><i class="btn-icon-only icon-remove"> </i></a></td>
+                                </tr>
+                                <tr>
+                                  <td> MAYO</td>
+                                  <td>PLATINO</td>
+                                  <td> <a href="#">8</a>  </td>
+                                  <td><a href="#">max 164.000</a></td>
+                                   <td><a href="#">2.430.000</a></td>
+                                   <td> 2.594.000</td>
+                                  <td class="td-actions"><a href="#myModal"  data-toggle="modal" class="btn btn-danger btn-small"><i class="btn-icon-only icon-remove"> </i></a></td>
+                                </tr>
+                                <tr>
+                                  <td> JUNIO</td>
+                                  <td>ESTANDAR</td>
+                                  <td> <a href="#">8</a>  </td>
+                                  <td><a href="#">max 164.000</a></td>
+                                   <td><a href="#">2.430.000</a></td>
+                                   <td> 2.594.000</td>
+                                  <td class="td-actions"><a href="#myModal"  data-toggle="modal" class="btn btn-danger btn-small"><i class="btn-icon-only icon-remove"> </i></a></td>
+                                </tr>
                                 
 
 

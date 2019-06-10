@@ -1,5 +1,6 @@
 <?php
 include "../util/util.php";
+include '../conexion.php';
 $util = new util();
 $util -> validarRuta(2);
 ?>
@@ -26,6 +27,15 @@ $util -> validarRuta(2);
 <body>
   <?php
   include "../componentes/menuPrincipal.php";
+  $sql="SELECT * FROM usuario where codigo = '$codigoUsuario'";
+
+  global $link;
+  $result=mysqli_query($link,$sql);
+  while ($fila = mysqli_fetch_array($result)) {
+      if ($fila != NULL) {
+        $maxRetiro= $fila[14];
+          }
+        }
   ?>
   <div class="main">
     <div class="main-inner">
@@ -55,9 +65,9 @@ $util -> validarRuta(2);
                           <div class="control-group">
                             <label class="control-label" for="firstname">Valor a retirar</label>
                             <div class="controls">
-                              <input type="number" class="span6" id="valor" name="valor" value="">
+                              <input type="number" class="span6" id="valor" name="valor" <?php echo "value='$maxRetiro' max='$maxRetiro'"; ?>>
                             </div> <!-- /controls -->
-                          </div> <!-- /control-group -->                          
+                          </div> <!-- /control-group -->
                           <br>
                           <div class="form-actions">
                             <button type="submit" class="btn btn-primary">Guardar</button>
