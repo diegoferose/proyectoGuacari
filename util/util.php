@@ -167,49 +167,12 @@
                 $valorComision = $valorPago * $porcentaje;
                 $valores = $this->validarUsuarioActivo($codigoCabeza);
                 if($valores[1]=="activo") {
-                    if ($nivel = 1) {
-                        $referidos = $this->mostrarCantidadReferidos($codigo);
-                        $cantidadReferidos = $referidos[1];
-//                        echo $cantidadReferidos;
-                        if($cantidadReferidos < 3){
-                            $cantidadDeComisionesAPagar = -1;
-                        }elseif ($cantidadReferidos < 6){
-                            $cantidadDeComisionesAPagar = 3;
-                        }elseif ($cantidadReferidos < 10){
-                            $cantidadDeComisionesAPagar = 6;
-                        }elseif ($cantidadReferidos < 15){
-                            $cantidadDeComisionesAPagar = 10;
-                        }elseif ($cantidadReferidos < 20){
-                            $cantidadDeComisionesAPagar = 15;
-                        }elseif ($cantidadReferidos < 30){
-                            $cantidadDeComisionesAPagar = 20;
-                        }elseif ($cantidadReferidos < 50){
-                            $cantidadDeComisionesAPagar = 30;
-                        }elseif ($cantidadReferidos < 75){
-                            $cantidadDeComisionesAPagar = 50;
-                        }elseif ($cantidadReferidos < 100){
-                            $cantidadDeComisionesAPagar = 75;
-                        }elseif ($cantidadReferidos < 150){
-                            $cantidadDeComisionesAPagar = 100;
-                        }elseif ($cantidadReferidos < 250){
-                            $cantidadDeComisionesAPagar = 150;
-                        }
-                        $utilModelo->aumentarSaldo($codigoCabeza, $valorComision);
-                    } else {
-                        $nombreCampo = array("codigoUsuario");
-                        $valor = array("$codigoCabeza");
-                        $tabla = "registroComision";
-                        $result = $utilModelo->mostrarregistros($tabla, $nombreCampo, $valor);
-                        $fila = mysqli_fetch_array($result);
-                        $comisionesPagadas = $fila['cantidad'];
-                        if ($comisionesPagadas <= 3) {
-                            $utilModelo->aumentarSaldo($codigoCabeza, $valorComision);
-                        }
-                    }
-                    $nivel++;
-                    $this->registrarComision($codigoCabeza, $valorPago, $nivel);
-                }
+                    if ($nivel == 1) {
 
+                    } else {
+
+                    }
+                }
             }
         }
 
