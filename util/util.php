@@ -21,7 +21,7 @@
                             // code...
                             break;
                         case 1://usuario venderor
-                       
+
                             header('Location: ../vendedor/vendedorVista.php');
                             break;
                         case 2://usuario stadart
@@ -36,8 +36,8 @@
 
                 }
 
-            } else {                
-              
+            } else {
+
                 header('Location: ../index.php');
                 exit();
             }
@@ -84,7 +84,9 @@
 
 
         }
-        function  mostrarCantidadReferidos($codigo){
+
+        function mostrarCantidadReferidos($codigo)
+        {
 
             $utilModelo2 = new utilModelo();
             $nombreCampo = array("codigoReferido");
@@ -100,7 +102,7 @@
                     $referidos = $referidos . ' <a href="javascript:;" class="shortcut"><i class="shortcut-icon  icon-user"></i><span class="shortcut-label">' . $fila['nombre'] . ' <br> <b>CODIGO: ' . $fila['codigo'] . '</b></span> </a>';
                 }
             }
-            return array($referidos,$contadorReferidos);
+            return array($referidos, $contadorReferidos);
         }
 
         function validarRangoUsuario($cantidadReferidos)
@@ -144,9 +146,11 @@
             for ($i = 0; $i < $longitud; $i++) $key .= $pattern{mt_rand(0, $max)};
             return $key;
         }
-        function hoy(){
 
-             return date("Y")."-".date("m")."-".date("d") ;
+        function hoy()
+        {
+
+            return date("Y") . "-" . date("m") . "-" . date("d");
         }
 
         function registrarComision($codigo, $valorPago, $nivel)
@@ -168,9 +172,9 @@
                 $porcentaje = $fila['porcentaje'] / 100;
                 $valorComision = $valorPago * $porcentaje;
                 $valores = $this->validarUsuarioActivo($codigoCabeza);
-                if($valores[1]=="activo") {
+                if ($valores[1] == "activo") {
                     if ($nivel == 1) {
-
+                        $utilModelo->aumentarSaldo($codigoCabeza, $valorComision);
                     } else {
 
                     }
