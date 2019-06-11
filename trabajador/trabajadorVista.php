@@ -126,8 +126,6 @@
                 </div>
                 <!-- /span8 -->
                 <div class="span8">
-
-
                      <div class="widget widget-nopad">
 
                         <div class="widget widget-table action-table">
@@ -144,34 +142,33 @@
                                   <th> DIRECCION</th>
                                   <th> TELEFONO</th>
                                   <th> FECHA AFILIACION</th>
-                                  <th> FECHA ULTIMO PAGO</th>
                                   <th> ESTADO PAGO</th>
+                                  <th> OBSERVACION</th>
 
                                 </tr>
                               </thead>
                               <tbody>
-                                  <?php
-                                  $result = $utilModelo2->consultarVariasTablas("*","usuario","codigoReferido='$codigoUsuario'");
-                                  while ($fila = mysqli_fetch_array($result)) {
-                                  if ($fila != NULL) {
 
-                                    echo"
+                                <tr>
+                                  <td>OSCAR DORADO</td>
+                                  <td>ALLA</td>
+                                  <td>321458923</td>
+                                  <td>HOY</td>
+                                   <td>AL DIA</td>
+                                   <td>PAGA CUMPLIDAMENTE BUEN CLIENTE HJSDKFHKSDJFHKSJHDFKSDHKFHSDKFHSDKHFKDSHF</td>
 
-                                    <tr>
-                                      <td>$fila[2]</td>
-                                      <td>$fila[6]</td>
-                                      <td>$fila[7]</td>
-                                      <td>$fila[5]</td>
-                                       <td>$fila[5]</td>
-                                       <td>N/A</td>
+                                </tr>
+                                 <tr>
+                                  <td>URIEL ESTEBAN</td>
+                                  <td>ACA</td>
+                                  <td>874356323453</td>
+                                  <td>AYER</td>
+                                   <td>MOROSO</td>
+                                   <td>SE DEMORA EN PAGAR PERO PAGA</td>
 
-                                    </tr>
-
-                                    ";
+                                </tr>
 
 
-                                  }
-                                  } ?>
 
 
                               </tbody>
