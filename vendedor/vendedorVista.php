@@ -83,8 +83,17 @@
                                 $referidos = $referidos . ' <a href="javascript:;" class="shortcut"><i class="shortcut-icon  icon-user"></i><span class="shortcut-label">' . $fila['nombre'] . ' <br> <b>CODIGO: ' . $fila['codigo'] . '</b></span> </a>';
                             }
                         }
-                        $meta = 5;
-                        $porcentaje = ((int)$contadorReferidos/$meta)*100;
+
+                        $result = $utilModelo2->consultarVariasTablas("*","usuario","codigoReferido='$codigoUsuario' and fechaDeIngreso > '19-06-01'");
+                        $referidosMensual = "";
+                        $contadorReferidosMensual =0;
+                        while ($fila = mysqli_fetch_array($result)) {
+                            if ($fila != NULL) {
+                                $contadorReferidosMensual++;
+                                $saldo = $fila['saldo'];
+                                $referidosMensual = $referidosMensual . ' <a href="javascript:;" class="shortcut"><i class="shortcut-icon  icon-user"></i><span class="shortcut-label">' . $fila['nombre'] . ' <br> <b>CODIGO: ' . $fila['codigo'] . '</b></span> </a>';
+                            }
+                        }
 
                     ?>
 
@@ -108,14 +117,14 @@
                     <!-- /widget -->
                      <div class="widget">
                         <div class="widget-header"><i class="icon-group"></i>
-                            <h3>AFILIADOS ESTE MES<span class="badge badge-pill badge-success"><?php echo $contadorReferidos;?></span></h3>
+                            <h3>AFILIADOS ESTE MES <span class="badge badge-pill badge-success"><?php echo $contadorReferidosMensual;?></span></h3>
                         </div>
                         <!-- /widget-header -->
                         <div class="widget-content">
                             <div class="shortcuts">
 
                                 <?php
-                                echo $referidos;
+                                echo $referidosMensual;
                                 ?>
                             </div>
                             <!-- /shortcuts -->
