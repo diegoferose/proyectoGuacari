@@ -96,22 +96,14 @@
                         }
 
                     ?>
-
-
+                        <a href="pagarOsdoVista.php">Pagar</a>
+    
                     <div class="widget">
                         <div class="widget-header"><i class="icon-group"></i>
                             <h3>TOTAL AFILIADOS <span class="badge badge-pill badge-success"><?php echo $contadorReferidos;?></span></h3>
                         </div>
                         <!-- /widget-header -->
-                        <div class="widget-content">
-                            <div class="shortcuts">
-
-                                <?php
-                                echo $referidos;
-                                ?>
-                            </div>
-                            <!-- /shortcuts -->
-                        </div>
+                        
                         <!-- /widget-content -->
                     </div>
                     <!-- /widget -->
