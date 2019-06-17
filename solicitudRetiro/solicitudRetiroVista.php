@@ -2,7 +2,7 @@
 include "../util/util.php";
 include '../conexion.php';
 $util = new util();
-$util -> validarRuta(2);
+$util -> validarRuta(1);
 ?>
 <!DOCTYPE html>
 <html lang="en">

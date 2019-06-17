@@ -28,7 +28,7 @@ while ($fila = mysqli_fetch_array($result)) {
 
 
       if ($verificada) {
-        $_SESSION['mensajeOk']='USTED YA TIENE UNA SOLICITUD PENDIENTE <p class="help-block">Recuerde que tienen 10 dias habiles para responder su solitud.</p>';
+        $_SESSION['mensajeOk']='ACCION NO REALIZADA <p class="help-block">USTED YA TIENE UNA SOLICITUD PENDIENTE</p>';
         header('Location: ../util/okVista.php');
   echo "$verificada";
       }else{
@@ -41,13 +41,14 @@ $valores = array("$codigo", "$fecha", "$valor", "","$estado","$tipo");
 $nombreDeTabla = "solicitudes";
 $utilModelo -> insertar($nombreDeTabla,$campos, $valores) ;
 
-$destinatario = "diegoferose@hotmail.com";
+$destinatario = "oscar871220@hotmail.com";
 $asunto = "Solicitu de retiro ";
 $mensaje="
 
-<table>
+<table =\"border: 1px solid #000; border-radius: .25rem;font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif; color: #333;\\\">
   <tr>
-    <th colspan=2>
+    <th colspan = \"2\" style = \" background: #ed1c40;  color: #fff;  border: none;
+\" >
         <h2>Solicitud de retiro</h2>
     </th>
   </tr>
@@ -64,10 +65,11 @@ $mensaje="
     <td><b>$fecha<b></td>
   </tr>
 </table><br><br>
+          
+</table>
 
 
 
-<h3>Recuerde que tienes 10 dias habiles para diligenciar las solicitudes.<h3>
 ";
 
 

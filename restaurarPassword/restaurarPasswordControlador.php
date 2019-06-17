@@ -39,9 +39,9 @@ if ($fila != null) {
                   $asunto = "Nueva Password GROW";
                   $mensaje="
 
-                  <table>
-	                  <tr>
-		                  <th colspan=2>
+                  <table =\"border: 1px solid #000; border-radius: .25rem;font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif; color: #333;\\\">
+  <tr>
+    <th colspan = \"2\" style = \" background: #ed1c40;  color: #fff;  border: none;\" >
 													<h2>Nueva Password</h2>
 		                  </th>
 	                  </tr>
@@ -85,6 +85,9 @@ if ($fila != null) {
 				$utilModelo->modificar($tabla,$campos,$valores,'id',$id);
 
 				echo "Se ha enviado un mensaje a $destinatario Con su nueva contraseña";
+
+    $_SESSION['mensajeOk']='SOLICITUD REGISTRADA CON EXITO <p class="help-block">Se ha enviado un mensaje a $destinatario Con su nueva contraseña</p>';
+    header('Location: ../util/okVista.php');
 
 
 
