@@ -83,40 +83,39 @@
                                 $referidos = $referidos . ' <a href="javascript:;" class="shortcut"><i class="shortcut-icon  icon-user"></i><span class="shortcut-label">' . $fila['nombre'] . ' <br> <b>CODIGO: ' . $fila['codigo'] . '</b></span> </a>';
                             }
                         }
-
-                        $result = $utilModelo2->consultarVariasTablas("*","usuario","codigoReferido='$codigoUsuario' and fechaDeIngreso > '19-06-01'");
-                        $referidosMensual = "";
-                        $contadorReferidosMensual =0;
-                        while ($fila = mysqli_fetch_array($result)) {
-                            if ($fila != NULL) {
-                                $contadorReferidosMensual++;
-                                $saldo = $fila['saldo'];
-                                $referidosMensual = $referidosMensual . ' <a href="javascript:;" class="shortcut"><i class="shortcut-icon  icon-user"></i><span class="shortcut-label">' . $fila['nombre'] . ' <br> <b>CODIGO: ' . $fila['codigo'] . '</b></span> </a>';
-                            }
-                        }
+                        $meta = 5;
+                        $porcentaje = ((int)$contadorReferidos/$meta)*100;
 
                     ?>
-                        <a href="pagarOsdoVista.php">Pagar</a>
-    
+
+
                     <div class="widget">
                         <div class="widget-header"><i class="icon-group"></i>
                             <h3>TOTAL AFILIADOS <span class="badge badge-pill badge-success"><?php echo $contadorReferidos;?></span></h3>
-                        </div>
-                        <!-- /widget-header -->
-                        
-                        <!-- /widget-content -->
-                    </div>
-                    <!-- /widget -->
-                     <div class="widget">
-                        <div class="widget-header"><i class="icon-group"></i>
-                            <h3>AFILIADOS ESTE MES <span class="badge badge-pill badge-success"><?php echo $contadorReferidosMensual;?></span></h3>
                         </div>
                         <!-- /widget-header -->
                         <div class="widget-content">
                             <div class="shortcuts">
 
                                 <?php
-                                echo $referidosMensual;
+                                echo $referidos;
+                                ?>
+                            </div>
+                            <!-- /shortcuts -->
+                        </div>
+                        <!-- /widget-content -->
+                    </div>
+                    <!-- /widget -->
+                     <div class="widget">
+                        <div class="widget-header"><i class="icon-group"></i>
+                            <h3>AFILIADOS ESTE MES<span class="badge badge-pill badge-success"><?php echo $contadorReferidos;?></span></h3>
+                        </div>
+                        <!-- /widget-header -->
+                        <div class="widget-content">
+                            <div class="shortcuts">
+
+                                <?php
+                                echo $referidos;
                                 ?>
                             </div>
                             <!-- /shortcuts -->
@@ -127,8 +126,6 @@
                 </div>
                 <!-- /span8 -->
                 <div class="span8">
-
-
                      <div class="widget widget-nopad">
 
                         <div class="widget widget-table action-table">
@@ -145,34 +142,33 @@
                                   <th> DIRECCION</th>
                                   <th> TELEFONO</th>
                                   <th> FECHA AFILIACION</th>
-                                  <th> FECHA ULTIMO PAGO</th>
                                   <th> ESTADO PAGO</th>
+                                  <th> OBSERVACION</th>
 
                                 </tr>
                               </thead>
                               <tbody>
-                                  <?php
-                                  $result = $utilModelo2->consultarVariasTablas("*","usuario","codigoReferido='$codigoUsuario'");
-                                  while ($fila = mysqli_fetch_array($result)) {
-                                  if ($fila != NULL) {
 
-                                    echo"
+                                <tr>
+                                  <td>OSCAR DORADO</td>
+                                  <td>ALLA</td>
+                                  <td>321458923</td>
+                                  <td>HOY</td>
+                                   <td>AL DIA</td>
+                                   <td>PAGA CUMPLIDAMENTE BUEN CLIENTE HJSDKFHKSDJFHKSJHDFKSDHKFHSDKFHSDKHFKDSHF</td>
 
-                                    <tr>
-                                      <td>$fila[2]</td>
-                                      <td>$fila[6]</td>
-                                      <td>$fila[7]</td>
-                                      <td>$fila[5]</td>
-                                       <td>$fila[5]</td>
-                                       <td>N/A</td>
+                                </tr>
+                                 <tr>
+                                  <td>URIEL ESTEBAN</td>
+                                  <td>ACA</td>
+                                  <td>874356323453</td>
+                                  <td>AYER</td>
+                                   <td>MOROSO</td>
+                                   <td>SE DEMORA EN PAGAR PERO PAGA</td>
 
-                                    </tr>
-
-                                    ";
+                                </tr>
 
 
-                                  }
-                                  } ?>
 
 
                               </tbody>
