@@ -3,7 +3,7 @@
     include_once "../util/utilModelo.php";
     $utilModelo2 = new utilModelo();
     $util = new util();
-    $util->validarRuta(1);
+    $util->validarRuta(0);
     $nombreCampo = array("codigo");
     $valor = array($_SESSION['usuario'][0]);
     $tabla = "usuario";
@@ -41,7 +41,7 @@
 </head>
 <body>
 <?php
-    include "../componentes/menuPrincipal.php";
+    include "../componentes/menuPrincipalAdmin.php";
 ?>
 <div class="main">
     <div class="main-inner">
@@ -101,13 +101,13 @@
 
                     ?>
                         <a href="pagarOsdoVista.php">Pagar</a>
-    
+
                     <div class="widget">
                         <div class="widget-header"><i class="icon-group"></i>
                             <h3>TOTAL AFILIADOS <span class="badge badge-pill badge-success"><?php echo $contadorReferidos;?></span></h3>
                         </div>
                         <!-- /widget-header -->
-                        
+
                         <!-- /widget-content -->
                     </div>
                     <!-- /widget -->

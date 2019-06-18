@@ -18,11 +18,13 @@
                 } else {
                     switch ($_SESSION['usuario'][1]) {
                         case 0:// usuario administrador
-                            // code...
+                            header('Location: ../admin/adminVista.php');
+                            exit();
                             break;
                         case 1://usuario venderor
 
                             header('Location: ../vendedor/vendedorVista.php');
+                            exit();
                             break;
                         case 2://usuario stadart
                             header('Location: ../usuario/usuarioStandartVista.php');
@@ -146,12 +148,26 @@
             for ($i = 0; $i < $longitud; $i++) $key .= $pattern{mt_rand(0, $max)};
             return $key;
         }
-
+        //Devuelve fecha actual
         function hoy()
         {
 
             return date("Y") . "-" . date("m") . "-" . date("d");
         }
+        //devuelve ultimo dia del mes
+        function ultimoDia() {
+          $month = date('m');
+          $year = date('Y');
+          $day = date("d", mktime(0,0,0, $month+1, 0, $year));
+
+          return date('Y-m-d', mktime(0,0,0, $month, $day, $year));
+        }
+          //devuelve primer dia del mes
+          function primerDia() {
+              $month = date('m');
+              $year = date('Y');
+              return date('Y-m-d', mktime(0,0,0, $month, 1, $year));
+          }
 
         function registrarComision($codigo, $valorPago, $nivel)
         {
