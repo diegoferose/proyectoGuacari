@@ -28,7 +28,7 @@ while ($fila = mysqli_fetch_array($result)) {
 
 
       if ($verificada) {
-        $_SESSION['mensajeOk']='USTED YA TIENE UNA SOLICITUD PENDIENTE <p class="help-block">Recuerde que tienen 10 dias habiles para responder su solitud.</p>';
+        $_SESSION['mensajeOk']='USTED YA TIENE UNA SOLICITUD PENDIENTE <p class="help-block">.Pronto se le dara respuesta a su anterior solicitud</p>';
         header('Location: ../util/okVista.php');
   echo "$verificada";
       }else{
@@ -67,7 +67,7 @@ $mensaje="
 
 
 
-<h3>Recuerde que tienes 10 dias habiles para diligenciar las solicitudes.<h3>
+<h3>Este correo es automatico por favor no responder.<h3>
 ";
 
 
