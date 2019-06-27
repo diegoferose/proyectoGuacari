@@ -28,7 +28,7 @@ while ($fila = mysqli_fetch_array($result)) {
 
 
       if ($verificada) {
-        $_SESSION['mensajeOk']='ACCION NO REALIZADA <p class="help-block">USTED YA TIENE UNA SOLICITUD PENDIENTE</p>';
+        $_SESSION['mensajeOk']='USTED YA TIENE UNA SOLICITUD PENDIENTE <p class="help-block">.Pronto se le dara respuesta a su anterior solicitud</p>';
         header('Location: ../util/okVista.php');
   echo "$verificada";
       }else{
@@ -41,14 +41,13 @@ $valores = array("$codigo", "$fecha", "$valor", "","$estado","$tipo");
 $nombreDeTabla = "solicitudes";
 $utilModelo -> insertar($nombreDeTabla,$campos, $valores) ;
 
-$destinatario = "oscar871220@hotmail.com";
+$destinatario = "diegoferose@hotmail.com";
 $asunto = "Solicitu de retiro ";
 $mensaje="
 
-<table =\"border: 1px solid #000; border-radius: .25rem;font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif; color: #333;\\\">
+<table>
   <tr>
-    <th colspan = \"2\" style = \" background: #ed1c40;  color: #fff;  border: none;
-\" >
+    <th colspan=2>
         <h2>Solicitud de retiro</h2>
     </th>
   </tr>
@@ -65,11 +64,10 @@ $mensaje="
     <td><b>$fecha<b></td>
   </tr>
 </table><br><br>
-          
-</table>
 
 
 
+<h3>Este correo es automatico por favor no responder.<h3>
 ";
 
 

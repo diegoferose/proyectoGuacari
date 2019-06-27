@@ -2,7 +2,7 @@
 include "../util/util.php";
 include '../conexion.php';
 $util = new util();
-$util -> validarRuta(2);
+$util -> validarRuta(0);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -26,7 +26,7 @@ $util -> validarRuta(2);
 </head>
 <body>
   <?php
-  include "../componentes/menuPrincipal.php";
+  include "../componentes/menuPrincipalAdmin.php";
   ?>
   <div class="main">
     <div class="main-inner">
@@ -56,17 +56,24 @@ $util -> validarRuta(2);
                     //$tabla = "solicitudes";
                     //$result = $utilModelo->mostraRegistros($tabla);
 
-                    $sql="SELECT U.nombre,S.fechaSolicitud,S.valor FROM usuario U,solicitudes S WHERE S.codigoUsuario = U.codigo AND S.estado=0";
+
+
+                    $sql="SELECT U.nombre,S.* FROM usuario U,solicitudes S WHERE S.codigoUsuario = U.codigo AND S.estado=0";
                     global $link;
                 		$result=mysqli_query($link,$sql);
                     while ($fila = mysqli_fetch_array($result)) {
                         if ($fila != NULL) {
+
+                          $datos=$fila[2]."||".
+                               $fila[7];
+
                             echo "
                               <tr>
                                 <td>$fila[0] </td>
-                                <td> $fila[1] </td>
-                                <td> $fila[2]</td>
-                                <td class=\"td-actions\"><a href=\"https://www.paypal.com/co/home\" target=\"_blank\"  class=\"btn btn-small btn-success\"><i class=\"btn-icon-only icon-ok\"> </i></a><a href=\"#myModal\"  data-toggle=\"modal\" class=\"btn btn-danger btn-small\"><i class=\"btn-icon-only icon-remove\"> </i></a></td>
+                                <td> $fila[4] </td>
+                                <td> $fila[3]</td>
+                                <td class=\"td-actions\"><a href=\"https://www.paypal.com/co/home\" target=\"_blank\"  class=\"btn btn-small btn-success\"><i class=\"btn-icon-only icon-ok\"> </i></a><a href=\"#myModal\"onclick=\"agregarForm('$datos');\"  data-toggle=\"modal\" class=\"btn btn-danger btn-small\"><i class=\"btn-icon-only icon-remove\"> </i></a></td>
+
                               </tr>";
                             }
                           }
@@ -87,6 +94,9 @@ $util -> validarRuta(2);
     <!-- /main-inner -->
   </div>
     <!-- inicio modal -->
+    <form class="" action="controlSolicitudesControlador.php" method="post">
+
+
   <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-header">
       <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
@@ -94,15 +104,18 @@ $util -> validarRuta(2);
     </div>
     <div class="modal-body">
       <div class="form-group shadow-textarea col-xs-12">
-        <label for="exampleFormControlTextarea6">Razon para negar el retiro</label>
-        <textarea class="form-control z-depth-1"maxlength="500" style="min-width: 100%" id="exampleFormControlTextarea6" rows="6" placeholder="Maximo 500 caracteres"></textarea>
+        <input id="codigoUsuario" name="codigoUsuario" type="hidden">
+        <input id="estado" name="estado" type="hidden">
+        <label for="observacionSolicitud">Razon para negar el retiro</label>
+        <textarea class="form-control z-depth-1"maxlength="500" style="min-width: 100%" id="observacionSolicitud" name="observacionSolicitud" rows="6" placeholder="Maximo 500 caracteres"></textarea>
       </div>
     </div>
     <div class="modal-footer">
       <button class="btn" data-dismiss="modal" aria-hidden="true">Cerrar</button>
-      <button class="btn btn-primary">Guardar</button>
+      <button type="submit" class="btn btn-primary" name="negarSolicitud">Guardar</button>
     </div>
   </div>
+  </form>
 
   <!-- Fin modal -->
 
@@ -119,6 +132,15 @@ $util -> validarRuta(2);
   <script language="javascript" type="text/javascript" src="../js/full-calendar/fullcalendar.min.js"></script>
 
   <script src="js/base.js"></script>
+  <script type="text/javascript ">
+  function agregarForm(datos){
+    d=datos.split("||");
+
+     $("#codigoUsuario").val(d[0]);
+     $("#estado").val(1);
+
+  }
+  </script>
 
 </body>
 </html>

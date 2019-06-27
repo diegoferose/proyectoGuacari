@@ -3,7 +3,7 @@
     include_once "../util/utilModelo.php";
     $utilModelo2 = new utilModelo();
     $util = new util();
-    $util->validarRuta(1);
+    $util->validarRuta(0);
     $nombreCampo = array("codigo");
     $valor = array($_SESSION['usuario'][0]);
     $tabla = "usuario";
@@ -41,7 +41,7 @@
 </head>
 <body>
 <?php
-    include "../componentes/menuPrincipal.php";
+    include "../componentes/menuPrincipalAdmin.php";
 ?>
 <div class="main">
     <div class="main-inner">
@@ -53,26 +53,7 @@
                 <!-- /span6 -->
                 <div class="span4">
 
-                    <div class="widget">
 
-                        <!-- /widget-header -->
-                        <div class="plan green">
-                            <div class="plan-header">
-
-                                <div class="plan-title">
-                                    SALDO DISPONIBLE
-                                </div> <!-- /plan-title -->
-
-                                <div class="plan-price">
-                                    $<?php echo number_format($saldo); ?>
-                                    <span class="term"><a style="color: white;"
-                                                          href="../solicitudRetiro/solicitudRetiroVista.php">REALIZAR SOLICITUD DE RETIRO</a></span>
-                                </div> <!-- /plan-price -->
-
-                            </div> <!-- /plan-header -->
-                        </div> <!-- /plan -->
-                        <!-- /widget-content -->
-                    </div>
                     <?php
                         $nombreCampo = array("codigoReferido");
                         $valor = array($_SESSION['usuario'][0]);
@@ -88,7 +69,7 @@
                             }
                         }
                           //consulta los referidos del mes actual
-                        $result = $utilModelo2->consultarVariasTablas("*","usuario","codigoReferido='$codigoUsuario' and fechaDeIngreso between  '$fechaInicial' and '$fechaFinal'");
+                        $result = $utilModelo2->consultarVariasTablas("*","usuario"," fechaDeIngreso between  '$fechaInicial' and '$fechaFinal'");
                         $referidosMensual = "";
                         $contadorReferidosMensual =0;
                         while ($fila = mysqli_fetch_array($result)) {
@@ -100,14 +81,22 @@
                         }
 
                     ?>
-                        <a href="pagarOsdoVista.php">Pagar</a>
-    
+
+
                     <div class="widget">
                         <div class="widget-header"><i class="icon-group"></i>
                             <h3>TOTAL AFILIADOS <span class="badge badge-pill badge-success"><?php echo $contadorReferidos;?></span></h3>
                         </div>
                         <!-- /widget-header -->
-                        
+
+                        <!-- /widget-content -->
+                    </div>
+                    <div class="widget">
+                        <div class="widget-header"><i class="icon-group"></i>
+                            <h3> TOTAL VENDEDORES <span class="badge badge-pill badge-success"><?php echo $contadorReferidos;?></span></h3>
+                        </div>
+                        <!-- /widget-header -->
+
                         <!-- /widget-content -->
                     </div>
                     <!-- /widget -->
@@ -116,15 +105,7 @@
                             <h3>AFILIADOS ESTE MES <span class="badge badge-pill badge-success"><?php echo $contadorReferidosMensual;?></span></h3>
                         </div>
                         <!-- /widget-header -->
-                        <div class="widget-content">
-                            <div class="shortcuts">
 
-                                <?php
-                                echo $referidosMensual;
-                                ?>
-                            </div>
-                            <!-- /shortcuts -->
-                        </div>
                         <!-- /widget-content -->
                     </div>
 
