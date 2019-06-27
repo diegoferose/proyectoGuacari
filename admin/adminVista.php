@@ -69,16 +69,25 @@
                             }
                         }
                           //consulta los referidos del mes actual
-                        $result = $utilModelo2->consultarVariasTablas("*","usuario"," fechaDeIngreso between  '$fechaInicial' and '$fechaFinal'");
-                        $referidosMensual = "";
-                        $contadorReferidosMensual =0;
-                        while ($fila = mysqli_fetch_array($result)) {
-                            if ($fila != NULL) {
-                                $contadorReferidosMensual++;
-                                $saldo = $fila['saldo'];
-                                $referidosMensual = $referidosMensual . ' <a href="javascript:;" class="shortcut"><i class="shortcut-icon  icon-user"></i><span class="shortcut-label">' . $fila['nombre'] . ' <br> <b>CODIGO: ' . $fila['codigo'] . '</b></span> </a>';
-                            }
-                        }
+                       $result = $utilModelo2->consultarVariasTablas("count(*)","usuario"," tipo = 2");
+                        
+                        $contadorReferidos =0;
+                        $fila = mysqli_fetch_row($result);                            
+                                $contadorReferidos=$fila[0];     
+
+                                $result = $utilModelo2->consultarVariasTablas("count(*)","usuario"," tipo = 1");
+                        
+                       
+                        $fila = mysqli_fetch_row($result);                            
+                                $contadorVendedores=$fila[0];  
+
+                                $result = $utilModelo2->consultarVariasTablas("count(*)","usuario"," fechaDeIngreso between  '$fechaInicial' and '$fechaFinal'");
+                        
+                        
+                        $fila = mysqli_fetch_row($result);                            
+                                $contadorReferidosMensual=$fila[0];               
+                            
+                        
 
                     ?>
 
@@ -93,7 +102,7 @@
                     </div>
                     <div class="widget">
                         <div class="widget-header"><i class="icon-group"></i>
-                            <h3> TOTAL VENDEDORES <span class="badge badge-pill badge-success"><?php echo $contadorReferidos;?></span></h3>
+                            <h3> TOTAL VENDEDORES <span class="badge badge-pill badge-success"><?php echo $contadorVendedores;?></span></h3>
                         </div>
                         <!-- /widget-header -->
 
@@ -122,8 +131,8 @@
                           </div>
 
                           <!-- /widget-header -->
-                          <div class="widget-content">
-                            <table class="table table-striped table-bordered">
+                          <div id="scroll" class="widget-content">
+                            <table class="table table-striped table-bordered" >
                               <thead>
                                 <tr>
                                   <th> NOMBRE</th>
@@ -137,7 +146,8 @@
                               </thead>
                               <tbody>
                                   <?php
-                                  $result = $utilModelo2->consultarVariasTablas("*","usuario","codigoReferido='$codigoUsuario'");
+                                 // $result = $utilModelo2->consultarVariasTablas("*","usuario","codigoReferido='$codigoUsuario'");
+                                  $result = $utilModelo2->consultarVariasTablas("*","usuario","tipo=2");
                                   while ($fila = mysqli_fetch_array($result)) {
                                   if ($fila != NULL) {
 

@@ -3,7 +3,7 @@
     include_once "../util/utilModelo.php";
     $utilModelo2 = new utilModelo();
     $util = new util();
-    $util->validarRuta(2);
+    $util->validarRuta(0);
     $nombreCampo = array("codigo");
     $valor = array($_SESSION['usuario'][0]);
     $tabla = "usuario";
@@ -39,7 +39,7 @@
 </head>
 <body>
 <?php
-    include "../componentes/menuPrincipal.php";
+    include "../componentes/menuPrincipalAdmin.php";
 ?>
 
 <div class="main">
@@ -86,9 +86,9 @@
                                 </div> <!-- /plan-title -->
 
                                 <div class="plan-price">
-                                    $<?php echo number_format($saldo); ?>
+                                    $0
                                     <span class="term"><a style="color: white;"
-                                                          href="../solicitudRetiro/solicitudRetiroVista.php">REALIZAR SOLICITUD DE RETIRO</a></span>
+                                                          href="#">REALIZAR SOLICITUD DE RETIRO</a></span>
                                 </div> <!-- /plan-price -->
 
                             </div> <!-- /plan-header -->
@@ -101,13 +101,11 @@
                     ?>
                     <div class="widget">
                         <label>
-                            <b>META: <?php echo  $meta;?> REFERIDOS</b>
+                            <b>META: 6 REFERIDOS</b>
                         </label>
                         <div class="progress progress-striped active">
-                            <div class="bar" <?php echo 'style="width: ' . $porcentaje . '%;"'; ?>>
-                                <?php
-                                    echo $porcentaje . "%";
-                                ?>
+                            <div class="bar" <?php echo 'style="width:  100%;"'; ?>>
+                                100%
                             </div>
                         </div>
                     </div>
@@ -115,16 +113,14 @@
                     <div class="widget">
                         <div class="widget-header"><i class="icon-group"></i>
                             <h3>Referidos <span
-                                        class="badge badge-pill badge-success"><?php echo $referidos[1]; ?></span>
+                                        class="badge badge-pill badge-success">0</span>
                             </h3>
                         </div>
                         <!-- /widget-header -->
                         <div class="widget-content">
                             <div class="shortcuts">
 
-                                <?php
-                                    echo $referidos[0];
-                                ?>
+                               
                             </div>
                             <!-- /shortcuts -->
                         </div>
@@ -145,7 +141,7 @@
                             </div> <!-- /plan-title -->
 
                             <div class="plan-price">
-                                $<?php echo number_format(1000000); ?>
+                                $<?php echo number_format(0); ?>
                                 <span class="term"></span>
                             </div> <!-- /plan-price -->
 

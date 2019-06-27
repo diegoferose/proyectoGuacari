@@ -65,6 +65,7 @@ $util -> validarRuta(0);
                         if ($fila != NULL) {
 
                           $datos=$fila[2]."||".
+                                  $fila[4]."||".
                                $fila[7];
 
                             echo "
@@ -72,7 +73,7 @@ $util -> validarRuta(0);
                                 <td>$fila[0] </td>
                                 <td> $fila[4] </td>
                                 <td> $fila[3]</td>
-                                <td class=\"td-actions\"><a href=\"https://www.paypal.com/co/home\" target=\"_blank\"  class=\"btn btn-small btn-success\"><i class=\"btn-icon-only icon-ok\"> </i></a><a href=\"#myModal\"onclick=\"agregarForm('$datos');\"  data-toggle=\"modal\" class=\"btn btn-danger btn-small\"><i class=\"btn-icon-only icon-remove\"> </i></a></td>
+                                <td class=\"td-actions\"><a href=\"#aceptarSolicitud\" onclick=\"agregarForm('$datos');\" data-toggle=\"modal\"   class=\"btn btn-small btn-success\"><i class=\"btn-icon-only icon-ok\"> </i></a><a href=\"#myModal\"onclick=\"agregarForm('$datos');\"  data-toggle=\"modal\" class=\"btn btn-danger btn-small\"><i class=\"btn-icon-only icon-remove\"> </i></a></td>
 
                               </tr>";
                             }
@@ -81,7 +82,7 @@ $util -> validarRuta(0);
                   </tbody>
                 </table>
               </div>
-              <h6 class="bigstats">Recuerde que tiene 10 (diez) habiles para diligenciar las solicitudes.</h6>
+              <h6 class="bigstats">Recuerde que debe diligenciar las solicitudes.</h6>
               <!-- /widget-content -->
             </div>
           </div>
@@ -93,8 +94,8 @@ $util -> validarRuta(0);
     </div>
     <!-- /main-inner -->
   </div>
-    <!-- inicio modal -->
-    <form class="" action="controlSolicitudesControlador.php" method="post">
+    <!-- inicio modal cancelar solicitud -->
+    <form class="" action="controlSolicitudesControlador.php" method="POST">
 
 
   <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -107,12 +108,45 @@ $util -> validarRuta(0);
         <input id="codigoUsuario" name="codigoUsuario" type="hidden">
         <input id="estado" name="estado" type="hidden">
         <label for="observacionSolicitud">Razon para negar el retiro</label>
-        <textarea class="form-control z-depth-1"maxlength="500" style="min-width: 100%" id="observacionSolicitud" name="observacionSolicitud" rows="6" placeholder="Maximo 500 caracteres"></textarea>
+        <textarea class="form-control z-depth-1"maxlength="500" required style="min-width: 100%" id="observacionSolicitud" name="observacionSolicitud" rows="6" placeholder="Maximo 500 caracteres"></textarea>
       </div>
     </div>
     <div class="modal-footer">
       <button class="btn" data-dismiss="modal" aria-hidden="true">Cerrar</button>
       <button type="submit" class="btn btn-primary" name="negarSolicitud">Guardar</button>
+    </div>
+  </div>
+  </form>
+
+  <!-- Fin modal cancelar solicitud-->
+      <!-- inicio modal aceptar solicitud-->
+    <form class="" action="controlSolicitudesControlador.php" method="POST">
+
+
+  <div id="aceptarSolicitud" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+      <h3 id="myModalLabel">Aceptar solicitud</h3>
+    </div>
+    <div class="modal-body">
+      <div class="form-group shadow-textarea col-xs-12">
+        <input id="codigoUsuarioA" name="codigoUsuario" type="hidden">
+        <input id="estadoA" name="estado" type="hidden">
+        <input id="valorSolicitud" name="valorSolicitud" type="hidden">
+         <h3>Antes de aceptar la solicitud debe de ralizar la transaccion. De click sobre la imagen para selecionar medio de pago.</h3>
+        <a href="https://www.paypal.com/co/home" target="blank"><img width="45%" src="../img/paypal.png"></a>
+        <a href="https://www.paypal.com/co/home" target="blank"><img width="50%" src="../img/daviplata.png"></a><br>
+           <div class="control-group"> 
+               <label class="checkbox inline">
+                  <input type="checkbox" required> Ya realice la transaccion.                                            </label>
+                                          </div>    <!-- /controls -->    
+                  
+
+        </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn" data-dismiss="modal" aria-hidden="true">Cerrar</button>
+      <button type="submit" class="btn btn-primary" name="aceptarSolicitud">Aceptar Solicitud</button>
     </div>
   </div>
   </form>
@@ -138,6 +172,9 @@ $util -> validarRuta(0);
 
      $("#codigoUsuario").val(d[0]);
      $("#estado").val(1);
+      $("#codigoUsuarioA").val(d[0]);
+     $("#estadoA").val(1);
+     $("#valorSolicitud").val(d[1])
 
   }
   </script>
