@@ -32,7 +32,11 @@
     $referidos = $util->mostrarCantidadReferidos($_SESSION['usuario'][0]);
     $rangoUsuario = $util->validarRangoUsuario($referidos[1]);
     $meta = $rangoUsuario[0];
-    $porcentaje = ((int)$referidos[1] / $meta) * 100;
+    $porcentaje = ($meta==0)? 0:((int)$referidos[1] / $meta) * 100;
+    $meta = ($meta==0)?3:$meta;
+    $rangoUsuario[1] = ($rangoUsuario[1]=="" || $rangoUsuario[1]==null)?"No tienes un rango aun.":$rangoUsuario[1];
+
+//    echo $meta;
     $fechaVencimiento = new DateTime($valoresSuscripcionActiva[0]);
     $intervalo = new DateInterval('P1M');
     $fechaVencimiento->add($intervalo);
