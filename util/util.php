@@ -191,7 +191,29 @@
                 if ($valores[1] == "activo") {
                     if ($nivel == 1) {
                         $utilModelo->aumentarSaldo($codigoCabeza, $valorComision);
+                        $nivel++;
+                        $this->registrarComision($codigoCabeza, $valorPago, $nivel);
                     } else {
+                        $cantidadReferidos = $this->mostrarCantidadReferidos($codigoCabeza);
+                        if ($cantidadReferidos < 3) {
+                            $nivel++;
+                            $this->registrarComision($codigoCabeza, $valorPago, $nivel);
+                        }else{
+                            $utilModelo->aumentarSaldo($codigoCabeza, $valorComision);
+                            //$campos es el nombre de los campos tal cual aparece en la base de datos
+                            $campos = array("fecha", "codigoHijo", "codigoCabeza","nivel","valor");
+                            $fecha = $this->hoy();
+                            //$valores son los valores a almacenar
+                            $valores = array("$fecha", "$codigo", "$codigoCabeza","$nivel","$valorComision");
+                            //la funcion insertar recive el nombre de la tabla y los dos arrays de campos y valores
+                            $nombreDeTabla = "registroComision";
+                            $utilModelo->insertar($nombreDeTabla, $campos, $valores);
+
+
+                            $nivel++;
+                            $this->registrarComision($codigoCabeza, $valorPago, $nivel);
+                        }
+
 
                     }
                 }
