@@ -59,7 +59,7 @@
                 <li><a href="../controlSolicitudes/controlSolicitudesVista.php"><i class="icon-book"></i><span></span>Solicitudes</a></li>
                 <li><a href="../rangos/rangosVista.php"><i class="icon-book"></i><span></span>Rango </a></li>
                 <li><a href="../publicidad/publicidadVistaPreliminar.php"><i class="icon-book"></i><span></span>Publicidad </a></li>
-                <li><a href="../informe/movimientosVista.php"><i class="icon-book"></i><span></span>Informe </a></li>
+                <li><a href="../crudTrabajador/crudTrabajadorVista.php"><i class="icon-book"></i><span></span>Trabajador</a></li>
 
             </ul>
         </div>

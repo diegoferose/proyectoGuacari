@@ -34,7 +34,7 @@ $util -> validarRuta(0);
       <div class="container">
         <div class="row">
 
-          <div class="span3">osdo</div>
+          <div class="span3"></div>
 
          <!-- /INICIO TABLA Rangos-->
 

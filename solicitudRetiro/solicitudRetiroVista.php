@@ -2,11 +2,11 @@
 include "../util/util.php";
 include '../conexion.php';
 $util = new util();
-<<<<<<< HEAD
+
 //$util -> validarRuta(2);
-=======
+
 $util -> validarRuta(1);
->>>>>>> 8fe22110a66fdf4b7c66c8d951fc12842090576c
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
