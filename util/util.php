@@ -61,27 +61,33 @@
                     $fecha = date("d-m-Y", strtotime($fila['fechaMovimiento']));
                 }
             }
-            $fechaVencimiento = new DateTime($fecha);
-            $intervalo = new DateInterval('P1M');
-            $fechaVencimiento->add($intervalo);
-            date_add($fechaVencimiento, date_interval_create_from_date_string('1 days'));
+            if (isset($fecha)) {
+                $fechaVencimiento = new DateTime($fecha);
+                $intervalo = new DateInterval('P1M');
+                $fechaVencimiento->add($intervalo);
+                date_add($fechaVencimiento, date_interval_create_from_date_string('1 days'));
 
-            $fechaActual = new DateTime("now");
+                $fechaActual = new DateTime("now");
 //            echo $fechaVencimiento->format('Y-m-d') . "\n";
 //            echo $fechaActual->format('Y-m-d') . "\n";
 //            var_dump($fechaActual == $fechaVencimiento);
 //            var_dump($fechaActual <= $fechaVencimiento);
 //            die();
-            if ($fechaActual <= $fechaVencimiento || $fechaActual == $fechaVencimiento) {
-                $estado = "activo";
+                if ($fechaActual <= $fechaVencimiento || $fechaActual == $fechaVencimiento) {
+                    $estado = "activo";
 //                echo $estado;
 
-            } else {
-                $estado = "vencido";
+                } else {
+                    $estado = "vencido";
 
-            }
-            $valores = array($fecha, $estado);
+                }
+                $valores = array($fecha, $estado);
 //            die();
+
+            } else {
+                $valores = array("", "vencido");
+            }
+
             return $valores;
 
 
@@ -148,29 +154,49 @@
             for ($i = 0; $i < $longitud; $i++) $key .= $pattern{mt_rand(0, $max)};
             return $key;
         }
+
         //Devuelve fecha actual
         function hoy()
         {
 
             return date("Y") . "-" . date("m") . "-" . date("d");
         }
+
         //devuelve ultimo dia del mes
-        function ultimoDia() {
-          $month = date('m');
-          $year = date('Y');
-          $day = date("d", mktime(0,0,0, $month+1, 0, $year));
-
-          return date('Y-m-d', mktime(0,0,0, $month, $day, $year));
-        }
-          //devuelve primer dia del mes
-          function primerDia() {
-              $month = date('m');
-              $year = date('Y');
-              return date('Y-m-d', mktime(0,0,0, $month, 1, $year));
-          }
-
-        function registrarComision($codigo, $valorPago, $nivel)
+        function ultimoDia()
         {
+            $month = date('m');
+            $year = date('Y');
+            $day = date("d", mktime(0, 0, 0, $month + 1, 0, $year));
+
+            return date('Y-m-d', mktime(0, 0, 0, $month, $day, $year));
+        }
+
+        //devuelve primer dia del mes
+        function primerDia()
+        {
+            $month = date('m');
+            $year = date('Y');
+            return date('Y-m-d', mktime(0, 0, 0, $month, 1, $year));
+        }
+
+        function registrarComision($codigo, $codigoCabeza, $nivel, $valorComision,$usuarioIniciador)
+        {
+            $utilModelo = new utilModelo();
+            //$campos es el nombre de los campos tal cual aparece en la base de datos
+            $campos = array("fecha","usuarioIniciador", "codigoHijo", "codigoCabeza", "nivel", "valor");
+            $fecha = $this->hoy();
+            //$valores son los valores a almacenar
+            $valores = array("$fecha","$usuarioIniciador", "$codigo", "$codigoCabeza", "$nivel", "$valorComision");
+            //la funcion insertar recive el nombre de la tabla y los dos arrays de campos y valores
+            $nombreDeTabla = "registroComision";
+            $utilModelo->insertar($nombreDeTabla, $campos, $valores);
+
+        }
+
+        function pagarComision($codigo, $valorPago, $nivel,$usuarioIniciador)
+        {
+
             $utilModelo = new utilModelo();
             $nombreCampo = array("codigo");
             $valor = array("$codigo");
@@ -180,6 +206,8 @@
             $codigoCabeza = $fila['codigoReferido'];
 
             if ($nivel <= 4 && $codigoCabeza != "") {
+//                echo "aqui entro";
+//                die();
                 $nombreCampo = array("nivel");
                 $valor = array("$nivel");
                 $tabla = "niveles";
@@ -189,29 +217,27 @@
                 $valorComision = $valorPago * $porcentaje;
                 $valores = $this->validarUsuarioActivo($codigoCabeza);
                 if ($valores[1] == "activo") {
+//                    echo "aqui volvio  a entro";
+//                    die();
                     if ($nivel == 1) {
+//                        echo "por aqui paso";
+//                        die();
                         $utilModelo->aumentarSaldo($codigoCabeza, $valorComision);
+                        $this->registrarComision($codigo, $codigoCabeza, $nivel, $valorComision,$usuarioIniciador);
                         $nivel++;
-                        $this->registrarComision($codigoCabeza, $valorPago, $nivel);
+                        $this->pagarComision($codigoCabeza, $valorPago, $nivel,$usuarioIniciador);
                     } else {
                         $cantidadReferidos = $this->mostrarCantidadReferidos($codigoCabeza);
                         if ($cantidadReferidos < 3) {
                             $nivel++;
-                            $this->registrarComision($codigoCabeza, $valorPago, $nivel);
-                        }else{
+                            $this->pagarComision($codigoCabeza, $valorPago, $nivel,$usuarioIniciador);
+                        } else {
                             $utilModelo->aumentarSaldo($codigoCabeza, $valorComision);
-                            //$campos es el nombre de los campos tal cual aparece en la base de datos
-                            $campos = array("fecha", "codigoHijo", "codigoCabeza","nivel","valor");
-                            $fecha = $this->hoy();
-                            //$valores son los valores a almacenar
-                            $valores = array("$fecha", "$codigo", "$codigoCabeza","$nivel","$valorComision");
-                            //la funcion insertar recive el nombre de la tabla y los dos arrays de campos y valores
-                            $nombreDeTabla = "registroComision";
-                            $utilModelo->insertar($nombreDeTabla, $campos, $valores);
 
+                            $this->registrarComision($codigo, $codigoCabeza, $nivel, $valorComision,$usuarioIniciador);
 
                             $nivel++;
-                            $this->registrarComision($codigoCabeza, $valorPago, $nivel);
+                            $this->pagarComision($codigoCabeza, $valorPago, $nivel,$usuarioIniciador);
                         }
 
 
