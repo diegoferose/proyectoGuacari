@@ -67,8 +67,8 @@ $util -> validarRuta(0);
                                     $key = $util->generarCodigo();
                                 
                   $utilModelo = new utilModelo();
-                  $tabla = "rangoUsuario";
-                  $result = $utilModelo->mostrarTodosRegistros($tabla);
+                  $tabla = "usuario";
+                  $result = $utilModelo->consultarVariasTablas("*",$tabla,"tipo=1");
                   while ($fila = mysqli_fetch_array($result)) {
                       if ($fila != NULL) {
 
@@ -173,7 +173,7 @@ $util -> validarRuta(0);
     </div>
     <div class="modal-footer">
       <button class="btn" data-dismiss="modal" aria-hidden="true">Cerrar</button>
-      <button type="submit" name="guardarRango" id="guardarRango"class="btn btn-primary">Guardar</button>
+      <button type="submit" name="guardarTrabajador" id="guardarTrabajador"class="btn btn-primary">Guardar</button>
     </div>
 
     </form>
@@ -194,6 +194,7 @@ $util -> validarRuta(0);
 
                                 
                                 <div class="form-group">
+                                  <input id="codigoUsuario" name="codigo" type="hidden">
                                     <input style="min-width: 400px;" type="text" name="nombre" id="nombre" tabindex="1" class="form-control"
                                            placeholder="Nombre Completo" value="" required>
                                 </div>
