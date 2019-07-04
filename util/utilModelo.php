@@ -75,6 +75,14 @@ class utilModelo
     return $query;
 
   }
+  function consutarComisionesMes($codigoHijo,$codigoCabeza,$fechaUltimoPago){
+    global $link;
+    $consulta="SELECT COUNT(codigoHijo) FROM `registroComision` WHERE codigoHijo = '$codigoHijo' AND codigoCabeza = '$codigoCabeza' AND (fecha>= '$fechaUltimoPago')";
+    $query = mysqli_query($link, $consulta);
+    //echo "$consulta";
+    return $query;
+
+  }
 
 }
 
