@@ -52,10 +52,10 @@ $util -> validarRuta(0);
                 <table class="table table-striped table-bordered">
                   <thead>
                     <tr>
-                      <th> RANGO </th>
-                      <th> CANT VENTA PERSONAL</th>
-                      <th> IP MAXIMO</th>
-                      <th> IG MAXIMO </th>
+                      <th> CODIGO </th>
+                      <th> NOMBRE</th>
+                      <th> FECHA INGRESO</th>
+                      <th> AFILIADOS </th>
                       <th class="td-actions">EDITAR/ELIMINAR</th>
                     </tr>
                   </thead>
@@ -63,9 +63,9 @@ $util -> validarRuta(0);
 
                   <?php
 
-                     
+
                                     $key = $util->generarCodigo();
-                                
+
                   $utilModelo = new utilModelo();
                   $tabla = "usuario";
                   $result = $utilModelo->consultarVariasTablas("*",$tabla,"tipo=1");
@@ -73,18 +73,20 @@ $util -> validarRuta(0);
                       if ($fila != NULL) {
 
                         $datos=$fila[0]."||".
-  			        					   $fila[1]."||".
   			        					   $fila[2]."||".
   			        					   $fila[3]."||".
-  			        					   $fila[4];
+                             $fila[5]."||".
+                             $fila[6]."||".
+                             $fila[10]."||".
+  			        					   $fila[7];
 
                           echo "
                             <tr>
                               <td>$fila[1] </td>
                               <td> $fila[2] </td>
-                              <td> $fila[3]</td>
-                               <td><a href=\"#\">$fila[4]</a></td>
-                              <td class=\"td-actions\"><a  data-toggle=\"modal\" href=\"#modalEditar\" onclick=\"agregarForm('$datos');\" class=\"btn btn-small btn-info\"><i class=\"btn-icon-only icon-pencil\"></i></a><a href=\"\"  data-toggle=\"modal\" class=\"btn btn-danger btn-small\"><i class=\"btn-icon-only icon-remove\"> </i></a></td>
+                              <td> $fila[5]</td>
+                               <td>$fila[4]</td>
+                              <td class=\"td-actions\"><a  data-toggle=\"modal\" href=\"#modalEditar\" onclick=\"agregarForm('$datos');\" class=\"btn btn-small btn-info\"><i class=\"btn-icon-only icon-pencil\"></i></a><a href=\"#modalEliminar\"  onclick=\"agregarForm('$datos');\" data-toggle=\"modal\" class=\"btn btn-danger btn-small\"><i class=\"btn-icon-only icon-remove\"> </i></a></td>
                             </tr>";
                           }
                         }
@@ -93,7 +95,7 @@ $util -> validarRuta(0);
                 </table>
               </div>
               <h6 class="bigstats"></h6>
-              
+
 
               <!-- /widget-content -->
             </div>
@@ -119,87 +121,18 @@ $util -> validarRuta(0);
     <div class="modal-body">
 
       <form style="min-width: 500px;" action="crudTrabajadorControlador.php" method="post" >
-       
+
 
                                 <div class="form-group">
                                     <input style="min-width: 400px;" type="text" name="codigo" id="codigo" tabindex="1" class="form-control"
-                                           value=<?php echo $key; ?> readonly>
+                                           value=<?php echo $key; ?> readonly required>
                                 </div>
                                 <div class="form-group">
-                                    <input style="min-width: 400px;" type="text" name="nombre" id="nombre" tabindex="1" class="form-control"
-                                           placeholder="Nombre Completo" value="">
-                                </div>
-                                <div class="form-group">
-                                    <input style="min-width: 400px;" type="text" name="documento" id="documento" tabindex="1" class="form-control"
-                                           placeholder="Numero de Cedula" value="">
-                                </div>
-                                <div class="form-group">
-                                   Fecha Nacimiento:  <input style="min-width: 285px;" type="date" name="edad" id="edad" tabindex="1"
-                                                                class="form-control" placeholder="Fecha de nacimiento"
-                                                                value="">
-                                </div>
-                                <div class="form-group">
-                                    <input style="min-width: 400px;" type="text" name="direccion" id="direccion" tabindex="1" class="form-control"
-                                           placeholder="Direccion" value="">
-                                </div>
-                                <div class="form-group">
-                                    <input style="min-width: 400px;" type="text" name="telefono" id="telefono" tabindex="1" class="form-control"
-                                           placeholder="Telefono" value="">
-                                </div>                                
-                                <div class="form-group">
-                                    <input style="min-width: 400px;" type="email" name="email" id="email" tabindex="1" class="form-control"
-                                           placeholder="Correo electronico" value="">
-                                </div>
-
-                                <div class="form-group">
-                                    <input style="min-width: 400px;" type="text" name="username" id="username" tabindex="1" class="form-control"
-                                           placeholder="Usuario" value="">
-                                </div>
-
-                                <div class="form-group" id="pass">
-                                    <input style="min-width: 400px;" type="password" name="password" onkeyup="validarPassword();" id="password" 
-                                           class="form-control" placeholder="Contraseña">
-                                </div>
-                                <div class="form-group" id="pass1">
-                                    <input style="min-width: 400px;" type="password" onkeyup="validarPassword();" name="rPassword" id="rPassword"
-                                           tabindex="2" class="form-control" placeholder="Confirmar contraseña">
-                                </div>
-                                <div class="form-group hidden" id="errorPass" style="color: #ff0000; font-size: 23px;">
-                                    <br>
-                                    <img src="../img/Error-128.png" width="20" height="20"><strong> Las contraseñas no
-                                        coinciden</strong>
-                                </div>
-                                
-    </div>
-    <div class="modal-footer">
-      <button class="btn" data-dismiss="modal" aria-hidden="true">Cerrar</button>
-      <button type="submit" name="guardarTrabajador" id="guardarTrabajador"class="btn btn-primary">Guardar</button>
-    </div>
-
-    </form>
-  </div>
-
-  <!-- Fin modal -->
-
-  <!-- inicio modal guardar -->
-<div id="modalEditar" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h3 id="myModalLabel">Editar Registros</h3>
-  </div>
-  <div class="modal-body">
-
-      <form style="min-width: 500px;" action="crudTrabajadorControlador.php" method="post" >
-       
-
-                                
-                                <div class="form-group">
-                                  <input id="codigoUsuario" name="codigo" type="hidden">
                                     <input style="min-width: 400px;" type="text" name="nombre" id="nombre" tabindex="1" class="form-control"
                                            placeholder="Nombre Completo" value="" required>
                                 </div>
                                 <div class="form-group">
-                                    <input style="min-width: 400px;" type="number" name="documento" id="documento" tabindex="1" class="form-control"
+                                    <input style="min-width: 400px;" type="text" name="documento" id="documento" tabindex="1" class="form-control"
                                            placeholder="Numero de Cedula" value="" required>
                                 </div>
                                 <div class="form-group">
@@ -212,27 +145,119 @@ $util -> validarRuta(0);
                                            placeholder="Direccion" value="" required>
                                 </div>
                                 <div class="form-group">
-                                    <input style="min-width: 400px;" type="tel" pattern="[0-9]{} "name="telefono" id="telefono" tabindex="1" class="form-control"
+                                    <input style="min-width: 400px;" type="text" name="telefono" id="telefono" tabindex="1" class="form-control"
                                            placeholder="Telefono" value="" required>
-                                </div>                                
+                                </div>
                                 <div class="form-group">
                                     <input style="min-width: 400px;" type="email" name="email" id="email" tabindex="1" class="form-control"
+                                           placeholder="Correo electronico" value="" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <input style="min-width: 400px;" type="text" name="username" id="username" tabindex="1" class="form-control"
+                                           placeholder="Usuario" value="" required>
+                                </div>
+
+                                <div class="form-group" id="pass">
+                                    <input style="min-width: 400px;" type="password" name="password" onkeyup="validarPassword();" id="password"
+                                           class="form-control" placeholder="Contraseña" required>
+                                </div>
+                                <div class="form-group" id="pass1">
+                                    <input style="min-width: 400px;" type="password" onkeyup="validarPassword();" name="rPassword" id="rPassword"
+                                           tabindex="2" class="form-control" placeholder="Confirmar contraseña" required>
+                                </div>
+                                <div class="form-group hidden" id="errorPass" style="color: #ff0000; font-size: 23px;">
+                                    <br>
+                                    <img src="../img/Error-128.png" width="20" height="20"><strong> Las contraseñas no
+                                        coinciden</strong>
+                                </div>
+
+    </div>
+    <div class="modal-footer">
+      <button class="btn" data-dismiss="modal" aria-hidden="true">Cerrar</button>
+      <button type="submit" name="guardarTrabajador" id="guardarTrabajador"class="btn btn-primary">Guardar</button>
+    </div>
+
+    </form>
+  </div>
+
+  <!-- Fin modal -->
+
+  <!-- inicio modal editar -->
+<div id="modalEditar" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">Editar Registros</h3>
+  </div>
+  <div class="modal-body">
+
+      <form style="min-width: 500px;" action="crudTrabajadorControlador.php" method="post" >
+
+
+
+                                <div class="form-group">
+                                  <input id="codigoE" name="codigo" type="hidden">
+                                    <input style="min-width: 400px;" type="text" name="nombre" id="nombreE" tabindex="1" class="form-control"
+                                           placeholder="Nombre Completo" value="" required>
+                                </div>
+                                <div class="form-group">
+                                    <input style="min-width: 400px;" type="text" name="documento" id="documentoE" tabindex="1" class="form-control"
+                                           placeholder="Numero de Cedula" value="" required>
+                                </div>
+                                <div class="form-group">
+                                   Fecha Nacimiento:  <input style="min-width: 285px;" type="date" name="edad" id="edadE" tabindex="1"
+                                                                class="form-control" placeholder="Fecha de nacimiento"
+                                                                value="" required>
+                                </div>
+                                <div class="form-group">
+                                    <input style="min-width: 400px;" type="text" name="direccion" id="direccionE" tabindex="1" class="form-control"
+                                           placeholder="Direccion" value="" required>
+                                </div>
+                                <div class="form-group">
+                                    <input style="min-width: 400px;" type="tel" pattern="[0-9]{} "name="telefono" id="telefonoE" tabindex="1" class="form-control"
+                                           placeholder="Telefono" value="" required>
+                                </div>
+                                <div class="form-group">
+                                    <input style="min-width: 400px;" type="email" name="email" id="emailE" tabindex="1" class="form-control"
                                            placeholder="Correo electronico" required value="">
                                 </div>
 
-                               
 
-                                
+
+
     </div>
   <div class="modal-footer">
     <button class="btn" data-dismiss="modal" aria-hidden="true">Cerrar</button>
-    <button type="submit" name="guardarRangoE" id="guardarRangoE"class="btn btn-primary">Modificar</button>
+    <button type="submit" name="modificarTrabajador" id="modificarTrabajador"class="btn btn-primary">Modificar</button>
   </div>
 
   </form>
 </div>
 
 <!-- Fin modal -->
+
+ <!-- inicio modal eliminar -->
+<div id="modalEliminar" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">Eliminar Registro</h3>
+  </div>
+  <div class="modal-body">
+
+      <form action="crudTrabajadorControlador.php" method="post" >
+
+                                  <input id="codigoEliminar" name="codigo" type="hidden">
+                                  <h3>Seguro desea desactivar el trabajador</h3>
+    </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Cerrar</button>
+    <button type="submit" name="eliminar" id="eliminar"class="btn btn-primary">desactivar</button>
+  </div>
+
+  </form>
+</div>
+<!-- Fin modal -->
+
 
 
   <?php
@@ -252,18 +277,21 @@ $util -> validarRuta(0);
   function agregarForm(datos){
     d=datos.split("||");
 
-     $("#idRangoUsuario").val(d[0]);
-     $("#nombreRangoE").val(d[1]);
-     $("#ventaPersonalE").val(d[2]);
-     $("#ipMaximoE").val(d[3]);
-    $("#igMaximoE").val(d[4]);
+     $("#codigoE").val(d[0]);
+     $("#codigoEliminar").val(d[0]);
+     $("#nombreE").val(d[1]);
+     $("#documentoE").val(d[2]);
+     $("#edadE").val(d[3]);
+    $("#telefonoE").val(d[4]);
+     $("#direccionE").val(d[6]);
+     $("#emailE").val(d[5]);
   }
 
    function validarPassword() {
-     
+
         var password = document.getElementById("password").value;
         var rPassword = document.getElementById("rPassword").value;
-       
+
         if (password !== "" && password !== null && rPassword !== "" && rPassword !== null) {
             if (password === rPassword) {
               alert("p"+password+"2"+rPassword);
