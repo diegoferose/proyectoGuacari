@@ -166,7 +166,7 @@ $util -> validarRuta(0);
   <script language="javascript" type="text/javascript" src="../js/full-calendar/fullcalendar.min.js"></script>
 
   <script src="js/base.js"></script>
-  <script type="text/javascript ">
+  <script type="text/javascript">
   function agregarForm(datos){
     d=datos.split("||");
 
