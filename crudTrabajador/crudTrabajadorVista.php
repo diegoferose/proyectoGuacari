@@ -63,9 +63,9 @@ $util -> validarRuta(0);
 
                   <?php
 
-                     
+
                                     $key = $util->generarCodigo();
-                                
+
                   $utilModelo = new utilModelo();
                   $tabla = "usuario";
                   $result = $utilModelo->consultarVariasTablas("*",$tabla,"tipo=1");
@@ -77,7 +77,7 @@ $util -> validarRuta(0);
   			        					   $fila[3]."||".
                              $fila[5]."||".
                              $fila[6]."||".
-                             $fila[10]."||".   			        					  
+                             $fila[10]."||".
   			        					   $fila[7];
 
                           echo "
@@ -86,7 +86,7 @@ $util -> validarRuta(0);
                               <td> $fila[2] </td>
                               <td> $fila[5]</td>
                                <td>$fila[4]</td>
-                              <td class=\"td-actions\"><a  data-toggle=\"modal\" href=\"#modalEditar\" onclick=\"agregarForm('$datos');\" class=\"btn btn-small btn-info\"><i class=\"btn-icon-only icon-pencil\"></i></a><a href=\"#modalEliminar\"  data-toggle=\"modal\" class=\"btn btn-danger btn-small\"><i class=\"btn-icon-only icon-remove\"> </i></a></td>
+                              <td class=\"td-actions\"><a  data-toggle=\"modal\" href=\"#modalEditar\" onclick=\"agregarForm('$datos');\" class=\"btn btn-small btn-info\"><i class=\"btn-icon-only icon-pencil\"></i></a><a href=\"#modalEliminar\"  onclick=\"agregarForm('$datos');\" data-toggle=\"modal\" class=\"btn btn-danger btn-small\"><i class=\"btn-icon-only icon-remove\"> </i></a></td>
                             </tr>";
                           }
                         }
@@ -95,7 +95,7 @@ $util -> validarRuta(0);
                 </table>
               </div>
               <h6 class="bigstats"></h6>
-              
+
 
               <!-- /widget-content -->
             </div>
@@ -121,57 +121,57 @@ $util -> validarRuta(0);
     <div class="modal-body">
 
       <form style="min-width: 500px;" action="crudTrabajadorControlador.php" method="post" >
-       
+
 
                                 <div class="form-group">
                                     <input style="min-width: 400px;" type="text" name="codigo" id="codigo" tabindex="1" class="form-control"
-                                           value=<?php echo $key; ?> readonly>
+                                           value=<?php echo $key; ?> readonly required>
                                 </div>
                                 <div class="form-group">
                                     <input style="min-width: 400px;" type="text" name="nombre" id="nombre" tabindex="1" class="form-control"
-                                           placeholder="Nombre Completo" value="">
+                                           placeholder="Nombre Completo" value="" required>
                                 </div>
                                 <div class="form-group">
                                     <input style="min-width: 400px;" type="text" name="documento" id="documento" tabindex="1" class="form-control"
-                                           placeholder="Numero de Cedula" value="">
+                                           placeholder="Numero de Cedula" value="" required>
                                 </div>
                                 <div class="form-group">
                                    Fecha Nacimiento:  <input style="min-width: 285px;" type="date" name="edad" id="edad" tabindex="1"
                                                                 class="form-control" placeholder="Fecha de nacimiento"
-                                                                value="">
+                                                                value="" required>
                                 </div>
                                 <div class="form-group">
                                     <input style="min-width: 400px;" type="text" name="direccion" id="direccion" tabindex="1" class="form-control"
-                                           placeholder="Direccion" value="">
+                                           placeholder="Direccion" value="" required>
                                 </div>
                                 <div class="form-group">
                                     <input style="min-width: 400px;" type="text" name="telefono" id="telefono" tabindex="1" class="form-control"
-                                           placeholder="Telefono" value="">
-                                </div>                                
+                                           placeholder="Telefono" value="" required>
+                                </div>
                                 <div class="form-group">
                                     <input style="min-width: 400px;" type="email" name="email" id="email" tabindex="1" class="form-control"
-                                           placeholder="Correo electronico" value="">
+                                           placeholder="Correo electronico" value="" required>
                                 </div>
 
                                 <div class="form-group">
                                     <input style="min-width: 400px;" type="text" name="username" id="username" tabindex="1" class="form-control"
-                                           placeholder="Usuario" value="">
+                                           placeholder="Usuario" value="" required>
                                 </div>
 
                                 <div class="form-group" id="pass">
-                                    <input style="min-width: 400px;" type="password" name="password" onkeyup="validarPassword();" id="password" 
-                                           class="form-control" placeholder="Contraseña">
+                                    <input style="min-width: 400px;" type="password" name="password" onkeyup="validarPassword();" id="password"
+                                           class="form-control" placeholder="Contraseña" required>
                                 </div>
                                 <div class="form-group" id="pass1">
                                     <input style="min-width: 400px;" type="password" onkeyup="validarPassword();" name="rPassword" id="rPassword"
-                                           tabindex="2" class="form-control" placeholder="Confirmar contraseña">
+                                           tabindex="2" class="form-control" placeholder="Confirmar contraseña" required>
                                 </div>
                                 <div class="form-group hidden" id="errorPass" style="color: #ff0000; font-size: 23px;">
                                     <br>
                                     <img src="../img/Error-128.png" width="20" height="20"><strong> Las contraseñas no
                                         coinciden</strong>
                                 </div>
-                                
+
     </div>
     <div class="modal-footer">
       <button class="btn" data-dismiss="modal" aria-hidden="true">Cerrar</button>
@@ -192,11 +192,11 @@ $util -> validarRuta(0);
   <div class="modal-body">
 
       <form style="min-width: 500px;" action="crudTrabajadorControlador.php" method="post" >
-       
 
-                                
+
+
                                 <div class="form-group">
-                                  <input id="codigo" name="codigo" type="hidden">
+                                  <input id="codigoE" name="codigo" type="hidden">
                                     <input style="min-width: 400px;" type="text" name="nombre" id="nombreE" tabindex="1" class="form-control"
                                            placeholder="Nombre Completo" value="" required>
                                 </div>
@@ -216,19 +216,19 @@ $util -> validarRuta(0);
                                 <div class="form-group">
                                     <input style="min-width: 400px;" type="tel" pattern="[0-9]{} "name="telefono" id="telefonoE" tabindex="1" class="form-control"
                                            placeholder="Telefono" value="" required>
-                                </div>                                
+                                </div>
                                 <div class="form-group">
                                     <input style="min-width: 400px;" type="email" name="email" id="emailE" tabindex="1" class="form-control"
                                            placeholder="Correo electronico" required value="">
                                 </div>
 
-                               
 
-                                
+
+
     </div>
   <div class="modal-footer">
     <button class="btn" data-dismiss="modal" aria-hidden="true">Cerrar</button>
-    <button type="submit" name="guardarRangoE" id="guardarRangoE"class="btn btn-primary">Modificar</button>
+    <button type="submit" name="modificarTrabajador" id="modificarTrabajador"class="btn btn-primary">Modificar</button>
   </div>
 
   </form>
@@ -244,10 +244,10 @@ $util -> validarRuta(0);
   </div>
   <div class="modal-body">
 
-      <form action="crudTrabajadorControlador.php" method="post" >       
-                               
+      <form action="crudTrabajadorControlador.php" method="post" >
+
                                   <input id="codigoEliminar" name="codigo" type="hidden">
-                                  <h3>Seguro desea desactivar el trabajador</h3>                   
+                                  <h3>Seguro desea desactivar el trabajador</h3>
     </div>
   <div class="modal-footer">
     <button class="btn" data-dismiss="modal" aria-hidden="true">Cerrar</button>
@@ -277,7 +277,8 @@ $util -> validarRuta(0);
   function agregarForm(datos){
     d=datos.split("||");
 
-     $("#codigoUsuario").val(d[0]);
+     $("#codigoE").val(d[0]);
+     $("#codigoEliminar").val(d[0]);
      $("#nombreE").val(d[1]);
      $("#documentoE").val(d[2]);
      $("#edadE").val(d[3]);
@@ -287,10 +288,10 @@ $util -> validarRuta(0);
   }
 
    function validarPassword() {
-     
+
         var password = document.getElementById("password").value;
         var rPassword = document.getElementById("rPassword").value;
-       
+
         if (password !== "" && password !== null && rPassword !== "" && rPassword !== null) {
             if (password === rPassword) {
               alert("p"+password+"2"+rPassword);

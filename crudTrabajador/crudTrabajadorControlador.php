@@ -7,11 +7,12 @@ $util = new util();
 $utilModelo = new utilModelo();
 $codigo = filter_input(INPUT_POST, 'codigo');
 $nombre = filter_input(INPUT_POST, 'nombre');
-$cedula = filter_input(INPUT_POST, 'cedula');
+$cedula = filter_input(INPUT_POST, 'documento');
 $fechaNacimiento = filter_input(INPUT_POST, 'edad');
 $fechaIngreso = $util->hoy();
 $direccion = filter_input(INPUT_POST, 'direccion');
-$celular = "n/a";
+$celular = filter_input(INPUT_POST, 'telefono');
+$codigoReferido="N/A";
 $usuario = filter_input(INPUT_POST, 'username');
 $correo = filter_input(INPUT_POST, 'email');
 $password = filter_input(INPUT_POST, 'password');
@@ -30,8 +31,8 @@ $nombreDeTabla = "usuario";
 $utilModelo -> insertar($nombreDeTabla,$campos, $valores) ;
 echo "si funciono";
 //modificar
-}else{
-	echo "no funciono";
+}else if(isset($_POST['modificarTrabajador'])){
+	echo "modificar";
 
 	//$campos es el nombre de los campos tal cual aparece en la base de datos
 $campos = array("nombre", "cedula", "fechaNacimiento","direccion", "telefono","correo");
@@ -39,12 +40,16 @@ $campos = array("nombre", "cedula", "fechaNacimiento","direccion", "telefono","c
 $valores = array("$nombre","$cedula","$fechaNacimiento","$direccion","$celular","$correo");
 //la funcion insertar recive el nombre de la tabla y los dos arrays de campos y valores
 $nombreDeTabla = "usuario";
-$utilModelo -> modificar($nombreDeTabla,$campos,$valores,'codigo',$codigo) ;
+$utilModelo -> modificar($nombreDeTabla,$campos,$valores,'id',$codigo) ;
+}else{
+			echo "eliminar".$codigo;
+
+		$utilModelo -> modificar('usuario','activo','1','id',$codigo) ;
+
 }
 
 
 
-$_SESSION['mensajeOk']="ok";
-//header('Location: ../index.php');
-//exit();
+$_SESSION['mensajeOk']="Accion realizada";header('Location: ../index.php');
+exit();
 ?>
