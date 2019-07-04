@@ -221,7 +221,7 @@
 //                    die();
                     if ($nivel == 1) {
 //                        echo "por aqui paso";
-//                        die();
+//                        die(); SELECT COUNT(codigoHijo) FROM `registroComision` WHERE codigoHijo = 'ksjmrf' AND codigoCabeza = 'sd33d2' AND (YEAR(fecha) = YEAR(NOW()))
                         $utilModelo->aumentarSaldo($codigoCabeza, $valorComision);
                         $this->registrarComision($codigo, $codigoCabeza, $nivel, $valorComision,$usuarioIniciador);
                         $nivel++;
@@ -232,6 +232,20 @@
                             $nivel++;
                             $this->pagarComision($codigoCabeza, $valorPago, $nivel,$usuarioIniciador);
                         } else {
+
+//                            $utilModelo = new utilModelo();
+                            $result = $utilModelo->ultimaFechaPago($codigoCabeza);
+                            $fila = mysqli_fetch_array($result);
+                            $fechaUltimoPago = $fila['fechaMovimiento'];
+                            $result = $utilModelo->consutarComisionesMes($codigo,$codigoCabeza,$fechaUltimoPago);
+                            $fila = mysqli_fetch_array($result);
+                            $numeroDeComisiones = $fila['COUNT(codigoHijo)'];
+//                            echo $numeroDeComisiones;
+//                            die();
+
+
+
+
                             $utilModelo->aumentarSaldo($codigoCabeza, $valorComision);
 
                             $this->registrarComision($codigo, $codigoCabeza, $nivel, $valorComision,$usuarioIniciador);
