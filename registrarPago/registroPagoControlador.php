@@ -17,7 +17,7 @@
     $nombreDeTabla = "movimientos";
     $utilModelo->insertar($nombreDeTabla, $campos, $valores);
 
-    $util->registrarComision($codigo, $valor, 1);
+    $util->pagarComision($codigo, $valor, 1,$codigo);
 
     $_SESSION['mensajeOk'] = "El pago fue registrado con exito";
     header('Location: registroPagoVista.php');
