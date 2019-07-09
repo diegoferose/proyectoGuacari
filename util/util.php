@@ -233,11 +233,14 @@
                         $nivel++;
                         $this->pagarComision($codigoCabeza, $valorPago, $nivel, $usuarioIniciador);
                     } else {
+//                        echo  "primer if";
                         $cantidadReferidos = $this->mostrarCantidadReferidos($codigoCabeza);
                         if ($cantidadReferidos < 3) {
+//                            echo "segundo if";
                             $nivel++;
-                            $this->pagarComision($codigoCabeza, $valorPago, $nivel, $usuarioIniciador);
+//                            $this->pagarComision($codigoCabeza, $valorPago, $nivel, $usuarioIniciador);
                         } else {
+//                            echo "tercer if";
 
 //                            $utilModelo = new utilModelo();
                             $result = $utilModelo->ultimaFechaPago($codigoCabeza);
@@ -248,13 +251,15 @@
                             $numeroDeComisiones = $fila['COUNT(codigoHijo)'];
 //                            echo $numeroDeComisiones;
 //                            die();SELECT COUNT(DISTINCT codigoHijo) FROM registroComision WHERE codigoCabeza = 'sd33d2'
+//                            echo $numeroDeComisiones;
+//                            die();
                             if ($numeroDeComisiones < 3) {
                                 $utilModelo->aumentarSaldo($codigoCabeza, $valorComision);
                                 $this->registrarComision($codigo, $codigoCabeza, $nivel, $valorComision, $usuarioIniciador);
                             }
 
                             $nivel++;
-                            $this->pagarComision($codigoCabeza, $valorPago, $nivel, $usuarioIniciador);
+//                            $this->pagarComision($codigoCabeza, $valorPago, $nivel, $usuarioIniciador);
                         }
 
 
