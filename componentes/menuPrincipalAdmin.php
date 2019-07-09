@@ -57,7 +57,6 @@
                 <li><a href="../registrarPago/registroPagoVista.php"><i class="icon-group"></i><span>Pagar Mensualidad</span> </a></li>
                 <li><a href="../asociados/estadoAsociadosVista.php"><i class="icon-group"></i><span>Asociados</span> </a></li>
                 <li><a href="../controlSolicitudes/controlSolicitudesVista.php"><i class="icon-book"></i><span></span>Solicitudes</a></li>
-                <li><a href="../rangos/rangosVista.php"><i class="icon-book"></i><span></span>Rango </a></li>
                 <li><a href="../publicidad/publicidadVistaPreliminar.php"><i class="icon-book"></i><span></span>Publicidad </a></li>
                 <li><a href="../crudTrabajador/crudTrabajadorVista.php"><i class="icon-book"></i><span></span>Trabajador</a></li>
 

@@ -9,6 +9,7 @@
 
     class util
     {
+      
 
         function validarRuta($tipoUsarioPermitido)
         {
@@ -155,16 +156,36 @@
             return $key;
         }
 
+        function validarCodigo($codigo){
+          $utilModelo = new utilModelo();
+          $util=new util();
+          $nuevoCodigo=$codigo;
+          echo $nuevoCodigo;
+        $result=$utilModelo->consultarVariasTablas("codigo","usuario","codigo='$nuevoCodigo'");
+        while ($fila = mysqli_fetch_array($result)) {
+            if ($fila != NULL) {
+                $nuevoCodigo=$util->generarCodigo();
+                return $nuevoCodigo;
+                }else{
+
+                  return $nuevoCodigo;
+            }
+
+        }
+
+
+        }
+
         //Devuelve fecha actual
         function hoy()
         {
 
             return date("Y") . "-" . date("m") . "-" . date("d");
         }
+        //Devuelve la fecha minimaa permitda
+        function mayorEdad($edad){
 
-        function mayorEdad(){
-
-            return date("Y")-18 . "-" . date("m") . "-" . date("d");
+            return date("Y")-$edad . "-" . date("m") . "-" . date("d");
 
         }
 

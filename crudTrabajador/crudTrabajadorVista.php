@@ -65,7 +65,11 @@ $util -> validarRuta(0);
 
 
                                     $key = $util->generarCodigo();
-                                    $edadTrabajador=$util->mayorEdad();
+                                  var_dump(  $codigoV=$util->validarCodigo($key));
+                                    $edadTrabajador=$util->mayorEdad('18');
+
+
+                                    echo "$codigoV"."oscar dorado";
 
                   $utilModelo = new utilModelo();
                   $tabla = "usuario";
@@ -126,7 +130,7 @@ $util -> validarRuta(0);
 
                                 <div class="form-group">
                                     <input style="min-width: 400px;" type="text" name="codigo" id="codigo" tabindex="1" class="form-control"
-                                           value=<?php echo $key; ?> readonly required>
+                                           value="<?php echo $codigoV; ?> "readonly required>
                                 </div>
                                 <div class="form-group">
                                     <input style="min-width: 400px;" type="text" name="nombre" id="nombre" tabindex="1" class="form-control"
