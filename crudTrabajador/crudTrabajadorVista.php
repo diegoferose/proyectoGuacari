@@ -65,10 +65,11 @@ $util -> validarRuta(0);
 
 
                                     $key = $util->generarCodigo();
+                                    $edadTrabajador=$util->mayorEdad();
 
                   $utilModelo = new utilModelo();
                   $tabla = "usuario";
-                  $result = $utilModelo->consultarVariasTablas("*",$tabla,"tipo=1");
+                  $result = $utilModelo->consultarVariasTablas("*",$tabla,"tipo=1 and activo=0");
                   while ($fila = mysqli_fetch_array($result)) {
                       if ($fila != NULL) {
 
@@ -137,7 +138,7 @@ $util -> validarRuta(0);
                                 </div>
                                 <div class="form-group">
                                    Fecha Nacimiento:  <input style="min-width: 285px;" type="date" name="edad" id="edad" tabindex="1"
-                                                                class="form-control" placeholder="Fecha de nacimiento"
+                                                                class="form-control" min="1940-01-01" max="<?php echo $edadTrabajador; ?>"
                                                                 value="" required>
                                 </div>
                                 <div class="form-group">

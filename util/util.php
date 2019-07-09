@@ -162,6 +162,12 @@
             return date("Y") . "-" . date("m") . "-" . date("d");
         }
 
+        function mayorEdad(){
+
+            return date("Y")-18 . "-" . date("m") . "-" . date("d");
+
+        }
+
         //devuelve ultimo dia del mes
         function ultimoDia()
         {
