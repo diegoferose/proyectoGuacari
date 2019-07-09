@@ -100,46 +100,46 @@
                                 </div>
                                 <div class="form-group">
                                     <input type="text" name="nombre" id="nombre" tabindex="1" class="form-control"
-                                           placeholder="Nombre Completo" value="">
+                                           placeholder="Nombre Completo" value="" required>
                                 </div>
                                 <div class="form-group">
                                     <input type="text" name="documento" id="documento" tabindex="1" class="form-control"
-                                           placeholder="Numero de Cedula" value="">
+                                           placeholder="Numero de Cedula" value="" required>
                                 </div>
                                 <div class="form-group">
                                     Fecha de nacimiento: <input type="date" name="edad" id="edad" tabindex="1"
                                                                 class="form-control" placeholder="Fecha de nacimiento"
-                                                                value="">
+                                                                value="" required>
                                 </div>
                                 <div class="form-group">
                                     <input type="text" name="direccion" id="direccion" tabindex="1" class="form-control"
-                                           placeholder="Direccion" value="">
+                                           placeholder="Direccion" value="" required>
                                 </div>
                                 <div class="form-group">
                                     <input type="text" name="telefono" id="telefono" tabindex="1" class="form-control"
-                                           placeholder="Telefono" value="">
+                                           placeholder="Telefono" value="" required>
                                 </div>
                                 <div class="form-group">
                                     <input type="text" name="referido" id="referido" tabindex="1" class="form-control"
-                                           placeholder="Codigo referido" value="">
+                                           placeholder="Codigo referido" value="" required>
                                 </div>
                                 <div class="form-group">
                                     <input type="email" name="email" id="email" tabindex="1" class="form-control"
-                                           placeholder="Correo electronico" value="">
+                                           placeholder="Correo electronico" value="" required>
                                 </div>
 
                                 <div class="form-group">
                                     <input type="text" name="username" id="username" tabindex="1" class="form-control"
-                                           placeholder="Usuario" value="">
+                                           placeholder="Usuario" value="" required>
                                 </div>
 
                                 <div class="form-group" id="pass">
-                                    <input type="password" name="password" onkeyup="validarPassword(); id="password" tabindex="2"
-                                           class="form-control" placeholder="Contraseña">
+                                    <input type="password" name="password" onkeyup="validarPassword();" id="password" tabindex="2"
+                                           class="form-control" placeholder="Contraseña" required>
                                 </div>
                                 <div class="form-group" id="pass1">
                                     <input type="password" onkeyup="validarPassword();" name="rPassword" id="rPassword"
-                                           tabindex="2" class="form-control" placeholder="Confirmar contraseña">
+                                           tabindex="2" class="form-control" placeholder="Confirmar contraseña" required>
                                 </div>
                                 <div class="form-group hidden" id="errorPass" style="color: #ff0000; font-size: 23px;">
                                     <br>

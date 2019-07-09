@@ -5,7 +5,7 @@ $util = new util();
 
 //$util -> validarRuta(2);
 
-$util -> validarRuta(1);
+//$util -> validarRuta(1);
 
 ?>
 <!DOCTYPE html>
