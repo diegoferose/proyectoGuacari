@@ -21,14 +21,14 @@ $tipo = '2';//el tipo numero 2 es un usuario stadart ademas tenemos tipo 0 para 
 
 
 //consulta los datos del vendedor para tomar saldo y posteriormente aumentarlo
-$result = $utilModelo->consultarVariasTablas("tipo,saldo","usuario","codigo = '$codigoReferido'");
+//$result = $utilModelo->consultarVariasTablas("tipo,saldo","usuario","codigo = '$codigoReferido'");
 
-while ($fila = mysqli_fetch_array($result)) {
-    if ($fila[0] == 1) {
-      $nuevoSaldo = $fila[1]+50000;
-      $campos = array("saldo");
-      $valores = array($nuevoSaldo);
-      $utilModelo->modificar('usuario',$campos,$valores,'codigo',$codigoReferido);
+//while ($fila = mysqli_fetch_array($result)) {
+  //  if ($fila[0] == 1) {
+    //  $nuevoSaldo = $fila[1]+50000;
+    //  $campos = array("saldo");
+    //  $valores = array($nuevoSaldo);
+    //  $utilModelo->modificar('usuario',$campos,$valores,'codigo',$codigoReferido);
 
         }
 }

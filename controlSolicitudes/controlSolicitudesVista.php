@@ -135,12 +135,12 @@ $util -> validarRuta(0);
         <input id="valorSolicitud" name="valorSolicitud" type="hidden">
          <h3>Antes de aceptar la solicitud debe de ralizar la transaccion. De click sobre la imagen para selecionar medio de pago.</h3>
         <a href="https://www.paypal.com/co/home" target="blank"><img width="45%" src="../img/paypal.png"></a>
-        <a href="https://www.paypal.com/co/home" target="blank"><img width="50%" src="../img/daviplata.png"></a><br>
-           <div class="control-group"> 
+        <a href="https://www.nequi.com.co/" target="blank"><img width="50%" src="../img/daviplata.png"></a><br>
+           <div class="control-group">
                <label class="checkbox inline">
                   <input type="checkbox" required> Ya realice la transaccion.                                            </label>
-                                          </div>    <!-- /controls -->    
-                  
+                                          </div>    <!-- /controls -->
+
 
         </div>
     </div>
