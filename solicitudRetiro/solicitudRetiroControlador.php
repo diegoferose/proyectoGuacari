@@ -15,7 +15,7 @@ $fecha = $util->hoy();
 $estado = 0; //para estados tenemos dos 0 que es "no atendido" y 1 que es "atendido"
 $tipo =0; //el tipo 0 es para indicar que es una solicitud de retiro de dinero.
 
-$sql="SELECT * FROM solicitudes where codigoUsuario = '$codigo'";
+$sql="SELECT * FROM solicitudes where codigoUsuario = '$codigo' and estado = '0'";
 
 global $link;
 $result=mysqli_query($link,$sql);
@@ -25,8 +25,6 @@ while ($fila = mysqli_fetch_array($result)) {
 
         }
       }
-
-
       if ($verificada) {
         $_SESSION['mensajeOk']='USTED YA TIENE UNA SOLICITUD PENDIENTE <p class="help-block">.Pronto se le dara respuesta a su anterior solicitud</p>';
         header('Location: ../util/okVista.php');

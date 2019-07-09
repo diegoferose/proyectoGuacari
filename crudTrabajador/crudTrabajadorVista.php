@@ -65,7 +65,11 @@ $util -> validarRuta(0);
 
 
                                     $key = $util->generarCodigo();
-                                    $edadTrabajador=$util->mayorEdad();
+                                  var_dump(  $codigoV=$util->validarCodigo($key));
+                                    $edadTrabajador=$util->mayorEdad('18');
+
+
+                                    echo "$codigoV"."oscar dorado";
 
                   $utilModelo = new utilModelo();
                   $tabla = "usuario";
@@ -126,7 +130,7 @@ $util -> validarRuta(0);
 
                                 <div class="form-group">
                                     <input style="min-width: 400px;" type="text" name="codigo" id="codigo" tabindex="1" class="form-control"
-                                           value=<?php echo $key; ?> readonly required>
+                                           value="<?php echo $codigoV; ?> "readonly required>
                                 </div>
                                 <div class="form-group">
                                     <input style="min-width: 400px;" type="text" name="nombre" id="nombre" tabindex="1" class="form-control"
@@ -161,7 +165,7 @@ $util -> validarRuta(0);
 
                                 <div class="form-group" id="pass">
                                     <input style="min-width: 400px;" type="password" name="password" onkeyup="validarPassword();" id="password"
-                                           class="form-control" placeholder="Contraseña" required>
+                                           class="form-control" placeholder="Contraseña" tabindex="2" required>
                                 </div>
                                 <div class="form-group" id="pass1">
                                     <input style="min-width: 400px;" type="password" onkeyup="validarPassword();" name="rPassword" id="rPassword"
@@ -275,18 +279,7 @@ $util -> validarRuta(0);
 
 
   <script type="text/javascript">
-  function agregarForm(datos){
-    d=datos.split("||");
 
-     $("#codigoE").val(d[0]);
-     $("#codigoEliminar").val(d[0]);
-     $("#nombreE").val(d[1]);
-     $("#documentoE").val(d[2]);
-     $("#edadE").val(d[3]);
-    $("#telefonoE").val(d[4]);
-     $("#direccionE").val(d[6]);
-     $("#emailE").val(d[5]);
-  }
 
    function validarPassword() {
 
@@ -295,21 +288,32 @@ $util -> validarRuta(0);
 
         if (password !== "" && password !== null && rPassword !== "" && rPassword !== null) {
             if (password === rPassword) {
-              alert("p"+password+"2"+rPassword);
-                //                                                    alert("son iguales");
-                document.getElementById("guardar").className = "btn btn-success btn-lg ";
-                document.getElementById("guardar").disabled = false;
+              
+
+
                 document.getElementById("errorPass").className = "hidden";
                 document.getElementById("pass").className = "form-group";
                 document.getElementById("pass1").className = "form-group";
-            } else {
+            }else {
                 document.getElementById("pass").className += " has-error";
                 document.getElementById("pass1").className += " has-error";
                 document.getElementById("errorPass").className = "form-group";
-                document.getElementById("guardar").className += " disabled";
-                document.getElementById("guardar").disabled = true;
+
             }
         }
+    }
+
+    function agregarForm(datos){
+      d=datos.split("||");
+
+       $("#codigoE").val(d[0]);
+       $("#codigoEliminar").val(d[0]);
+       $("#nombreE").val(d[1]);
+       $("#documentoE").val(d[2]);
+       $("#edadE").val(d[3]);
+      $("#telefonoE").val(d[4]);
+       $("#direccionE").val(d[6]);
+       $("#emailE").val(d[5]);
     }
   </script>
 

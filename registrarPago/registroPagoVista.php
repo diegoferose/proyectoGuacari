@@ -3,7 +3,7 @@
     include_once "../util/utilModelo.php";
     $utilModelo2 = new utilModelo();
     $util = new util();
-        $util->validarRuta(2);
+        //$util->validarRuta(2);
     $nombreCampo = array("tipo");
     $valor = array("2");
     $tabla = "usuario";
@@ -33,7 +33,7 @@
 </head>
 <body>
 <?php
-    include "../componentes/menuPrincipal.php";
+    include "../componentes/menuPrincipalAdmin.php";
 ?>
 
 <div class="main">
