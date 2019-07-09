@@ -15,10 +15,14 @@
     $valores = array("$codigo", "0", "$fecha", "$valor");
 //la funcion insertar recive el nombre de la tabla y los dos arrays de campos y valores
     $nombreDeTabla = "movimientos";
-    $utilModelo->insertar($nombreDeTabla, $campos, $valores);
+    if($codigo != "" ) {
 
-    $util->pagarComision($codigo, $valor, 1,$codigo);
 
-    $_SESSION['mensajeOk'] = "El pago fue registrado con exito";
+        $utilModelo->insertar($nombreDeTabla, $campos, $valores);
+
+        $util->pagarComision($codigo, $valor, 1, $codigo);
+        $_SESSION['mensajeOk'] = "El pago fue registrado con exito";
+    }
+
     header('Location: registroPagoVista.php');
     exit();

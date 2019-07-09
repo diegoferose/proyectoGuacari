@@ -162,9 +162,10 @@
             return date("Y") . "-" . date("m") . "-" . date("d");
         }
 
-        function mayorEdad(){
+        function mayorEdad()
+        {
 
-            return date("Y")-18 . "-" . date("m") . "-" . date("d");
+            return date("Y") - 18 . "-" . date("m") . "-" . date("d");
 
         }
 
@@ -210,7 +211,18 @@
             $result = $utilModelo->mostrarregistros($tabla, $nombreCampo, $valor);
             $fila = mysqli_fetch_array($result);
             $codigoCabeza = $fila['codigoReferido'];
+//            $tipo = $fila['tipo'];
+//            echo $tipo;
+//            die();
 
+            $nombreCampo = array("codigo");
+            $valor = array("$codigoCabeza");
+            $tabla = "usuario";
+            $result = $utilModelo->mostrarregistros($tabla, $nombreCampo, $valor);
+            $fila = mysqli_fetch_array($result);
+            $tipo = $fila['tipo'];
+//             echo $tipo;
+//             die();
             if ($nivel <= 4 && $codigoCabeza != "") {
 //                echo "aqui entro";
 //                die();
@@ -228,6 +240,8 @@
                     if ($nivel == 1) {
 //                        echo "por aqui paso";
 //                        die(); SELECT COUNT(codigoHijo) FROM `registroComision` WHERE codigoHijo = 'ksjmrf' AND codigoCabeza = 'sd33d2' AND (YEAR(fecha) = YEAR(NOW()))
+
+
                         $utilModelo->aumentarSaldo($codigoCabeza, $valorComision);
                         $this->registrarComision($codigo, $codigoCabeza, $nivel, $valorComision, $usuarioIniciador);
                         $nivel++;
@@ -263,6 +277,12 @@
                         }
 
 
+                    }
+                } else {
+                    if ($tipo == 1) {
+                        $valorComision = 50000;
+                        $utilModelo->aumentarSaldo($codigoCabeza, $valorComision);
+                        $this->registrarComision($codigo, $codigoCabeza, $nivel, $valorComision, $usuarioIniciador);
                     }
                 }
             }
