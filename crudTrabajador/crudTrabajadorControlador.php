@@ -30,6 +30,7 @@ $valores = array("$codigo","$nombre","$cedula","$fechaNacimiento","$fechaIngreso
 $nombreDeTabla = "usuario";
 $utilModelo -> insertar($nombreDeTabla,$campos, $valores) ;
 echo "si funciono";
+$_SESSION['mensajeOk']="Accion realizada";header('Location: ../crudTrabajador/crudTrabajadorVista.php');
 //modificar
 }else if(isset($_POST['modificarTrabajador'])){
 	echo "modificar";
@@ -41,15 +42,18 @@ $valores = array("$nombre","$cedula","$fechaNacimiento","$direccion","$celular",
 //la funcion insertar recive el nombre de la tabla y los dos arrays de campos y valores
 $nombreDeTabla = "usuario";
 $utilModelo -> modificar($nombreDeTabla,$campos,$valores,'id',$codigo) ;
+$_SESSION['mensajeOk']="Accion realizada";header('Location: ../crudTrabajador/crudTrabajadorVista.php');
 }else{
-			echo "eliminar".$codigo;
 
-		$utilModelo -> modificar('usuario','activo','1','id',$codigo) ;
+			$campo = array("activo");
+
+		$utilModelo -> modificar('usuario',$campo,'1','id',$codigo) ;
+		$_SESSION['mensajeOk']="Accion realizada";header('Location: ../crudTrabajador/crudTrabajadorVista.php');
 
 }
 
 
 
-$_SESSION['mensajeOk']="Accion realizada";header('Location: ../index.php');
-exit();
+
+	exit();
 ?>
