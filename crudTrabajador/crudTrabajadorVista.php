@@ -40,7 +40,7 @@ $util -> validarRuta(0);
 
           <div class="span9">
 
-            <a href="#modalGuardar"  data-toggle="modal" class="form-control btn btn-register">Crear Trabajador</a><br><br>
+            <a href="#modalGuardar"  data-toggle="modal" class=" form-control btn btn-register">Crear Trabajador</a><br><br>
               <div class="widget widget-nopad">
             <div class="widget widget-table action-table">
               <div class="widget-header"> <i class="icon-th-list"></i>
@@ -125,51 +125,55 @@ $util -> validarRuta(0);
     </div>
     <div class="modal-body">
 
-      <form style="min-width: 500px;" action="crudTrabajadorControlador.php" method="post" >
+      <form class"span8" action="crudTrabajadorControlador.php" method="post" >
 
 
-                                <div class="form-group">
-                                    <input style="min-width: 400px;" type="text" name="codigo" id="codigo" tabindex="1" class="form-control"
+                                <div class="form-group   ">
+                                    <input   type="text" name="codigo" id="codigo" tabindex="1" class=" form-control span4"
                                            value="<?php echo $codigoV; ?> "readonly required>
                                 </div>
-                                <div class="form-group">
-                                    <input style="min-width: 400px;" type="text" name="nombre" id="nombre" tabindex="1" class="form-control"
+                                <div class="form-group   ">
+                                    <input   type="text" name="nombre" id="nombre" tabindex="1" class=" form-control span4"
                                            placeholder="Nombre Completo" value="" required>
                                 </div>
-                                <div class="form-group">
-                                    <input style="min-width: 400px;" type="text" name="documento" id="documento" tabindex="1" class="form-control"
+                                <div class="form-group   ">
+                                    <input   type="text" name="documento" id="documento" tabindex="1" class=" form-control span4"
                                            placeholder="Numero de Cedula" value="" required>
                                 </div>
-                                <div class="form-group">
-                                   Fecha Nacimiento:  <input style="min-width: 285px;" type="date" name="edad" id="edad" tabindex="1"
-                                                                class="form-control" min="1940-01-01" max="<?php echo $edadTrabajador; ?>"
+                                <div class="form-group   ">
+                                   Fecha Ncmiento<input type="date" name="edad" id="edad" tabindex="1"
+                                                                class=" form-control span3" min="1940-01-01" max="<?php echo $edadTrabajador; ?>"
                                                                 value="" required>
                                 </div>
-                                <div class="form-group">
-                                    <input style="min-width: 400px;" type="text" name="direccion" id="direccion" tabindex="1" class="form-control"
+                                <div class="form-group   ">
+                                    <input   type="text" name="direccion" id="direccion" tabindex="1" class=" form-control span4"
                                            placeholder="Direccion" value="" required>
                                 </div>
-                                <div class="form-group">
-                                    <input style="min-width: 400px;" type="text" name="telefono" id="telefono" tabindex="1" class="form-control"
+                                <div class="form-group   ">
+                                    <input   type="text" name="telefono" id="telefono" tabindex="1" class=" form-control span4"
                                            placeholder="Telefono" value="" required>
                                 </div>
-                                <div class="form-group">
-                                    <input style="min-width: 400px;" type="email" name="email" id="email" tabindex="1" class="form-control"
+                                <div class="form-group  ">
+                                    <input   type="email" name="email" id="email" tabindex="1" class=" form-control span4"
                                            placeholder="Correo electronico" value="" required>
                                 </div>
 
                                 <div class="form-group">
-                                    <input style="min-width: 400px;" type="text" name="username" id="username" tabindex="1" class="form-control"
+                                    <input  type="text" name="username" id="username" tabindex="1" class=" form-control span4"
                                            placeholder="Usuario" value="" required>
+                                           <div id="resultado" class="span4">
+
+                                           </div>
                                 </div>
 
+
                                 <div class="form-group" id="pass">
-                                    <input style="min-width: 400px;" type="password" name="password" onkeyup="validarPassword();" id="password"
-                                           class="form-control" placeholder="Contraseña" tabindex="2" required>
+                                    <input   type="password" name="password" onkeyup="validarPassword();" id="password"
+                                           class=" form-control span4 " placeholder="Contraseña" tabindex="2" required>
                                 </div>
-                                <div class="form-group" id="pass1">
-                                    <input style="min-width: 400px;" type="password" onkeyup="validarPassword();" name="rPassword" id="rPassword"
-                                           tabindex="2" class="form-control" placeholder="Confirmar contraseña" required>
+                                <div class="form-group   " id="pass1">
+                                    <input   type="password" onkeyup="validarPassword();" name="rPassword" id="rPassword"
+                                           tabindex="2" class=" form-control span4" placeholder="Confirmar contraseña" required>
                                 </div>
                                 <div class="form-group hidden" id="errorPass" style="color: #ff0000; font-size: 23px;">
                                     <br>
@@ -202,28 +206,28 @@ $util -> validarRuta(0);
 
                                 <div class="form-group">
                                   <input id="codigoE" name="codigo" type="hidden">
-                                    <input style="min-width: 400px;" type="text" name="nombre" id="nombreE" tabindex="1" class="form-control"
+                                    <input   type="text" name="nombre" id="nombreE" tabindex="1" class=" form-control span4"
                                            placeholder="Nombre Completo" value="" required>
                                 </div>
                                 <div class="form-group">
-                                    <input style="min-width: 400px;" type="text" name="documento" id="documentoE" tabindex="1" class="form-control"
+                                    <input   type="text" name="documento" id="documentoE" tabindex="1" class=" form-control span4"
                                            placeholder="Numero de Cedula" value="" required>
                                 </div>
                                 <div class="form-group">
                                    Fecha Nacimiento:  <input style="min-width: 285px;" type="date" name="edad" id="edadE" tabindex="1"
-                                                                class="form-control" placeholder="Fecha de nacimiento"
+                                                                class=" form-control span3" placeholder="Fecha de nacimiento"
                                                                 value="" required>
                                 </div>
                                 <div class="form-group">
-                                    <input style="min-width: 400px;" type="text" name="direccion" id="direccionE" tabindex="1" class="form-control"
+                                    <input   type="text" name="direccion" id="direccionE" tabindex="1" class=" form-control span4"
                                            placeholder="Direccion" value="" required>
                                 </div>
                                 <div class="form-group">
-                                    <input style="min-width: 400px;" type="tel" pattern="[0-9]{} "name="telefono" id="telefonoE" tabindex="1" class="form-control"
+                                    <input   type="tel" pattern="[0-9]{} "name="telefono" id="telefonoE" tabindex="1" class=" form-control span4"
                                            placeholder="Telefono" value="" required>
                                 </div>
                                 <div class="form-group">
-                                    <input style="min-width: 400px;" type="email" name="email" id="emailE" tabindex="1" class="form-control"
+                                    <input   type="email" name="email" id="emailE" tabindex="1" class=" form-control span4"
                                            placeholder="Correo electronico" required value="">
                                 </div>
 
@@ -288,7 +292,7 @@ $util -> validarRuta(0);
 
         if (password !== "" && password !== null && rPassword !== "" && rPassword !== null) {
             if (password === rPassword) {
-              
+
 
 
                 document.getElementById("errorPass").className = "hidden";
@@ -315,6 +319,39 @@ $util -> validarRuta(0);
        $("#direccionE").val(d[6]);
        $("#emailE").val(d[5]);
     }
+
+    var consulta;
+
+    //hacemos focus
+
+
+    //comprobamos si se pulsa una tecla
+    $("#username").blur(function(e){
+           //obtenemos el texto introducido en el campo
+           consulta = $("#username").val();
+
+           //hace la búsqueda
+           $("#resultado").delay(2000).queue(function(n) {
+
+                $("#resultado").html('<img src="../img/ajax-loader.gif" />');
+
+                      $.ajax({
+                            type: "POST",
+                            url: "../util/validarUsuario.php",
+                            data: "b="+consulta,
+                            dataType: "html",
+                            error: function(){
+                                  alert("error petición ajax");
+                            },
+                            success: function(data){
+                                  $("#resultado").html(data);
+                                  n();
+                            }
+                });
+
+           });
+
+    });
   </script>
 
 </body>
