@@ -159,7 +159,7 @@ $util -> validarRuta(0);
                                 </div>
 
                                 <div class="form-group">
-                                    <input  type="text" name="username" id="username" tabindex="1" class=" form-control span4"
+                                    <input  type="text" name="username" onkeyup="validarUsuario('#username');" id="username" tabindex="1" class=" form-control span4"
                                            placeholder="Usuario" value="" required>
                                            <div id="resultado" class="span4">
 
@@ -277,6 +277,7 @@ $util -> validarRuta(0);
   <!-- Placed at the end of the document so the pages load faster -->
   <script src="../js/jquery-1.7.2.min.js"></script>
   <script src="../js/excanvas.min.js"></script>
+  <script src="../js/funciones.js"></script>
   <script src="../js/chart.min.js" ></script>
   <script src="../js/bootstrap.js"></script>
   <script language="javascript" type="text/javascript" src="../js/full-calendar/fullcalendar.min.js"></script>
@@ -320,38 +321,6 @@ $util -> validarRuta(0);
        $("#emailE").val(d[5]);
     }
 
-    var consulta;
-
-    //hacemos focus
-
-
-    //comprobamos si se pulsa una tecla
-    $("#username").blur(function(e){
-           //obtenemos el texto introducido en el campo
-           consulta = $("#username").val();
-
-           //hace la búsqueda
-           $("#resultado").delay(2000).queue(function(n) {
-
-                $("#resultado").html('<img src="../img/ajax-loader.gif" />');
-
-                      $.ajax({
-                            type: "POST",
-                            url: "../util/validarUsuario.php",
-                            data: "b="+consulta,
-                            dataType: "html",
-                            error: function(){
-                                  alert("error petición ajax");
-                            },
-                            success: function(data){
-                                  $("#resultado").html(data);
-                                  n();
-                            }
-                });
-
-           });
-
-    });
   </script>
 
 </body>

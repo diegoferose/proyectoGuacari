@@ -15,12 +15,12 @@ $user =$_POST["b"];
             $result = $utilModelo->consultarVariasTablas("*","usuario","usuario='$b'");
 
             while ($fila = mysqli_fetch_array($result)) {
-                if ($fila != NULL) {
+                if($fila != NULL) {
             echo "<span style='font-weight:bold;color:red;'>El nombre de usuario ya existe.</span>";
 
-            }else{
+                }else{
+                  echo( "<span style='font-weight:bold;color:green;'>Disponible.</span>");
 
-                  echo "<span style='font-weight:bold;color:green;'>Disponible.</span>";
             }
       }
     }
