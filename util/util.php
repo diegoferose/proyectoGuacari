@@ -234,7 +234,10 @@
                 $porcentaje = $fila['porcentaje'] / 100;
                 $valorComision = $valorPago * $porcentaje;
                 $valores = $this->validarUsuarioActivo($codigoCabeza);
-                if ($valores[1] == "activo") {
+                if ($valores[1] == "activo" ) {
+                    ?>
+<script type="text/javascript">alert("hola mundo")</script>
+<?php
 //                    echo "aqui volvio  a entro";
 //                    die();
                     if ($nivel == 1) {
@@ -273,13 +276,13 @@
                             }
 
                             $nivel++;
-//                            $this->pagarComision($codigoCabeza, $valorPago, $nivel, $usuarioIniciador);
+                            $this->pagarComision($codigoCabeza, $valorPago, $nivel, $usuarioIniciador);
                         }
 
 
                     }
                 } else {
-                    if ($tipo == 1) {
+                    if ($tipo == 1 && $nivel == 1) {
                         $valorComision = 50000;
                         $utilModelo->aumentarSaldo($codigoCabeza, $valorComision);
                         $this->registrarComision($codigo, $codigoCabeza, $nivel, $valorComision, $usuarioIniciador);

@@ -17,7 +17,8 @@ $usuario = filter_input(INPUT_POST, 'username');
 $correo = filter_input(INPUT_POST, 'email');
 $password = filter_input(INPUT_POST, 'password');
 $activo = '0';//por defecto viene en 0 que es inactivo y 1 es activo
-$tipo = '2';//el tipo numero 2 es un usuario stadart ademas tenemos tipo 0 para los administradores y tipo 1 para los venderores.
+$tipo = '2';
+//el tipo numero 2 es un usuario stadart ademas tenemos tipo 0 para los administradores y tipo 1 para los venderores
 
 
 //consulta los datos del vendedor para tomar saldo y posteriormente aumentarlo
@@ -30,8 +31,8 @@ $tipo = '2';//el tipo numero 2 es un usuario stadart ademas tenemos tipo 0 para 
     //  $valores = array($nuevoSaldo);
     //  $utilModelo->modificar('usuario',$campos,$valores,'codigo',$codigoReferido);
 
-        }
-}
+//        }
+//}
 //
 
 //$campos es el nombre de los campos tal cual aparece en la base de datos
