@@ -9,7 +9,6 @@
 
     class util
     {
-      
 
         function validarRuta($tipoUsarioPermitido)
         {
@@ -156,36 +155,17 @@
             return $key;
         }
 
-        function validarCodigo($codigo){
-          $utilModelo = new utilModelo();
-          $util=new util();
-          $nuevoCodigo=$codigo;
-          echo $nuevoCodigo;
-        $result=$utilModelo->consultarVariasTablas("codigo","usuario","codigo='$nuevoCodigo'");
-        while ($fila = mysqli_fetch_array($result)) {
-            if ($fila != NULL) {
-                $nuevoCodigo=$util->generarCodigo();
-                return $nuevoCodigo;
-                }else{
-
-                  return $nuevoCodigo;
-            }
-
-        }
-
-
-        }
-
         //Devuelve fecha actual
         function hoy()
         {
 
             return date("Y") . "-" . date("m") . "-" . date("d");
         }
-        //Devuelve la fecha minimaa permitda
-        function mayorEdad($edad){
 
-            return date("Y")-$edad . "-" . date("m") . "-" . date("d");
+        function mayorEdad()
+        {
+
+            return date("Y") - 18 . "-" . date("m") . "-" . date("d");
 
         }
 
@@ -231,7 +211,18 @@
             $result = $utilModelo->mostrarregistros($tabla, $nombreCampo, $valor);
             $fila = mysqli_fetch_array($result);
             $codigoCabeza = $fila['codigoReferido'];
+//            $tipo = $fila['tipo'];
+//            echo $tipo;
+//            die();
 
+            $nombreCampo = array("codigo");
+            $valor = array("$codigoCabeza");
+            $tabla = "usuario";
+            $result = $utilModelo->mostrarregistros($tabla, $nombreCampo, $valor);
+            $fila = mysqli_fetch_array($result);
+            $tipo = $fila['tipo'];
+//             echo $tipo;
+//             die();
             if ($nivel <= 4 && $codigoCabeza != "") {
 //                echo "aqui entro";
 //                die();
@@ -243,12 +234,17 @@
                 $porcentaje = $fila['porcentaje'] / 100;
                 $valorComision = $valorPago * $porcentaje;
                 $valores = $this->validarUsuarioActivo($codigoCabeza);
-                if ($valores[1] == "activo") {
+                if ($valores[1] == "activo" ) {
+                    ?>
+<script type="text/javascript">alert("hola mundo")</script>
+<?php
 //                    echo "aqui volvio  a entro";
 //                    die();
                     if ($nivel == 1) {
 //                        echo "por aqui paso";
 //                        die(); SELECT COUNT(codigoHijo) FROM `registroComision` WHERE codigoHijo = 'ksjmrf' AND codigoCabeza = 'sd33d2' AND (YEAR(fecha) = YEAR(NOW()))
+
+
                         $utilModelo->aumentarSaldo($codigoCabeza, $valorComision);
                         $this->registrarComision($codigo, $codigoCabeza, $nivel, $valorComision, $usuarioIniciador);
                         $nivel++;
@@ -280,10 +276,16 @@
                             }
 
                             $nivel++;
-//                            $this->pagarComision($codigoCabeza, $valorPago, $nivel, $usuarioIniciador);
+                            $this->pagarComision($codigoCabeza, $valorPago, $nivel, $usuarioIniciador);
                         }
 
 
+                    }
+                } else {
+                    if ($tipo == 1 && $nivel == 1) {
+                        $valorComision = 50000;
+                        $utilModelo->aumentarSaldo($codigoCabeza, $valorComision);
+                        $this->registrarComision($codigo, $codigoCabeza, $nivel, $valorComision, $usuarioIniciador);
                     }
                 }
             }
