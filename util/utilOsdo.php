@@ -7,9 +7,9 @@
     @session_start();
 
 
-    class util
+    class utilOsdo
     {
-      
+
 
         function validarRuta($tipoUsarioPermitido)
         {

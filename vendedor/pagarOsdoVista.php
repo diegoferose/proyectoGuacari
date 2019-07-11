@@ -4,7 +4,7 @@
     include_once "../util/utilModelo.php";
     $utilModelo2 = new utilModelo();
     $util = new util();
-        $util->validarRuta(1);
+        $util->validarRuta(0);
     $nombreCampo = array("tipo",);
     $valor = array("1");
     $tabla = "usuario";

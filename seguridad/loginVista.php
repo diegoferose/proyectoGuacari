@@ -10,11 +10,12 @@
 <html lang="en" dir="ltr">
 <head>
     <meta charset="utf-8">
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <link href="../css/estiloLogin.css" rel="stylesheet" id="estiloLogin">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="../js/login.js"></script>
+    <script src="../js/funciones.js"></script>
     <title>INICIO</title>
 </head>
 <body>
@@ -28,7 +29,7 @@
                             <a href="#" class="active" id="login-form-link">Iniciar sesión</a>
                         </div>
                         <div class="col-xs-6">
-                            <a href="#" id="register-form-link">Regístrate ahora</a>
+                            <a href="#modalCondiciones" id="register-form-link">Regístrate ahora</a>
                         </div>
                     </div>
                     <hr>
@@ -129,8 +130,11 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <input type="text" name="username" id="username" tabindex="1" class="form-control"
+                                    <input type="text" name="username" id="username"onkeyup="validarUsuario('#username');" tabindex="1" class="form-control"
                                            placeholder="Usuario" value="" required>
+                                           <div id="usuarioValido" class="form-group span4">osdo
+
+                                           </div>
                                 </div>
 
                                 <div class="form-group" id="pass">
@@ -159,10 +163,28 @@
                         </div>
                     </div>
                 </div>
+                <a href="#myModal" role="button" class="btn" data-toggle="modal">Launch demo modal</a>
+
+                <!-- Modal -->
+                <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h3 id="myModalLabel">Thank you for visiting EGrappler.com</h3>
+                  </div>
+                  <div class="modal-body">
+                    <p>One fine body…</p>
+                  </div>
+                  <div class="modal-footer">
+                    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+                    <button class="btn btn-primary">Save changes</button>
+                  </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
+
+
 <script type="text/javascript">
     function validarPassword() {
         var password = document.getElementById("password").value;

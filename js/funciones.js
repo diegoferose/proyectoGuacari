@@ -13,7 +13,8 @@ function validarUsuario(id){
                                     alert("error petición ajax");
                               },
                               success: function(data){
-                                    $("#resultado").html(data);
+                                    $("#usuarioValido").html(data);
+                                    
 
                               }
                   });

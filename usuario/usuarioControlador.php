@@ -44,6 +44,6 @@ $nombreDeTabla = "usuario";
 $utilModelo -> insertar($nombreDeTabla,$campos, $valores) ;
 
 $_SESSION['mensajeOk']="ok";
-header('Location: ../index.php');
-exit();
+//header('Location: ../index.php');
+//exit();
 ?>
