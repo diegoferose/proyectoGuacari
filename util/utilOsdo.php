@@ -163,7 +163,7 @@
           echo $nuevoCodigo;
         $result=$utilModelo->consultarVariasTablas("codigo","usuario","codigo='$nuevoCodigo'");
         $rowcount=mysqli_num_rows($result);            
-                if($rowcount!= 0)  {
+                if($rowcount!= 0)    {
                 $nuevoCodigo=$util->generarCodigo();
                 return $nuevoCodigo;
                 }else{
@@ -174,7 +174,7 @@
         }
 
 
-        }
+        
 
         //Devuelve fecha actual
         function hoy()
