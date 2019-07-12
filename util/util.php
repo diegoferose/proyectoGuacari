@@ -155,6 +155,23 @@
             return $key;
         }
 
+        function validarCodigo($codigo){
+          $utilModelo = new utilModelo();
+          $util=new util();
+          $nuevoCodigo=$codigo;
+          //echo $nuevoCodigo;
+        $result=$utilModelo->consultarVariasTablas("codigo","usuario","codigo='$nuevoCodigo'");
+        $rowcount=mysqli_num_rows($result);
+                if($rowcount!= 0)    {
+                $nuevoCodigo=$util->generarCodigo();
+                return $nuevoCodigo;
+                }else{
+
+                  return $nuevoCodigo;
+            }
+
+        }
+
         //Devuelve fecha actual
         function hoy()
         {

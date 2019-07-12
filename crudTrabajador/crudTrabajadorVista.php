@@ -1,7 +1,7 @@
 <?php
-include "../util/utilOsdo.php";
+include "../util/util.php";
 include_once "../util/utilModelo.php";
-$util = new utilOsdo();
+$util = new util();
 
 $util -> validarRuta(0);
 ?>
@@ -61,16 +61,11 @@ $util -> validarRuta(0);
                   </thead>
                   <tbody>
 
-                  <?php
+                  <?php                                   $key = $util->generarCodigo();
 
+                                   $codigoV=$util->validarCodigo($key);
 
-                                  //  $key = $util->generarCodigo();
-                                  //var_dump(  $codigoV=$util->validarCodigo($key));
-                                  $codigoV="45645";
                                     $edadTrabajador=$util->mayorEdad('18');
-
-
-                                    echo "$codigoV"."oscar dorado";
 
                   $utilModelo = new utilModelo();
                   $tabla = "usuario";

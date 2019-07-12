@@ -71,7 +71,7 @@ class utilModelo
     global $link;
     $consulta="SELECT $campos FROM $valores WHERE $condiciones";
     $query = mysqli_query($link, $consulta);
-    echo "$consulta";
+    //echo "$consulta";
     return $query;
 
   }
