@@ -1,13 +1,16 @@
-function validarUsuario(id){
+function validarUsuario(id,tipo){
 
       var consulta;
+      consulta = $(id).val();
+      cadena= "b="+ consulta+
+                "&clave=" + tipo;
 
-             consulta = $(id).val();
+             
 
                         $.ajax({
                               type: "POST",
                               url: "../util/validarUsuario.php",
-                              data: "b="+consulta,
+                              data: cadena,
                               dataType: "html",
                               error: function(){
                                     alert("error petición ajax");

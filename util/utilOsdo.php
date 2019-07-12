@@ -162,8 +162,8 @@
           $nuevoCodigo=$codigo;
           echo $nuevoCodigo;
         $result=$utilModelo->consultarVariasTablas("codigo","usuario","codigo='$nuevoCodigo'");
-        while ($fila = mysqli_fetch_array($result)) {
-            if ($fila != NULL) {
+        $rowcount=mysqli_num_rows($result);            
+                if($rowcount!= 0)  {
                 $nuevoCodigo=$util->generarCodigo();
                 return $nuevoCodigo;
                 }else{
