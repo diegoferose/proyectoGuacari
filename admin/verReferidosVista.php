@@ -4,8 +4,7 @@ include_once "../util/utilModelo.php";
 $util = new utilOsdo();
 
 $util -> validarRuta(0);
-
-
+$codigo = $_GET['7c6o5d4i3g2o1'];
 
 ?>
 <!DOCTYPE html>
@@ -45,7 +44,7 @@ $util -> validarRuta(0);
 
              $utilModelo = new utilModelo();
                   $tabla = "usuario";
-                  $result = $utilModelo->consultarVariasTablas("*",$tabla,"codigo=45645");
+                  $result = $utilModelo->consultarVariasTablas("*",$tabla,"codigo='$codigo'");
                   while ($fila = mysqli_fetch_array($result)) {
                       if ($fila != NULL) {
 
@@ -139,7 +138,7 @@ $util -> validarRuta(0);
                   <?php
                   $utilModelo = new utilModelo();
                   $tabla = "usuario";
-                  $result = $utilModelo->consultarVariasTablas("*",$tabla,"codigoReferido=45645");
+                  $result = $utilModelo->consultarVariasTablas("*",$tabla,"codigoReferido='$codigo'");
                   while ($fila = mysqli_fetch_array($result)) {
                       if ($fila != NULL) {
 
