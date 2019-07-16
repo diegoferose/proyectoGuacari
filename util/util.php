@@ -145,6 +145,24 @@
 
         }
 
+        function validarRangoUsuarioPago($cantidadReferidos)
+        {
+//            echo "cantidad referidos: ".$cantidadReferidos;
+            $utilModelo = new utilModelo();
+            $tabla = "rangoUsuario";
+            $meta = 0;
+            $result = $utilModelo->mostrarTodosRegistros($tabla);
+            while ($fila = mysqli_fetch_array($result)) {
+                if ($fila != NULL) {
+                    if ($cantidadReferidos >= $fila['vp']) {
+//                        echo "ingreso";
+                        $meta = $fila['vp'];
+                    }
+                }
+            }
+            return $meta;
+        }
+
         function generarCodigo()
         {
             $longitud = 6;
@@ -187,22 +205,23 @@
             return date('Y-m-d', mktime(0, 0, 0, $month, 1, $year));
         }
 
-        function registrarComision($codigo, $codigoCabeza, $nivel, $valorComision, $usuarioIniciador)
+        function registrarComision($codigo, $codigoCabeza, $nivel, $valorComision, $usuarioIniciador, $padreDeIniciador)
         {
             $utilModelo = new utilModelo();
             //$campos es el nombre de los campos tal cual aparece en la base de datos
-            $campos = array("fecha", "usuarioIniciador", "codigoHijo", "codigoCabeza", "nivel", "valor");
+            $campos = array("fecha", "usuarioIniciador", "codigoHijo", "codigoCabeza", "padreDeIniciador", "nivel", "valor");
             $fecha = $this->hoy();
             //$valores son los valores a almacenar
-            $valores = array("$fecha", "$usuarioIniciador", "$codigo", "$codigoCabeza", "$nivel", "$valorComision");
+            $valores = array("$fecha", "$usuarioIniciador", "$codigo", "$codigoCabeza", "$padreDeIniciador", "$nivel", "$valorComision");
             //la funcion insertar recive el nombre de la tabla y los dos arrays de campos y valores
             $nombreDeTabla = "registroComision";
             $utilModelo->insertar($nombreDeTabla, $campos, $valores);
 
         }
 
-        function pagarComision($codigo, $valorPago, $nivel, $usuarioIniciador)
+        function pagarComision($codigo, $valorPago, $nivel, $usuarioIniciador, $padreDeIniciador)
         {
+            echo "----------------- <br>";
 
             $utilModelo = new utilModelo();
             $nombreCampo = array("codigo");
@@ -211,6 +230,8 @@
             $result = $utilModelo->mostrarregistros($tabla, $nombreCampo, $valor);
             $fila = mysqli_fetch_array($result);
             $codigoCabeza = $fila['codigoReferido'];
+            $nombreUsuario = $fila['nombre'];
+            echo $nombreUsuario . "<br>";
 //            $tipo = $fila['tipo'];
 //            echo $tipo;
 //            die();
@@ -224,7 +245,7 @@
 //             echo $tipo;
 //             die();
             if ($nivel <= 4 && $codigoCabeza != "") {
-//                echo "aqui entro";
+                echo '$nivel <= 4 && $codigoCabeza != "" <br>';//uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
 //                die();
                 $nombreCampo = array("nivel");
                 $valor = array("$nivel");
@@ -234,49 +255,62 @@
                 $porcentaje = $fila['porcentaje'] / 100;
                 $valorComision = $valorPago * $porcentaje;
                 $valores = $this->validarUsuarioActivo($codigoCabeza);
-                if ($valores[1] == "activo" ) {
-                    ?>
-<script type="text/javascript">alert("hola mundo")</script>
-<?php
-//                    echo "aqui volvio  a entro";
+                if ($valores[1] == "activo") {
+
+                    echo '$valores[1] == \"activo\"<br>';//uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
 //                    die();
                     if ($nivel == 1) {
-//                        echo "por aqui paso";
+                        echo '$nivel == 1 <br>';//uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
 //                        die(); SELECT COUNT(codigoHijo) FROM `registroComision` WHERE codigoHijo = 'ksjmrf' AND codigoCabeza = 'sd33d2' AND (YEAR(fecha) = YEAR(NOW()))
 
 
                         $utilModelo->aumentarSaldo($codigoCabeza, $valorComision);
-                        $this->registrarComision($codigo, $codigoCabeza, $nivel, $valorComision, $usuarioIniciador);
+                        $this->registrarComision($codigo, $codigoCabeza, $nivel, $valorComision, $usuarioIniciador, $padreDeIniciador);
                         $nivel++;
-                        $this->pagarComision($codigoCabeza, $valorPago, $nivel, $usuarioIniciador);
+                        $this->pagarComision($codigoCabeza, $valorPago, $nivel, $usuarioIniciador, $padreDeIniciador);
                     } else {
+                        echo '$nivel == 1 ELSE <br>';
 //                        echo  "primer if";
                         $cantidadReferidos = $this->mostrarCantidadReferidos($codigoCabeza);
-                        if ($cantidadReferidos < 3) {
+                        if ($cantidadReferidos[1] < 3) {
+                            echo '$cantidadReferidos < 3 <br>';
 //                            echo "segundo if";
                             $nivel++;
 //                            $this->pagarComision($codigoCabeza, $valorPago, $nivel, $usuarioIniciador);
                         } else {
+                            echo "$cantidadReferidos[1] < 3  ELSE<br>";
 //                            echo "tercer if";
 
 //                            $utilModelo = new utilModelo();
                             $result = $utilModelo->ultimaFechaPago($codigoCabeza);
                             $fila = mysqli_fetch_array($result);
                             $fechaUltimoPago = $fila['fechaMovimiento'];
-                            $result = $utilModelo->consutarComisionesMes($codigo, $codigoCabeza, $fechaUltimoPago);
+                            $result = $utilModelo->consutarComisionesMes($codigo, $codigoCabeza, $fechaUltimoPago, $padreDeIniciador);
                             $fila = mysqli_fetch_array($result);
                             $numeroDeComisiones = $fila['COUNT(codigoHijo)'];
 //                            echo $numeroDeComisiones;
 //                            die();SELECT COUNT(DISTINCT codigoHijo) FROM registroComision WHERE codigoCabeza = 'sd33d2'
 //                            echo $numeroDeComisiones;
 //                            die();
-                            if ($numeroDeComisiones < 3) {
-                                $utilModelo->aumentarSaldo($codigoCabeza, $valorComision);
-                                $this->registrarComision($codigo, $codigoCabeza, $nivel, $valorComision, $usuarioIniciador);
+//                            SELECT COUNT(DISTINCT(codigoHijo)) FROM `registroComision` WHERE codigoCabeza = '97bcg0' AND nivel <> 1
+                            $result = $utilModelo->consultarComisionRango($codigoCabeza, $fechaUltimoPago);
+                            $fila = mysqli_fetch_array($result);
+                            $numeroDeComisionesRango = $fila['COUNT(DISTINCT(codigoHijo))'];
+
+                            echo "numero comisiones rango: " . $numeroDeComisionesRango . "<br>";
+
+                            $topePagoPorRango = $this->validarRangoUsuarioPago($cantidadReferidos[1]);
+                            echo "maximo de pagos a recibir: ".$topePagoPorRango."<br>";
+                            if($numeroDeComisionesRango<$topePagoPorRango) {
+                                if ($numeroDeComisiones < 3) {
+                                    echo '$numeroDeComisiones < 3 <br>';
+                                    $utilModelo->aumentarSaldo($codigoCabeza, $valorComision);
+                                    $this->registrarComision($codigo, $codigoCabeza, $nivel, $valorComision, $usuarioIniciador, $padreDeIniciador);
+                                }
                             }
 
                             $nivel++;
-                            $this->pagarComision($codigoCabeza, $valorPago, $nivel, $usuarioIniciador);
+                            $this->pagarComision($codigoCabeza, $valorPago, $nivel, $usuarioIniciador, $padreDeIniciador);
                         }
 
 
@@ -285,10 +319,21 @@
                     if ($tipo == 1 && $nivel == 1) {
                         $valorComision = 50000;
                         $utilModelo->aumentarSaldo($codigoCabeza, $valorComision);
-                        $this->registrarComision($codigo, $codigoCabeza, $nivel, $valorComision, $usuarioIniciador);
+                        $this->registrarComision($codigo, $codigoCabeza, $nivel, $valorComision, $usuarioIniciador, $padreDeIniciador);
+                    }
+                    if ($tipo == 2) {
+                        echo '4tipo == 2';
+                        $valores = $this->validarUsuarioActivo($codigo);
+                        if ($valores[1] == "activo") {
+                            $utilModelo->aumentarSaldo($codigo, $valorComision);
+                            $this->registrarComision($codigo, $codigoCabeza, $nivel, $valorComision, $usuarioIniciador, $padreDeIniciador);
+
+                        }
+
                     }
                 }
             }
+
         }
 
 

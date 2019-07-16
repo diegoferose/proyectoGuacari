@@ -20,9 +20,15 @@
 
         $utilModelo->insertar($nombreDeTabla, $campos, $valores);
 
-        $util->pagarComision($codigo, $valor, 1, $codigo);
+        $nombreCampo = array("codigo");
+        $valor1 = array("$codigo");
+        $tabla = "usuario";
+        $result = $utilModelo->mostrarregistros($tabla, $nombreCampo, $valor1);
+        $fila = mysqli_fetch_array($result);
+        $codigoCabeza = $fila['codigoReferido'];
+        $util->pagarComision($codigo, $valor, 1, $codigo,$codigoCabeza);
         $_SESSION['mensajeOk'] = "El pago fue registrado con exito";
     }
 
-    header('Location: registroPagoVista.php');
-    exit();
+//    header('Location: registroPagoVista.php');
+//    exit();

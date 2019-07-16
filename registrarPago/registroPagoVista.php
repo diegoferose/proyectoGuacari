@@ -77,7 +77,12 @@
                             <?php
                                 while ($fila = mysqli_fetch_array($result1)) {
                                     if ($fila != NULL) {
-                                        echo '<option value="' . $fila['codigo'] . '" data-subtext="' . $fila['codigo'] . '">' . $fila['nombre'] . '</option>';
+                                        $valores = $util->validarUsuarioActivo($fila['codigo']);
+                                        if ($valores[1]!="activo"){
+                                            echo '<option value="' . $fila['codigo'] . '" data-subtext="' . $fila['codigo'] . '">' . $fila['nombre'] . '</option>';
+                                        }
+
+
                                     }
                                 }
                             ?>
