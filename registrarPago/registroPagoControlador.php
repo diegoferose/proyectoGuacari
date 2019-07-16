@@ -30,5 +30,5 @@
         $_SESSION['mensajeOk'] = "El pago fue registrado con exito";
     }
 
-//    header('Location: registroPagoVista.php');
-//    exit();
+    header('Location: registroPagoVista.php');
+    exit();
