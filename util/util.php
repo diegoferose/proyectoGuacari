@@ -338,10 +338,10 @@
                         $utilModelo->aumentarSaldo($codigoCabeza, $valorComision);
                         $this->registrarComision($codigo, $codigoCabeza, $nivel, $valorComision, $usuarioIniciador, $padreDeIniciador);
                     }
-                    if ($tipo == 2) {
+                    if ($tipo == 2 && $usuarioIniciador != $codigo) {
                         echo '4tipo == 2';
                         $valores = $this->validarUsuarioActivo($codigo);
-                        if ($valores[1] == "activo") {
+                        if ($valores[1] == "activo" ) {
                             $utilModelo->aumentarSaldo($codigo, $valorComision);
                             $this->registrarComision($codigo, $codigoCabeza, $nivel, $valorComision, $usuarioIniciador, $padreDeIniciador);
 
