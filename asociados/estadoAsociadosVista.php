@@ -2,6 +2,9 @@
 include "../util/util.php";
 $util = new util();
 $util -> validarRuta(0);
+
+$fechaInicial=$util->primerDia();
+    $fechaFinal=$util->ultimoDia();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -38,7 +41,7 @@ $util -> validarRuta(0);
               <div class="widget widget-nopad">
             <div class="widget widget-table action-table">
               <div class="widget-header"> <i class="icon-th-list"></i>
-                <h3>ASOCIADOS ACTIVOS</h3>
+                <h3>AFILIADOS ESTE MES</h3>
               </div>
 
               <!-- /widget-header -->
@@ -46,45 +49,40 @@ $util -> validarRuta(0);
                 <table class="table table-striped table-bordered">
                   <thead>
                     <tr>
-                      <th> NOMBRE ASOCIADO </th>
-                      <th> VALOR ACUMULADO</th>
+                      <th> CODIGO ASOCIADO</th>
+                      <th> NOMBRE</th>
                       <th> FECHA INGRESO</th>
-                      <th> CANT. REFERIDOS</th>
-                      <th class="td-actions"> DESACTIVAR</th>
+                      <th> FECHA ULTIMO PAGO</th>
                     </tr>
                   </thead>
                   <tbody>
+                    <?php                                  
 
-                    <tr>
-                      <td> Oscar javier dorado</td>
-                      <td> 500.000 </td>
-                      <td>20 February</td>
-                       <td><a href="#">12</a></td>
-                      <td class="td-actions"><a href="#myModal"  data-toggle="modal" class="btn btn-danger btn-small"><i class="btn-icon-only icon-remove"> </i></a></td>
-                    </tr>
-                    <tr>
-                      <td> Oscar javier dorado</td>
-                      <td> 500.000 </td>
-                      <td>20 February</td>
-                       <td><a href="#">12</a></td>
-                      <td class="td-actions"><a href="#myModal"  data-toggle="modal" class="btn btn-danger btn-small"><i class="btn-icon-only icon-remove"> </i></a></td>
-                    </tr>
-                    <tr>
-                      <td> Oscar javier dorado</td>
-                      <td> 500.000 </td>
-                      <td>20 February</td>
-                       <td><a href="#">12</a></td>
-                      <td class="td-actions"><a href="#myModal"  data-toggle="modal" class="btn btn-danger btn-small"><i class="btn-icon-only icon-remove"> </i></a></td>
-                    </tr>
-                    <tr>
-                      <td> Oscar javier dorado</td>
-                      <td> 500.000 </td>
-                      <td>20 February</td>
-                       <td><a href="#">12</a></td>
-                      <td class="td-actions"><a href="#myModal"  data-toggle="modal" class="btn btn-danger btn-small"><i class="btn-icon-only icon-remove"> </i></a></td>
-                    </tr>
+                  $utilModelo = new utilModelo();
+                  $tabla = "usuario";
+                   $result = $utilModelo->consultarVariasTablas("*","usuario"," fechaDeIngreso between  '$fechaInicial' and '$fechaFinal'");
+                  while ($fila = mysqli_fetch_array($result)) {
+                      if ($fila != NULL) {
 
+                        $datos=$fila[0]."||".
+                             $fila[2]."||".
+                             $fila[3]."||".
+                             $fila[5]."||".
+                             $fila[6]."||".
+                             $fila[10]."||".
+                             $fila[7];
 
+                          echo "
+                            <tr>
+                              <td>$fila[1] </td>
+                              <td> $fila[2] </td>
+                              <td> $fila[5]</td>
+                               <td>$fila[4]</td>
+                              
+                            </tr>";
+                          }
+                        }
+                         ?>
                   </tbody>
                 </table>
               </div>
@@ -112,7 +110,6 @@ $util -> validarRuta(0);
                       <th> VALOR ACUMULADO</th>
                       <th> FECHA RETIRO</th>
                       <th> CANT. REFERIDOS</th>
-                      <th class="td-actions"> ACTIVAR</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -121,30 +118,43 @@ $util -> validarRuta(0);
                       <td> 500.000 </td>
                       <td>20 February</td>
                       <td><a href="#">12</a></td>
-                      <td class="td-actions"><a href="#myModal"  data-toggle="modal" class="btn btn-success btn-small"><i class="btn-icon-only icon-ok"> </i></a></td>
-                    </tr>
-                                        <tr>
-                      <td> Oscar javier dorado</td>
-                      <td> 500.000 </td>
-                      <td>20 February</td>
-                      <td><a href="#">12</a></td>
-                      <td class="td-actions"><a href="#myModal"  data-toggle="modal" class="btn btn-success btn-small"><i class="btn-icon-only icon-ok"> </i></a></td>
-                    </tr>
-                                        <tr>
-                      <td> Oscar javier dorado</td>
-                      <td> 500.000 </td>
-                      <td>20 February</td>
-                      <td><a href="#">12</a></td>
-                      <td class="td-actions"><a href="#myModal"  data-toggle="modal" class="btn btn-success btn-small"><i class="btn-icon-only icon-ok"> </i></a></td>
-                    </tr>
-                                        <tr>
-                      <td> Oscar javier dorado</td>
-                      <td> 500.000 </td>
-                      <td>20 February</td>
-                      <td><a href="#">12</a></td>
-                      <td class="td-actions"><a href="#myModal"  data-toggle="modal" class="btn btn-success btn-small"><i class="btn-icon-only icon-ok"> </i></a></td>
-                    </tr>
+                     
+                    </tr><?php
 
+
+                                  //  $key = $util->generarCodigo();
+                                  //var_dump(  $codigoV=$util->validarCodigo($key));
+                                  $codigoV="45645";
+                                    $edadTrabajador=$util->mayorEdad('18');
+
+
+                                    echo "$codigoV"."oscar dorado";
+
+                  $utilModelo = new utilModelo();
+                  $tabla = "usuario";
+                  $result = $utilModelo->consultarVariasTablas("*",$tabla,"tipo=2 and activo=1");
+                  while ($fila = mysqli_fetch_array($result)) {
+                      if ($fila != NULL) {
+
+                        $datos=$fila[0]."||".
+                             $fila[2]."||".
+                             $fila[3]."||".
+                             $fila[5]."||".
+                             $fila[6]."||".
+                             $fila[10]."||".
+                             $fila[7];
+
+                          echo "
+                            <tr>
+                              <td>$fila[1] </td>
+                              <td> $fila[2] </td>
+                              <td> $fila[5]</td>
+                               <td>$fila[4]</td>
+                              
+                            </tr>";
+                          }
+                        }
+                         ?>
 
 
 
@@ -170,7 +180,7 @@ $util -> validarRuta(0);
     <!-- /main-inner -->
   </div>
     <!-- inicio modal -->
-  <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div id="modalActivar" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-header">
       <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
       <h3 id="myModalLabel">Cancelar solicitud</h3>
@@ -188,7 +198,25 @@ $util -> validarRuta(0);
   </div>
 
   <!-- Fin modal -->
+ <!-- inicio modal -->
+  <div id="modalDesactivar" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+      <h3 id="myModalLabel">Desactivar Usuarios</h3>
+    </div>
+    <div class="modal-body">
+      <div class="form-group shadow-textarea col-xs-12">
+        <label for="exampleFormControlTextarea6">Razon para negar el retiro</label>
+        <textarea class="form-control z-depth-1"maxlength="500" style="min-width: 100%" id="exampleFormControlTextarea6" rows="6" placeholder="Maximo 500 caracteres"></textarea>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn" data-dismiss="modal" aria-hidden="true">Cerrar</button>
+      <button class="btn btn-primary">Guardar</button>
+    </div>
+  </div>
 
+  <!-- Fin modal -->
   <?php
   include "../componentes/pie.php";
   ?>
@@ -201,7 +229,26 @@ $util -> validarRuta(0);
   <script src="../js/bootstrap.js"></script>
   <script language="javascript" type="text/javascript" src="../js/full-calendar/fullcalendar.min.js"></script>
 
-  <script src="js/base.js"></script>
+  
+   <script type="text/javascript">
+
+
+   
+
+    function agregarForm(datos){
+      d=datos.split("||");
+
+       $("#codigoE").val(d[0]);
+       $("#codigoEliminar").val(d[0]);
+       $("#nombreE").val(d[1]);
+       $("#documentoE").val(d[2]);
+       $("#edadE").val(d[3]);
+      $("#telefonoE").val(d[4]);
+       $("#direccionE").val(d[6]);
+       $("#emailE").val(d[5]);
+    }
+
+  </script>
 
 </body>
 </html>

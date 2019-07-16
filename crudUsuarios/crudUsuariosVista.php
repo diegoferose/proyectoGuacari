@@ -1,7 +1,7 @@
 <?php
-include "../util/util.php";
+include "../util/utilOsdo.php";
 include_once "../util/utilModelo.php";
-$util = new util();
+$util = new utilOsdo();
 
 $util -> validarRuta(0);
 ?>
@@ -61,11 +61,16 @@ $util -> validarRuta(0);
                   </thead>
                   <tbody>
 
-                  <?php                                   $key = $util->generarCodigo();
+                  <?php
 
-                                   $codigoV=$util->validarCodigo($key);
 
+                                  //  $key = $util->generarCodigo();
+                                  //var_dump(  $codigoV=$util->validarCodigo($key));
+                                  $codigoV="45645";
                                     $edadTrabajador=$util->mayorEdad('18');
+
+
+                                    echo "$codigoV"."oscar dorado";
 
                   $utilModelo = new utilModelo();
                   $tabla = "usuario";
@@ -86,7 +91,7 @@ $util -> validarRuta(0);
                               <td>$fila[1] </td>
                               <td> $fila[2] </td>
                               <td> $fila[5]</td>
-                               <td><a href='../admin/verReferidosVista.php?7c6o5d4i3g2o1=$fila[1]'>Ver</a></td>
+                               <td>$fila[4]</td>
                               <td class=\"td-actions\"><a  data-toggle=\"modal\" href=\"#modalEditar\" onclick=\"agregarForm('$datos');\" class=\"btn btn-small btn-info\"><i class=\"btn-icon-only icon-pencil\"></i></a><a href=\"#modalEliminar\"  onclick=\"agregarForm('$datos');\" data-toggle=\"modal\" class=\"btn btn-danger btn-small\"><i class=\"btn-icon-only icon-remove\"> </i></a></td>
                             </tr>";
                           }
@@ -155,7 +160,7 @@ $util -> validarRuta(0);
                                 </div>
 
                                 <div class="form-group">
-                                    <input  type="text" name="username" onkeyup="validarUsuario('#username',0);" id="username" tabindex="1" class=" form-control span4"
+                                    <input  type="text" name="username" onkeyup="validarUsuario('#username');" id="username" tabindex="1" class=" form-control span4"
                                            placeholder="Usuario" value="" required>
                                            <div id="usuarioValido" class="span4">
 

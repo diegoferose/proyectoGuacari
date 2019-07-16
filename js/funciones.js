@@ -1,36 +1,26 @@
-$(document).ready(function(){
+function validarUsuario(id,tipo){
 
       var consulta;
+      consulta = $(id).val();
+      cadena= "b="+ consulta+
+                "&clave=" + tipo;
 
-      //hacemos focus
-      $("#username").focus();
-
-      //comprobamos si se pulsa una tecla
-      $("#username").keyup(function(e){
-             //obtenemos el texto introducido en el campo
-             consulta = $("#username").val();
-
-             //hace la búsqueda
-             $("#resultado").delay(1000).queue(function(n) {
-
-                  $("#resultado").html('<img src="ajax-loader.gif" />');
+             
 
                         $.ajax({
                               type: "POST",
-                              url: "validarUsuario.php",
-                              data: "b="+consulta,
+                              url: "../util/validarUsuario.php",
+                              data: cadena,
                               dataType: "html",
                               error: function(){
                                     alert("error petición ajax");
                               },
                               success: function(data){
-                                    $("#resultado").html(data);
-                                    n();
+                                    $("#usuarioValido").html(data);
+                                    
+
                               }
                   });
 
-             });
 
-      });
-
-});
+}
