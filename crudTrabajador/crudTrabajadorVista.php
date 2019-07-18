@@ -34,11 +34,11 @@ $util -> validarRuta(0);
       <div class="container">
         <div class="row">
 
-          <div class="span3"></div>
+          <div class="span1"></div>
 
          <!-- /INICIO TABLA Rangos-->
 
-          <div class="span9">
+          <div class="span11">
 
             <a href="#modalGuardar"  data-toggle="modal" class=" form-control btn btn-register">Crear Trabajador</a><br><br>
               <div class="widget widget-nopad">
@@ -48,15 +48,15 @@ $util -> validarRuta(0);
               </div>
 
               <!-- /widget-header -->
-              <div class="widget-content">
+              <div id="scroll" class="widget-content">
                 <table class="table table-striped table-bordered">
                   <thead>
                     <tr>
-                      <th> CODIGO </th>
-                      <th> NOMBRE</th>
-                      <th> FECHA INGRESO</th>
-                      <th> AFILIADOS </th>
-                      <th class="td-actions">EDITAR/ELIMINAR</th>
+                      <th>CODIGO</th>
+                      <th>NOMBRE</th>
+                      <th>FECHA INGRESO</th>
+                      <th>AFILIADOS</th>
+                      <th class="td-actions" style="width: 150px;">VER/EDITAR/ELIMINAR</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -73,6 +73,8 @@ $util -> validarRuta(0);
                   while ($fila = mysqli_fetch_array($result)) {
                       if ($fila != NULL) {
 
+                        $afilados=$util->mostrarCantidadReferidos($fila[1]);
+
                         $datos=$fila[0]."||".
   			        					   $fila[2]."||".
   			        					   $fila[3]."||".
@@ -83,11 +85,11 @@ $util -> validarRuta(0);
 
                           echo "
                             <tr>
-                              <td>$fila[1] </td>
-                              <td> $fila[2] </td>
-                              <td> $fila[5]</td>
-                               <td><a href='../admin/verReferidosVista.php?7c6o5d4i3g2o1=$fila[1]'>Ver</a></td>
-                              <td class=\"td-actions\"><a  data-toggle=\"modal\" href=\"#modalEditar\" onclick=\"agregarForm('$datos');\" class=\"btn btn-small btn-info\"><i class=\"btn-icon-only icon-pencil\"></i></a><a href=\"#modalEliminar\"  onclick=\"agregarForm('$datos');\" data-toggle=\"modal\" class=\"btn btn-danger btn-small\"><i class=\"btn-icon-only icon-remove\"> </i></a></td>
+                              <td>$fila[1]</td>
+                              <td>$fila[2]</td>
+                              <td>$fila[5]</td>
+                               <td>$afilados[1]</td>
+                              <td class=\"td-actions\"><a href='../admin/verReferidosVista.php?7c6o5d4i3g2o1=$fila[1]' class=\"btn btn-small btn-save\"><i class=\"btn-icon-only icon-book\"></i></a><a  data-toggle=\"modal\" href=\"#modalEditar\" onclick=\"agregarForm('$datos');\" class=\"btn btn-small btn-info\"><i class=\"btn-icon-only icon-pencil\"></i></a><a href=\"#modalEliminar\"  onclick=\"agregarForm('$datos');\" data-toggle=\"modal\" class=\"btn btn-danger btn-small\"><i class=\"btn-icon-only icon-remove\"> </i></a></td>
                             </tr>";
                           }
                         }

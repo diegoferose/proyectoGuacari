@@ -100,7 +100,7 @@
                         }
 
                     ?>
-                        <a href="pagarOsdoVista.php">Pagar</a>
+                        
     
                     <div class="widget">
                         <div class="widget-header"><i class="icon-group"></i>
@@ -141,7 +141,7 @@
                           </div>
 
                           <!-- /widget-header -->
-                          <div class="widget-content">
+                          <div id="scroll" class="widget-content">
                             <table class="table table-striped table-bordered">
                               <thead>
                                 <tr>
@@ -159,6 +159,8 @@
                                   $result = $utilModelo2->consultarVariasTablas("*","usuario","codigoReferido='$codigoUsuario'");
                                   while ($fila = mysqli_fetch_array($result)) {
                                   if ($fila != NULL) {
+                                     $afilados=$util->mostrarCantidadReferidos($fila[1]);
+                                     $pagos=$util->validarUsuarioActivo($fila[1]);
 
                                     echo"
 
@@ -167,8 +169,8 @@
                                       <td>$fila[6]</td>
                                       <td>$fila[7]</td>
                                       <td>$fila[5]</td>
-                                       <td>$fila[5]</td>
-                                       <td>N/A</td>
+                                       <td>$pagos[0]</td>
+                                       <td>$pagos[1]</td>
 
                                     </tr>
 

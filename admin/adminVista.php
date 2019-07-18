@@ -147,9 +147,11 @@
                               <tbody>
                                   <?php
                                  // $result = $utilModelo2->consultarVariasTablas("*","usuario","codigoReferido='$codigoUsuario'");
+
                                   $result = $utilModelo2->consultarVariasTablas("*","usuario","tipo=2");
                                   while ($fila = mysqli_fetch_array($result)) {
                                   if ($fila != NULL) {
+                                    $ultimoPago=$util->validarUsuarioActivo($fila[1]);
 
                                     echo"
 
@@ -158,8 +160,8 @@
                                       <td>$fila[6]</td>
                                       <td>$fila[7]</td>
                                       <td>$fila[5]</td>
-                                       <td>$fila[5]</td>
-                                       <td>N/A</td>
+                                       <td>$ultimoPago[0]</td>
+                                       <td>$ultimoPago[1]</td>
 
                                     </tr>
 

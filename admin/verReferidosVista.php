@@ -48,6 +48,7 @@ $codigo = $_GET['7c6o5d4i3g2o1'];
                   while ($fila = mysqli_fetch_array($result)) {
                       if ($fila != NULL) {
 
+
                         $datos=$fila[0]."||".
                              $fila[2]."||".
                              $fila[3]."||".
@@ -124,13 +125,16 @@ $codigo = $_GET['7c6o5d4i3g2o1'];
               </div>
 
               <!-- /widget-header -->
-              <div class="widget-content">
+              <div id="scroll" class="widget-content">
                 <table class="table table-striped table-bordered">
                   <thead>
                     <tr>
                       <th> CODIGO </th>
                       <th> NOMBRE</th>
                       <th> FECHA INGRESO</th>
+                      <th> ESTADO</th>
+                      <th> ULTIMO PAGO</th>
+                      <th> REFERIDOS</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -141,6 +145,9 @@ $codigo = $_GET['7c6o5d4i3g2o1'];
                   $result = $utilModelo->consultarVariasTablas("*",$tabla,"codigoReferido='$codigo'");
                   while ($fila = mysqli_fetch_array($result)) {
                       if ($fila != NULL) {
+
+                        $afilados=$util->mostrarCantidadReferidos($fila[1]);
+                        $pagos=$util->validarUsuarioActivo($fila[1]);
 
                         $datos=$fila[0]."||".
                              $fila[2]."||".
@@ -155,6 +162,9 @@ $codigo = $_GET['7c6o5d4i3g2o1'];
                               <td>$fila[1] </td>
                               <td> $fila[2] </td>
                               <td> $fila[5]</td>
+                              <td>$pagos[1]</td>
+                              <td>$pagos[0]</td>
+                              <td>$afilados[1]</td>
                             </tr>";
                           }
                         }

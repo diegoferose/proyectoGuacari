@@ -45,7 +45,7 @@ $fechaInicial=$util->primerDia();
               </div>
 
               <!-- /widget-header -->
-              <div class="widget-content">
+              <div id="scroll" class="widget-content">
                 <table class="table table-striped table-bordered">
                   <thead>
                     <tr>

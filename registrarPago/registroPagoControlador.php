@@ -7,7 +7,7 @@
     $utilModelo = new utilModelo();
     $codigo = filter_input(INPUT_POST, 'lider');
     $valor = filter_input(INPUT_POST, 'valor');
-    $fecha = filter_input(INPUT_POST, 'fecha');
+    $fecha = $util->hoy();
 
 //$campos es el nombre de los campos tal cual aparece en la base de datos
     $campos = array("codigoUsuario", "tipo", "fechaMovimiento", "valor");
@@ -30,5 +30,5 @@
         $_SESSION['mensajeOk'] = "El pago fue registrado con exito";
     }
 
-//    header('Location: registroPagoVista.php');
-//    exit();
+   header('Location: registroPagoVista.php');
+   exit();

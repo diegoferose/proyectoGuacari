@@ -111,7 +111,7 @@
                     </div>
 
                     <div class="form-actions">
-                        <button type="submit" id="guardar" class="btn btn-primary" >Guaradar</button>
+                        <button type="submit" id="guardar" class="btn btn-primary" >Guardar</button>
                         <button class="btn">Cancelar</button>
                     </div>
                 </div>

@@ -72,7 +72,8 @@ if ($fila != null) {
 
 				$utilModelo->modificar($tabla,$campos,$valores,'id',$id);
 
-				echo "Se ha enviado un mensaje a $destinatario Con su nueva contraseña";
+				$_SESSION['mensajeOk']='SOLICITUD REGISTRADA CON EXITO <p class="help-block">Se ha enviado un mensaje a $destinatario Con su nueva contraseña</p>';
+    header('Location: ../util/okVista.php');
 
 
 }elseif(var_dump($enviarMail)){
@@ -84,7 +85,7 @@ if ($fila != null) {
 
 				$utilModelo->modificar($tabla,$campos,$valores,'id',$id);
 
-				echo "Se ha enviado un mensaje a $destinatario Con su nueva contraseña";
+				
 
     $_SESSION['mensajeOk']='SOLICITUD REGISTRADA CON EXITO <p class="help-block">Se ha enviado un mensaje a $destinatario Con su nueva contraseña</p>';
     header('Location: ../util/okVista.php');
