@@ -1,11 +1,11 @@
-function validarUsuario(id,tipo){
+function validarUsuario(id,tipo,destino){
 
       var consulta;
       consulta = $(id).val();
       cadena= "b="+ consulta+
                 "&clave=" + tipo;
 
-             
+             //alert(cadena);
 
                         $.ajax({
                               type: "POST",
@@ -16,7 +16,7 @@ function validarUsuario(id,tipo){
                                     alert("error petición ajax");
                               },
                               success: function(data){
-                                    $("#usuarioValido").html(data);
+                                    $(destino).html(data);
                                     
 
                               }

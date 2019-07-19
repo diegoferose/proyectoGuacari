@@ -34,6 +34,10 @@
 
                             <?php
                                 $util->validarElemento(2, '<li><a href="../cambiarPassword/cambiarPasswordVista.php"><i class="icon-key"></i> Cambiar contraseña</a></li>');
+                                $util->validarElemento(1, '<li><a href="../cambiarPassword/cambiarPasswordVista.php"><i class="icon-key"></i> Cambiar contraseña</a></li>');
+
+                                $util->validarElemento(2, '<li><a href="#modalEditar"  data-toggle="modal" ><i class="icon-pencil"></i>Actualizar Datos</a></li>');
+                                $util->validarElemento(1, '<li><a href="#modalEditar"  data-toggle="modal" ><i class="icon-pencil"></i>Actualizar Datos</a></li>');
                             ?>
                             <li><a href="../seguridad/cerrarSesion.php"><i class="icon-signout"></i>Cerrar sesion</a>
                             </li>

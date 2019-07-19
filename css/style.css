@@ -1291,4 +1291,12 @@ color: #333;
      
 
 }
+#terminos{
+
+	overflow:scroll;
+	width: 90%;
+     height:200px;
+     margin:5%;
+
+}
 

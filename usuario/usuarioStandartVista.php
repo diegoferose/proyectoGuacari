@@ -206,6 +206,59 @@
                     </div>
                 </div>
             </div>
+
+             <!-- inicio modal editar -->
+<div id="modalEditar" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">Actualizar Datos</h3>
+  </div>
+  <div class="modal-body">
+
+      <form style="min-width: 500px;" action="crudTrabajadorControlador.php" method="post" >
+
+
+
+                                <div class="form-group">
+                                  <input id="codigoE" name="codigo" type="hidden">
+                                    <input   type="text" name="nombre" id="nombreE" tabindex="1" class=" form-control span4"
+                                           placeholder="Nombre Completo" value="" required>
+                                </div>
+                                <div class="form-group">
+                                    <input   type="text" name="documento" id="documentoE" tabindex="1" class=" form-control span4"
+                                           placeholder="Numero de Cedula" value="" required>
+                                </div>
+                                <div class="form-group">
+                                   Fecha Nacimiento:  <input style="min-width: 285px;" type="date" name="edad" id="edadE" tabindex="1"
+                                                                class=" form-control span3" placeholder="Fecha de nacimiento"
+                                                                value="" required>
+                                </div>
+                                <div class="form-group">
+                                    <input   type="text" name="direccion" id="direccionE" tabindex="1" class=" form-control span4"
+                                           placeholder="Direccion" value="" required>
+                                </div>
+                                <div class="form-group">
+                                    <input   type="tel" pattern="[0-9]{} "name="telefono" id="telefonoE" tabindex="1" class=" form-control span4"
+                                           placeholder="Telefono" value="" required>
+                                </div>
+                                <div class="form-group">
+                                    <input   type="email" name="email" id="emailE" tabindex="1" class=" form-control span4"
+                                           placeholder="Correo electronico" required value="">
+                                </div>
+
+
+
+
+    </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Cerrar</button>
+    <button type="submit" name="modificarTrabajador" id="modificarTrabajador"class="btn btn-primary">Modificar</button>
+  </div>
+
+  </form>
+</div>
+
+<!-- Fin modal -->
             <!-- /row -->
         </div>
         <!-- /container -->

@@ -9,6 +9,7 @@ $clave =$_POST["clave"];//clave que se envia para saber que funcion utilizar 0 =
 
 
       if($clave==0) {
+        
             validarUsuario($user);
       }else{
             validarReferido($referido);

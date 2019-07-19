@@ -157,7 +157,7 @@ $util -> validarRuta(0);
                                 </div>
 
                                 <div class="form-group">
-                                    <input  type="text" name="username" onkeyup="validarUsuario('#username',0);" id="username" tabindex="1" class=" form-control span4"
+                                    <input  type="text" name="username" onkeyup="validarUsuario('#username',0,'#usuarioValido');" id="username" tabindex="1" class=" form-control span4"
                                            placeholder="Usuario" value="" required>
                                            <div id="usuarioValido" class="span4">
 
