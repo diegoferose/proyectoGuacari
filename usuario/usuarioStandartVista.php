@@ -11,8 +11,11 @@
     while ($fila = mysqli_fetch_array($result)) {
         if ($fila != NULL) {
             $saldo = $fila['saldo'];
+              $codigoRef=$fila[1];
         }
     }
+
+
 
     $valoresSuscripcionActiva = $util->validarUsuarioActivo($_SESSION['usuario'][0]);
 
@@ -77,35 +80,48 @@
     <div class="main-inner">
         <div class="container">
             <div class="container">
-                <?php
-                    if (isset($_SESSION['mensajeOk'])) {
-                        ?>
-                        <div class="form-group">
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <div class="text-center">
-                                        <div class="alert alert-success" role="alert">
-                                            <img src="../img/ok.png" width="15" height="15" alt="">
-                                            <?php echo $_SESSION['mensajeOk'] ?>
-                                        </div>
-                                    </div>
-                                </div>
+              <div class="row">
+                <div class="span6">
+                  <?php
+                      if (isset($_SESSION['mensajeOk'])) {
+                          ?>
+                          <div class="form-group">
+                              <div class="row">
+                                  <div class="col-lg-12">
+                                      <div class="text-center">
+                                          <div class="alert alert-success" role="alert">
+                                              <img src="../img/ok.png" width="15" height="15" alt="">
+                                              <?php echo $_SESSION['mensajeOk'] ?>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                          <?php
+                          unset($_SESSION['mensajeOk']);
+                      }
+
+                  ?>
+              <?php
+
+
+                  if ($valoresSuscripcionActiva[1] == "activo") {
+                      echo '<h4><i class="icon-large icon-ok"></i>Su suscripcion se encuentra activa hasta el <a href="#" target="_blank">' . $fechaVencimiento->format('Y-m-d') . '</a></h4> <span class="label label-default"> Rango: ' . $rangoUsuario[1].'</span>';
+                  } else {
+                      echo '<h4><i class="icon-large icon-remove"></i>Su suscripcion se encuentra vencida </h4> <span class="label label-default"> Rango: ' . $rangoUsuario[1].'</span>';
+                  }
+              ?>
+
+                </div>
+                <div class="spam6">
+
+                          	<div class="stats-box-title"><h1>CODIGO PARA REFERIDOS</h1></div>
+                            <div class="stats-box-all-info"><h1><i class="icon-user" style="color:#3366cc;"></i><?php echo" ".$codigoRef; ?></H1></div>
                             </div>
-                        </div>
-                        <?php
-                        unset($_SESSION['mensajeOk']);
-                    }
-
-                ?>
-            <?php
 
 
-                if ($valoresSuscripcionActiva[1] == "activo") {
-                    echo '<h6><i class="icon-large icon-ok"></i>Su suscripcion se encuentra activa hasta el <a href="#" target="_blank">' . $fechaVencimiento->format('Y-m-d') . '</a></h6> <span class="label label-default"> Rango: ' . $rangoUsuario[1].'</span>';
-                } else {
-                    echo '<h6><i class="icon-large icon-remove"></i>Su suscripcion se encuentra vencida </h6> <span class="label label-default"> Rango: ' . $rangoUsuario[1].'</span>';
-                }
-            ?>
+              </div>
+
             <hr>
             <div class="row">
 
@@ -125,8 +141,11 @@
 
                                 <div class="plan-price">
                                     $<?php echo number_format($saldo); ?>
-                                    <span class="term"><a style="color: white;"
-                                                          href="../solicitudRetiro/solicitudRetiroVista.php">REALIZAR SOLICITUD DE RETIRO</a></span>
+                                    <span class="term">
+                                      <a class="label label-default" style="color: white;" href="../solicitudRetiro/solicitudRetiroVista.php">REALIZAR SOLICITUD DE RETIRO  </a>
+                                      <a class="label label-default" style="color: white;" href="../solicitudRetiro/solicitudRetiroVista.php">  PAGAR CON SALDO DISPONIBLE</a>
+                                    </span>
+
                                 </div> <!-- /plan-price -->
 
                             </div> <!-- /plan-header -->
@@ -183,7 +202,7 @@
                             </div> <!-- /plan-title -->
 
                             <div class="plan-price">
-                                $<?php echo number_format(1000000); ?>
+                                $<?php echo number_format($saldo); ?>
                                 <span class="term"></span>
                             </div> <!-- /plan-price -->
 
