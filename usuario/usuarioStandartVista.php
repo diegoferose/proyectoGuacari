@@ -113,7 +113,7 @@
               ?>
 
                 </div>
-                <div class="spam6">
+                <div class="span6">
 
                           	<div class="stats-box-title"><h1>CODIGO PARA REFERIDOS</h1></div>
                             <div class="stats-box-all-info"><h1><i class="icon-user" style="color:#3366cc;"></i><?php echo" ".$codigoRef; ?></H1></div>
@@ -143,7 +143,7 @@
                                     $<?php echo number_format($saldo); ?>
                                     <span class="term">
                                       <a class="label label-default" style="color: white;" href="../solicitudRetiro/solicitudRetiroVista.php">REALIZAR SOLICITUD DE RETIRO  </a>
-                                      <a class="label label-default" style="color: white;" href="../solicitudRetiro/solicitudRetiroVista.php">  PAGAR CON SALDO DISPONIBLE</a>
+                                      <a class="label label-default" style="color: white;" href="../pagarSaldo/pagarSaldoVista.php">  PAGAR CON SALDO DISPONIBLE</a>
                                     </span>
 
                                 </div> <!-- /plan-price -->

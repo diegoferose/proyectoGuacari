@@ -16,7 +16,7 @@ INSERT INTO `usuario` (`id`, `codigo`, `nombre`, `cedula`, `fechaNacimiento`, `f
 (18, 'usuario2', 'usr2','u2', '0000-00-00', '2019-04-04', 'avellaned', 'tel349057', 'trabajo1', 'usuario2', 'lina@hmotmail.co', '1234', 0, 2, 300000),
 (19, 'usuario3', 'usr3','u3', '2019-04-06', '2019-04-04', 'avellaned', 'tel349057', 'trabajo1', 'usuario3', 'lina@hmotmail.co', '1234', 0, 2, 300000),
 
-2do nivel del id17 
+2do nivel del id17
 (20, 'usuario11', 'usr11','us11', '1992-05-31', '2019-04-04', 'avellaned', '349057', 'usuario1', 'usuario11', 'lina@hmotmail.co', '1234', 0, 2, 300000),
 (21, 'usuario12', 'usr12','us12', '0000-00-00', '2019-04-04', 'avellaned', '349057', 'usuario1', 'usuario12', 'lina@hmotmail.co', '1234', 0, 2, 300000),
 (22, 'usuario13', 'usr13','us13', '2019-04-06', '2019-04-04', 'avellaned', '349057', 'usuario1', 'usuario13', 'lina@hmotmail.co', '1234', 0, 2, 300000),
@@ -180,3 +180,5 @@ INSERT INTO `usuario` (`id`, `codigo`, `nombre`, `cedula`, `fechaNacimiento`, `f
 (135, 'usuario3331', 'usr3331','us1', '1992-05-31', '2019-04-04', 'avellaned', '349057', 'usuario333', 'usuario3331', 'lina@hmotmail.co', '1234', 0, 2, 300000),
 (136, 'usuario3332', 'usr3332','us2', '0000-00-00', '2019-04-04', 'avellaned', '349057', 'usuario333', 'usuario3332', 'lina@hmotmail.co', '1234', 0, 2, 300000),
 (137, 'usuario3333', 'usr3333','us3', '2019-04-06', '2019-04-04', 'avellaned', '349057', 'usuario333', 'usuario3333', 'lina@hmotmail.co', '1234', 0, 2, 300000);
+
+6add1365bb69681e9dc2445ff235a71fd13092f817ad8e731015d7e03623606d *PhpStorm-2019.1.3.exe
