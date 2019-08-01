@@ -50,11 +50,8 @@ $util -> validarRuta(0);
                 <table class="table table-striped table-bordered">
                   <thead>
                     <tr>
-                      <th> RANGO </th>
-                      <th> CANT VENTA PERSONAL</th>
-                      <th> IP MAXIMO</th>
-                      <th> IG MAXIMO </th>
-                      <th class="td-actions">EDITAR/ELIMINAR</th>
+                      <th> NOMBRE ARCHIVO </th>
+                      <th class="td-actions">EDITAR</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -62,34 +59,45 @@ $util -> validarRuta(0);
                   <?php
 
 
-                  $utilModelo = new utilModelo();
-                  $tabla = "rangoUsuario";
-                  $result = $utilModelo->mostrarTodosRegistros($tabla);
-                  while ($fila = mysqli_fetch_array($result)) {
-                      if ($fila != NULL) {
 
-                        $datos=$fila[0]."||".
-  			        					   $fila[1]."||".
-  			        					   $fila[2]."||".
-  			        					   $fila[3]."||".
-  			        					   $fila[4];
 
-                          echo "
-                            <tr>
-                              <td>$fila[1] </td>
-                              <td> $fila[2] </td>
-                              <td> $fila[3]</td>
-                               <td><a href=\"#\">$fila[4]</a></td>
-                              <td class=\"td-actions\"><a  data-toggle=\"modal\" href=\"#modalEditar\" onclick=\"agregarForm('$datos');\" class=\"btn btn-small btn-info\"><i class=\"btn-icon-only icon-pencil\"></i></a><a href=\"\"  data-toggle=\"modal\" class=\"btn btn-danger btn-small\"><i class=\"btn-icon-only icon-remove\"> </i></a></td>
-                            </tr>";
-                          }
+                        function listar_archivos($carpeta){
+                        $dir="";
+
+
+                            if(is_dir($carpeta)){
+                                if($dir = opendir($carpeta)){
+                                    while(($archivo = readdir($dir)) !== false){
+                                        if($archivo != '.' && $archivo != '..' && $archivo != '.htaccess'){
+                                          
+
+
+
+                                            echo '
+                                              <tr>
+                                              <td align="center"><a target="_blank" href="'.$carpeta.'/'.$archivo.'">'.$archivo.'</a></td>
+                                              <td class="td-actions"><a href="#modalEditar"  class="btn btn-small btn-info"><i class="btn-icon-only icon-pencil"></i></a><aclass=\"btn btn-danger btn-small\"><i class=\"btn-icon-only icon-remove\"> </i></a></td>
+                                              </tr>';
+
+
+                                        }
+                                    }
+                                    closedir($dir);
+
+
+                                }
+                            }
                         }
+
+                        echo listar_archivos('../img')."osdo";
+
+
+
                          ?>
                   </tbody>
                 </table>
               </div>
-              <h6 class="bigstats"></h6>
-              <a href="#modalGuardar"  data-toggle="modal" class="form-control btn btn-register">Crear Rango</a>
+
 
               <!-- /widget-content -->
             </div>
